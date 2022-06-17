@@ -11,4 +11,7 @@ h1 {
     text-align: center;
     background-color: azure;
     font-family: Andale Mono, monospace;
+    border-radius: 100px 100px 10px 10px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px 1px #000;
 }
