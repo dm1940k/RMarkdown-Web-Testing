@@ -1,6 +1,6 @@
-﻿body {
-
+body {
     background-color: #97CEFF;
+    font-family: Andale Mono, monospace;
 }
 
 p {
@@ -9,4 +9,6 @@ p {
 
 h1 {
     text-align: center;
+    background-color: azure;
+    font-family: Andale Mono, monospace;
 }
