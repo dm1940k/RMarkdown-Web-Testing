@@ -14,4 +14,6 @@ h1 {
     border-radius: 100px 100px 10px 10px;
     border-radius: 25px;
     box-shadow: 5px 5px 10px 1px #000;
+    border: 10px solid #000;
+
 }
