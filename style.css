@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: 'roboto_slabregular', Times, serif;
+    font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
     margin: 0;
@@ -12,22 +12,34 @@ body {
 }
 
 h1 {
-    font-family: 'roboto_slabregular', Times, serif;
+    font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
     font-size: 40px;
 }
 
 h2 {
-    font-family: 'roboto_slabregular', Times, serif;
+    font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
     font-size: 30px;
 }
 
+p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Style the side navigation */
 .sidenav {
-    font-family: 'roboto_slabregular', Times, serif;
+    font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
     height: 100%;
@@ -43,6 +55,9 @@ h2 {
 
     /* Side navigation links */
     .sidenav a {
+        font-family: 'Roboto Slab', serif;
+        font-weight: normal;
+        font-style: normal;
         color: #DCDCDC;
         padding: 16px;
         text-decoration: none;
@@ -51,12 +66,18 @@ h2 {
 
         /* Change color on hover */
         .sidenav a:hover {
+            font-family: 'Roboto Slab', serif;
+            font-weight: normal;
+            font-style: normal;
             background-color: #DCDCDC;
             color: #2F4F4F;
         }
 
 /* Style the content */
 .content {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
     margin-left: 200px;
     padding-left: 20px;
     background-color: #F8F8FF;
@@ -67,9 +88,5 @@ h2 {
     clip-path: circle(25%);
 }
 
-@font-face {
-    font-family: 'roboto_slabregular';
-    src: url('https://main--subtle-sunshine-6418fc.netlify.app/robotoslab-variablefont_wght.woff2') format('woff2'), url('https://main--subtle-sunshine-6418fc.netlify.app/robotoslab-variablefont_wght.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
 }
