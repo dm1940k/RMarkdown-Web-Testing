@@ -90,7 +90,7 @@ a {
 
 .circle-clip-scale {
     clip-path: circle(25%);
-    max-width: 50%;
+    width: 50%;
     height: auto;
 }
 
