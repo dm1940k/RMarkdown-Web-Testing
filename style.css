@@ -29,12 +29,14 @@ p {
     font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
+    font-size: 20px;
 }
 
 a {
     font-family: 'Roboto Slab', serif;
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
+    font-size: 25px;
 }
 
 /* Style the side navigation */
