@@ -88,5 +88,11 @@ a {
     clip-path: circle(25%);
 }
 
+.circle-clip-scale {
+    clip-path: circle(25%);
+    max-width: 50%;
+    height: auto;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
 }
