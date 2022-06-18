@@ -89,9 +89,16 @@ a {
 }
 
 .circle-clip-scale {
-    clip-path: circle(50%);
-    width: 50%;
+    clip-path: circle(40%);
+    width: 25%;
     height: auto;
+    position: relative;
+    right: 50px;
+}
+
+div.relative-right {
+    position: relative;
+    right: 30px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
