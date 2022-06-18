@@ -50,3 +50,8 @@ h2 {
     padding-left: 20px;
     background-color: #F8F8FF;
 }
+
+
+.circle-clip {
+    clip-path: circle(25%);
+}
