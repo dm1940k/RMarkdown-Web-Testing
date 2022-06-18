@@ -89,7 +89,7 @@ a {
 }
 
 .circle-clip-scale {
-    clip-path: circle(25%);
+    clip-path: circle(50%);
     width: 50%;
     height: auto;
 }
