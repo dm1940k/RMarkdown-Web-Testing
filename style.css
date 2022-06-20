@@ -67,7 +67,7 @@ a {
 /* Style the side navigation */
 .sidenav {
     font-family: 'Roboto Slab', serif;
-    font-weight: normal;
+    font-weight: 600;
     font-style: normal;
     height: 100%;
     width: 200px;
