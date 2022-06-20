@@ -62,13 +62,23 @@ a {
     font-family: 'Roboto Slab', serif;
     font-weight: 600;
     font-style: normal;
+    font-size: 16px;
 }
+
+a1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+}
+
 
 /* Style the side navigation */
 .sidenav {
     font-family: 'Roboto Slab', serif;
     font-weight: 600;
     font-style: normal;
+    font-size:20px;
     height: 100%;
     width: 200px;
     position: fixed;
@@ -83,7 +93,8 @@ a {
 /* Side navigation links */
 .sidenav a {
     font-family: 'Roboto Slab', serif;
-    font-weight: normal;
+    font-weight: 600;
+    font-size: 16px;
     font-style: normal;
     color: #DCDCDC;
     padding: 16px;
@@ -91,10 +102,22 @@ a {
     display: block;
 }
 
+    .sidenav a1 {
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        font-size: 20px;
+        font-style: normal;
+        color: #DCDCDC;
+        background-color: #1e3333;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+    }
+
 /* Change color on hover */
 .sidenav a:hover {
     font-family: 'Roboto Slab', serif;
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
     background-color: #DCDCDC;
     color: #2F4F4F;
