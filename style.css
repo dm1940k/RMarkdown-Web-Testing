@@ -7,36 +7,61 @@ body {
     font-weight: normal;
     font-style: normal;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
     background-color: #F8F8FF;
 }
 
 h1 {
     font-family: 'Roboto Slab', serif;
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
     font-size: 40px;
 }
 
 h2 {
     font-family: 'Roboto Slab', serif;
-    font-weight: normal;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 35px;
+}
+
+h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
     font-style: normal;
     font-size: 30px;
 }
 
-p {
-    font-family: 'Roboto Slab', serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 20px;
-}
-
-a {
+h4 {
     font-family: 'Roboto Slab', serif;
     font-weight: bold;
     font-style: normal;
     font-size: 25px;
+}
+
+h5 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+}
+
+h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 15px;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+a {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 /* Style the side navigation */
@@ -55,25 +80,25 @@ a {
 }
 
 
-    /* Side navigation links */
-    .sidenav a {
-        font-family: 'Roboto Slab', serif;
-        font-weight: normal;
-        font-style: normal;
-        color: #DCDCDC;
-        padding: 16px;
-        text-decoration: none;
-        display: block;
-    }
+/* Side navigation links */
+.sidenav a {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #DCDCDC;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+}
 
-        /* Change color on hover */
-        .sidenav a:hover {
-            font-family: 'Roboto Slab', serif;
-            font-weight: normal;
-            font-style: normal;
-            background-color: #DCDCDC;
-            color: #2F4F4F;
-        }
+/* Change color on hover */
+.sidenav a:hover {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    background-color: #DCDCDC;
+    color: #2F4F4F;
+}
 
 /* Style the content */
 .content {
@@ -105,4 +130,3 @@ div.relative-right {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
-}
