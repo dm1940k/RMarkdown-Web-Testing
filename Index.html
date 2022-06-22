@@ -7,21 +7,53 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
-    <div class="sidenav">
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">Home</a>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html">Data Case Study #1</a>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html">Photography</a>
+    <!--This is the chunk of code that makes the sidebar work-->
 
+ <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
+    
+
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
+        </a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
     </div>
 
-    <div class="content">
+    <!--End of the sidebar snippet-->
+
+
+    <!--The below JS script is used to expand and contract the sidebar and main sections of the page-->
+
+    <script>
+        var mini = true;
+
+        function toggleSidebar() {
+            if (mini) {
+                console.log("opening sidebar");
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                this.mini = false;
+            } else {
+                console.log("closing sidebar");
+                document.getElementById("mySidebar").style.width = "85px";
+                document.getElementById("main").style.marginLeft = "85px";
+                this.mini = true;
+            }
+        }
+
+    </script>
+
+    <!--End of sidebar JS modifier-->
+
+    <div id ="main" class="content">
         <h1>Portfolio 2022</h1>
         <img class="circle-clip-scale" src="https://main--subtle-sunshine-6418fc.netlify.app/shrek.jpg">
         <br />
@@ -29,25 +61,25 @@
         <p>
             I am a self taught programmer and data analyst in search of my first developer or data analysis position.
             I have chosen to focus on C# and ASP.NET for software, and R for data. I am also familiar with HTML, CSS, Excel, SQL, and Ruby.
-            I am currently working to create a D&D dungeon generator, as well as this portfolio site. 
+            I am currently working to create a D&D dungeon generator, as well as this portfolio site.
             The most compelling aspect of programming and data analysis for me are the moments when I discover a new way to do something or solve a problem.
         </p>
         <br />
         <p>
             I have spent the last 6 years in liquor production and sales.
-            As a cocktail room manager I found myself using data in order to direct our menu and events program. 
+            As a cocktail room manager I found myself using data in order to direct our menu and events program.
             In my production role I learned to use Excel for recipe development, which opened my eyes to the possibilities programming offered.
             I've since used C# to write a volume calculator for our milk-tank-turned-mixing-tank, which quickly converts milk pounds to gallons and liters and is used almost every week.
         </p>
         <br />
         <p>
-            I hope to continue to grow my depth and breath of knowledge in the skills above, and maybe even turn them towards my other interests, like mechanical design or carpentry. 
+            I hope to continue to grow my depth and breath of knowledge in the skills above, and maybe even turn them towards my other interests, like mechanical design or carpentry.
             I plan to use this portfolio site to highlight those endeavours as well.
         </p>
-        <h3> 
-            <a href="https://github.com/dm1940k" target="_blank" rel="noopener noreferrer">GitHub</a> 
-            <br /> 
-            <a href="https://www.linkedin.com/in/d-moriarty" target="_blank" rel="noopener noreferrer">LinkedIn</a> 
+        <h3>
+            <a href="https://github.com/dm1940k" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <br />
+            <a href="https://www.linkedin.com/in/d-moriarty" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </h3>
     </div>
 

@@ -2,6 +2,8 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
 body {
     font-family: 'Roboto Slab', serif;
     font-weight: normal;
@@ -91,7 +93,7 @@ a1 {
 
 
 /* Side navigation links */
-.sidenav a {
+/*.sidenav a {
     font-family: 'Roboto Slab', serif;
     font-weight: 600;
     font-size: 16px;
@@ -112,16 +114,16 @@ a1 {
         padding: 16px;
         text-decoration: none;
         display: block;
-    }
+    }*/
 
 /* Change color on hover */
-.sidenav a:hover {
+/*.sidenav a:hover {
     font-family: 'Roboto Slab', serif;
     font-weight: 300;
     font-style: normal;
     background-color: #DCDCDC;
     color: #2F4F4F;
-}
+}*/
 
 /* Style the content */
 .content {
@@ -135,9 +137,9 @@ a1 {
 }
 
 
-.circle-clip {
+/*.circle-clip {
     clip-path: circle(25%);
-}
+}*/
 
 .circle-clip-scale {
     clip-path: circle(40%);
@@ -147,9 +149,141 @@ a1 {
     right: 50px;
 }
 
+.photo-standard {
+    width: 800px;
+    height: auto;
+    margin-left: 20px;
+}
+
 div.relative-right {
     position: relative;
     right: 30px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    flex: 33.33%;
+    padding: 5px;
+}
+
+/* Floats and responsive layout pulled from https://www.w3schools.com/howto/howto_css_images_side_by_side.asp */
+
+/* Clear floats after image containers */
+.row {
+    display: flex;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+    }
+}
+
+
+
+
+/* Below snippets pulled from https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1 */
+
+.sidebar {
+    height: 100%;
+    width: 85px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2F4F4F;
+    transition: 0.5s;
+    overflow-x: hidden;
+    padding-top: 60px;
+    white-space: nowrap;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+}
+
+
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #DCDCDC;
+        text-decoration: none;
+        display: block;
+        transition: 0.3s;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        font-size: 16px;
+        font-style: normal;
+    }
+
+    .sidebar a1 {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        font-size: 16px;
+        font-style: normal;
+        color: #DCDCDC;
+        text-decoration: none;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+        font-weight: 700;
+        background-color: #DCDCDC;
+        color: #2F4F4F;
+    }
+
+.material-icons,
+.icon-text {
+    vertical-align: middle;
+}
+
+.material-icons {
+    padding-bottom: 3px;
+    margin-right: 30px;
+}
+
+
+main .sidebar {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+#main {
+    padding: 16px;
+    margin-left: 85px;
+    transition: margin-left 0.5s;
+}
+
+mainphoto .sidebar {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#mainphoto {
+    padding: 5px;
+    margin-left: 30px;
+    transition: margin-left 0.5s;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+        .sidebar a {
+            font-size: 18px;
+        }
+}

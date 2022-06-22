@@ -10,36 +10,76 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-    <div class="sidenav">
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">Home</a>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html">Data Case Study #1</a>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html">Photography</a>
+    <!--This is the chunk of code that makes the sidebar work-->
+    <!--<div id=”mySidebar” class=”sidebar” onmouseover=”toggleSidebar()” onmouseout=”toggleSidebar()”>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><i class="material-icons">home</i><span class="icon-text"></span>Home</a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">code</i><span class="icon-text"></span>Programming</a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography</a><br>
+    </div>-->
+    <!--Above code shooould work, but doesn't for some reason. Won't load in any css. Below code is copied from source:
+    https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1
+    Has what seem to be extra span and a tags but they seem important.-->
 
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
+        </a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
     </div>
 
+    <!--End of the sidebar snippet-->
+    <!--The below JS script is used to expand and contract the sidebar and main sections of the page-->
 
-    <div class="content">
-        <h1> This is a test to see if images load how I imagine </h1>
-        <br />
-        <img src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg">
-        <br />
-        <img src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg">
-        <br />
-        <img src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg">
-        <br />
-        <img src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg">
-        <br />
-        <img src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg">
+
+
+    <script>
+        var mini = true;
+
+        function toggleSidebar() {
+            if (mini) {
+                console.log("opening sidebar");
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("mainphoto").style.marginLeft = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                this.mini = false;
+            } else {
+                console.log("closing sidebar");
+                document.getElementById("mySidebar").style.width = "85px";
+                document.getElementById("mainphoto").style.marginLeft = "85px";
+                document.getElementById("main").style.marginLeft = "85px";
+                this.mini = true;
+            }
+        }
+
+    </script>
+
+    <!--End of sidebar JS modifier-->
+
+
+    <div id="main" class="content">
+        <h2 style="text-align:center;">This is a test page for hosting photography</h2>
     </div>
 
-
-
+    <div id="mainphoto" class="row">
+        <div id="mainphoto" class="column">
+            <img alt="Ah! A Bee!" src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg" style="width:100%;">
+        </div>
+        <div id="mainphoto" class="column">
+            <img alt="Ah! A Bee!" src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg" style="width:100%;">
+        </div>
+        <div id="mainphoto" class="column">
+            <img alt="Ah! A Bee!" src="C:\Users\Daniel\source\repos\dm1940k\RMarkdown-Web-Testing\photo-1.jpg" style="width:100%;">
+        </div>
+    </div>
 
 
 </body>
