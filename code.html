@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Portfolio 2022</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!--This is the chunk of code that makes the sidebar work-->
+
+ <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
+    
+
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
+        </a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
+    </div>
+
+    <!--End of the sidebar snippet-->
+
+
+    <!--The below JS script is used to expand and contract the sidebar and main sections of the page-->
+
+    <script>
+        var mini = true;
+
+        function toggleSidebar() {
+            if (mini) {
+                console.log("opening sidebar");
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                this.mini = false;
+            } else {
+                console.log("closing sidebar");
+                document.getElementById("mySidebar").style.width = "85px";
+                document.getElementById("main").style.marginLeft = "85px";
+                this.mini = true;
+            }
+        }
+
+    </script>
+
+    <!--End of sidebar JS modifier-->
+
+    <div id ="main" class="content">
+        <h1>Programming</h1>
+        <br />
+        <br />
+        <p>
+            This is the area where I'll house C#/ASP.NET projects. Currently empty on purpose.
+        </p>
+        <h3>
+            <a href="https://github.com/dm1940k" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <br />
+            <a href="https://www.linkedin.com/in/d-moriarty" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </h3>
+    </div>
+
+</body>
+</html>
