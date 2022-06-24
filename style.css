@@ -142,7 +142,7 @@ div.relative-right {
 }
 
 .gallery {
-    margin-left: 85px;
+    margin-left: 135px;
     margin-right: 85px;
 }
 
@@ -198,6 +198,21 @@ div.relative-right {
         background-color: #DCDCDC;
         color: #2F4F4F;
     }
+
+
+@media screen and (max-width: 600px) {
+    .sidebar {
+        height: 85px;
+        width: 100%;
+        position: sticky;
+    }
+
+        .sidebar a {
+            font-size: 18px;
+        }
+}
+
+
 
 .logo {
     z-index: 1;

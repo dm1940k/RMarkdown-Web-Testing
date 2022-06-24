@@ -36,6 +36,8 @@
 
     <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
 
+
+
     <script>
         var mini = true;
 
@@ -56,10 +58,44 @@
     </script>
 
 
+    <!--Mobile detection script-->
+
+    <script>
+        var isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function () {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+
+        function mobileNav() {
+            if (isMobile.any()) {
+                document.getElementById("mobileFriendly").style.width = "100%";
+                document.getElementById("mobileFriendly").style.height = "100px";
+            };
+        }
+
+    </script>
+
+
 
     <!--End of sidebar JS modifier-->
 
-    <div class="content">
+    <div id="mobileFriendly" class="content" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
         <h1>Dan Moriarty</h1>
         <h4 style="text-align:center;">Hacker Man</h4>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
