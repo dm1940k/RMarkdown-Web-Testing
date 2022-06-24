@@ -144,7 +144,7 @@ a1 {
 
 .circle-clip-scale {
     clip-path: circle(40%);
-    width: 30%;
+    width: 33%;
     height: auto;
     position: relative;
     display: block;
@@ -207,13 +207,11 @@ div.relative-right {
     font-size: 20px;
 }
 
-
     .sidebar a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
         font-size: 25px;
         color: #DCDCDC;
-        text-decoration: none;
         display: block;
         transition: 0.3s;
         font-family: 'Roboto Slab', serif;
@@ -221,20 +219,9 @@ div.relative-right {
         font-size: 16px;
         font-style: normal;
     }
-
-
-
     .sidebar a1 {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-family: 'Roboto Slab', serif;
-        font-weight: 600;
-        font-size: 16px;
-        font-style: normal;
-        color: #DCDCDC;
-        text-decoration: none;
+        padding: 0px 0px 0px 19px;
         display: block;
-        transition: 0.3s;
     }
 
     .sidebar a:hover {
@@ -269,19 +256,6 @@ main .sidebar {
     transition: margin-left 0.5s;
 }
 
-mainphoto .sidebar {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-#mainphoto {
-    padding: 5px;
-    margin-left: 30px;
-    transition: margin-left 0.5s;
-}
 
 @media screen and (max-height: 450px) {
     .sidebar {
