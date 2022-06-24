@@ -63,3 +63,59 @@ ul {
     .menu a:hover {
         background-color: var(--gray);
     }
+
+/* Menu Icon */
+.hamb {
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+}
+/* Style label tag */
+
+.hamb-line {
+    background: var(--white);
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+}
+    /* Style span tag */
+
+    .hamb-line::before,
+    /* Toggle menu icon */
+    .side-menu:checked ~ nav {
+        max-height: 100%;
+    }
+
+.side-menu:checked ~ .hamb .hamb-line {
+    background: transparent;
+}
+
+    .side-menu:checked ~ .hamb .hamb-line::before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    .side-menu:checked ~ .hamb .hamb-line::after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+/* Responsiveness */
+@media (min-width: 768px) {
+    .nav {
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+    }
+
+    .menu li {
+        float: left;
+    }
+
+    .menu a:hover {
+        background-color: transparent;
+        color: var(--gray);
+    }
