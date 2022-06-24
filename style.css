@@ -17,6 +17,7 @@ h1 {
     font-weight: bold;
     font-style: normal;
     font-size: 40px;
+    text-align: center;
 }
 
 h2 {
@@ -143,10 +144,13 @@ a1 {
 
 .circle-clip-scale {
     clip-path: circle(40%);
-    width: 25%;
+    width: 33%;
     height: auto;
     position: relative;
     right: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .photo-standard {
