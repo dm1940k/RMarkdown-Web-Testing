@@ -144,10 +144,9 @@ a1 {
 
 .circle-clip-scale {
     clip-path: circle(40%);
-    width: 33%;
+    width: 30%;
     height: auto;
     position: relative;
-    right: 50px;
     display: block;
     margin-left: auto;
     margin-right: auto;
