@@ -21,7 +21,7 @@
 
     <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
         <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img id="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+            <img id="mobileFriendlyLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
         </a1><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
@@ -57,38 +57,6 @@
 
     <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
 
-    <!--<script>
-        var isMobile = {
-            Android: function () {
-                return navigator.userAgent.match(/Android/i);
-            },
-            BlackBerry: function () {
-                return navigator.userAgent.match(/BlackBerry/i);
-            },
-            iOS: function () {
-                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-            },
-            Opera: function () {
-                return navigator.userAgent.match(/Opera Mini/i);
-            },
-            Windows: function () {
-                return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-            },
-            any: function () {
-                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-            }
-        };
-
-        function mobileNav() {
-            if (isMobile.any()) {
-                document.getElementById("mySidebar").style.width = "100%";
-                document.getElementById("mySidebar").style.height = "100px";
-                document.getElementById("mobileFriendlyBody").style.margin = "20px";
-                document.getElementById("mobileFriendlyBody").style.padding = "10px";
-            }
-        }
-
-    </script>-->
 
     <script>
         var touchDevice = ('ontouchstart' in document.documentElement);
@@ -100,6 +68,7 @@
                 document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
                 document.getElementById("mobileFriendlyBody").style.margin = "100px 20px 0px 20px";
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
+                document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
             }
         }
 
