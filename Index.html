@@ -84,9 +84,13 @@
 
         function mobileNav() {
             if (isMobile.any()) {
-                document.getElementById("mobileFriendly").style.width = "100%";
-                document.getElementById("mobileFriendly").style.height = "100px";
-            };
+                document.getElementById("mobileFriendlyNav").style.width = "100%";
+                document.getElementById("mobileFriendlyNav").style.height = "100px";
+                document.getElementById("mobileFriendlyBody").style.margin-left = "20px";
+                document.getElementById("mobileFriendlyBody").style.margin-right = "20px";
+                document.getElementById("mobileFriendlyBody").style.padding-left = "10px";
+
+            }
         }
 
     </script>
@@ -95,7 +99,7 @@
 
     <!--End of sidebar JS modifier-->
 
-    <div id="mobileFriendly" class="content" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+    <div id="mobileFriendlyBody" class="content" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
         <h1>Dan Moriarty</h1>
         <h4 style="text-align:center;">Hacker Man</h4>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
