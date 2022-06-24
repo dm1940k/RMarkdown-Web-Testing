@@ -16,14 +16,13 @@
 <body>
 
     <!--This is the chunk of code that makes the sidebar work-->
+    <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
 
- <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
-    
 
     <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
         <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img id ="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
-            </a1><br>
+            <img id="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+        </a1><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
         </a><br>
@@ -32,8 +31,6 @@
     </div>
 
     <!--End of the sidebar snippet-->
-
-
     <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
 
 
@@ -58,7 +55,7 @@
     </script>
 
 
-    <!--Mobile detection script-->
+    <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
 
     <script>
         var isMobile = {
@@ -86,9 +83,8 @@
             if (isMobile.any()) {
                 document.getElementById("mobileFriendlyNav").style.width = "100%";
                 document.getElementById("mobileFriendlyNav").style.height = "100px";
-                document.getElementById("mobileFriendlyBody").style.margin-left = "20px";
-                document.getElementById("mobileFriendlyBody").style.margin-right = "20px";
-                document.getElementById("mobileFriendlyBody").style.padding-left = "10px";
+                document.getElementById("mobileFriendlyBody").style.margin = "20px";
+                document.getElementById("mobileFriendlyBody").style.padding = "10px";
 
             }
         }
@@ -103,7 +99,7 @@
         <h1>Dan Moriarty</h1>
         <h4 style="text-align:center;">Hacker Man</h4>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img class ="image-center" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-circle-dark.png" alt="Logo link" style="width: 200px; height: auto;">
+            <img class="image-center" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-circle-dark.png" alt="Logo link" style="width: 200px; height: auto;">
         </a>
         <br />
         <br />
