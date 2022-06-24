@@ -237,6 +237,12 @@ div.relative-right {
         color: #2F4F4F;
     }
 
+.logo {
+    z-index: 1;
+    transition: 0.5s;
+
+}
+
 .material-icons,
 .icon-text {
     vertical-align: middle;
