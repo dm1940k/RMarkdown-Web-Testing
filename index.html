@@ -13,7 +13,7 @@
     <link rel="icon" href="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-dark.png">
 
 </head>
-<body onload="isMobile()">
+<body onload="mobileNav()">
 
     <!--This is the chunk of code that makes the sidebar work-->
     <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
@@ -57,7 +57,7 @@
 
     <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
 
-    <script>
+    <!--<script>
         var isMobile = {
             Android: function () {
                 return navigator.userAgent.match(/Android/i);
@@ -85,11 +85,26 @@
                 document.getElementById("mySidebar").style.height = "100px";
                 document.getElementById("mobileFriendlyBody").style.margin = "20px";
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
+            }
+        }
 
+    </script>-->
+
+    <script>
+        var touchDevice = ('ontouchstart' in document.documentElement);
+
+        function mobileNav() {
+            if (touchDevice) {
+                document.getElementById("mySidebar").style.width = "100%";
+                document.getElementById("mySidebar").style.height = "100px";
+                document.getElementById("mobileFriendlyBody").style.margin = "20px";
+                document.getElementById("mobileFriendlyBody").style.padding = "10px";
             }
         }
 
     </script>
+
+
 
 
 
