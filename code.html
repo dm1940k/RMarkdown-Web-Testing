@@ -21,17 +21,17 @@
 
     <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
         <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+            <img id="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
         </a1><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
         </a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/code"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
     </div>
 
     <!--End of the sidebar snippet-->
-    <!--The below JS script is used to expand and contract the sidebar and main sections of the page-->
+    <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
 
     <script>
         var mini = true;
@@ -40,10 +40,12 @@
             if (mini) {
                 console.log("opening sidebar");
                 document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
                 this.mini = false;
             } else {
                 console.log("closing sidebar");
                 document.getElementById("mySidebar").style.width = "85px";
+                document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
                 this.mini = true;
             }
         }

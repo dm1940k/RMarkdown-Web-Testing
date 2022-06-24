@@ -18,20 +18,14 @@
 </head>
 <body>
 
+
     <!--This is the chunk of code that makes the sidebar work-->
-    <!--<div id=”mySidebar” class=”sidebar” onmouseover=”toggleSidebar()” onmouseout=”toggleSidebar()”>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><i class="material-icons">home</i><span class="icon-text"></span>Home</a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">code</i><span class="icon-text"></span>Programming</a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography</a><br>
-    </div>-->
-    <!--Above code shooould work, but doesn't for some reason. Won't load in any css. Below code is copied from source:
-    https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1
-    Has what seem to be extra span and a tags but they seem important.-->
+    <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
+
 
     <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
         <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+            <img id="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
         </a1><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
@@ -41,9 +35,7 @@
     </div>
 
     <!--End of the sidebar snippet-->
-    <!--The below JS script is used to expand and contract the sidebar and main sections of the page-->
-
-
+    <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
 
     <script>
         var mini = true;
@@ -52,26 +44,26 @@
             if (mini) {
                 console.log("opening sidebar");
                 document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
                 this.mini = false;
             } else {
                 console.log("closing sidebar");
                 document.getElementById("mySidebar").style.width = "85px";
+                document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
                 this.mini = true;
             }
         }
 
     </script>
 
-    <!--End of sidebar JS modifier-->
-
-    <!--<script>
+    <script>
 
         var grow = true;
 
         function growOnMouseOver() {
             if (grow) {
                 console.log("shrinking element");
-                document.getElementById("grower").style.width = "75%";
+                document.getElementById("grower").style.width = "99%";
                 this.grow = false;
             } else {
                 console.log("unshrinking element");
@@ -80,7 +72,7 @@
             }
         }
 
-    </script>-->
+    </script>
 
     <!--The above doesn't currently work, but it's my attmept to make an image that shift a little when you mouse over it to provide visible feedback.-->
 
@@ -89,21 +81,23 @@
         <h2 style="text-align:center;">This is a test page for hosting photography</h2>
     </div>
 
-    <div id="grower" class="row">
-        <div id="mainphoto" class="column">
-            <a href="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" target="_blank" rel="noopener noreferrer">
-                <img alt="Ah! A Bee!" src="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg">
-            </a>
-        </div>
-        <div id="grower" class="column">
-            <a href="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" target="_blank" rel="noopener noreferrer">
-                <img alt="Ah! A Bee!" src="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg">
-            </a>
-        </div>
-        <div id="grower" class="column">
-            <a href="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" target="_blank" rel="noopener noreferrer">
-                <img alt="Ah! A Bee!" src="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg">
-            </a>
+    <div class="gallery">
+        <div class="row">
+            <div class="column">
+                <a href="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" target="_blank" rel="noopener noreferrer">
+                    <img class="gallery-photo" alt="Ah! A Bee!" src="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg">
+                </a>
+            </div>
+            <div class="column">
+                <a href="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" target="_blank" rel="noopener noreferrer">
+                    <img class="gallery-photo" alt="Ah! A Bee!" src="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" style="width: 100%">
+                </a>
+            </div>
+            <div class="column">
+                <a href="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" target="_blank" rel="noopener noreferrer">
+                    <img class="gallery-photo" alt="Ah! A Bee!" src="https://main--subtle-sunshine-6418fc.netlify.app/images/photo-1.jpg" style="width: 100%">
+                </a>
+            </div>
         </div>
     </div>
 

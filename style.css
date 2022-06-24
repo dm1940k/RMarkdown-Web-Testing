@@ -75,57 +75,6 @@ a1 {
     
 }
 
-
-/* Style the side navigation */
-.sidenav {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size:20px;
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #2F4F4F;
-    overflow-x: hidden;
-}
-
-
-/* Side navigation links */
-/*.sidenav a {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 600;
-    font-size: 16px;
-    font-style: normal;
-    color: #DCDCDC;
-    padding: 16px;
-    text-decoration: none;
-    display: block;
-}
-
-    .sidenav a1 {
-        font-family: 'Roboto Slab', serif;
-        font-weight: 600;
-        font-size: 20px;
-        font-style: normal;
-        color: #DCDCDC;
-        background-color: #1e3333;
-        padding: 16px;
-        text-decoration: none;
-        display: block;
-    }*/
-
-/* Change color on hover */
-/*.sidenav a:hover {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 300;
-    font-style: normal;
-    background-color: #DCDCDC;
-    color: #2F4F4F;
-}*/
-
 /* Style the content */
 .content {
     font-family: 'Roboto Slab', serif;
@@ -137,10 +86,6 @@ a1 {
     background-color: #F8F8FF;
 }
 
-
-/*.circle-clip {
-    clip-path: circle(25%);
-}*/
 
 .circle-clip-scale {
     clip-path: circle(40%);
@@ -175,6 +120,7 @@ div.relative-right {
 .column {
     flex: 33.33%;
     padding: 5px;
+    border-radius: 5px;
 }
 
 /* Floats and responsive layout pulled from https://www.w3schools.com/howto/howto_css_images_side_by_side.asp */
@@ -182,6 +128,22 @@ div.relative-right {
 /* Clear floats after image containers */
 .row {
     display: flex;
+    border-radius: 5px;
+}
+
+.column:hover {
+    transform: scale(1.02);
+
+}
+
+.gallery-photo {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.gallery {
+    margin-left: 85px;
+    margin-right: 85px;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
