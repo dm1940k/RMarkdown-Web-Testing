@@ -80,8 +80,7 @@ a1 {
     font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
-    margin-left: 200px;
-    margin-right: 300px;
+    margin: 0px 300px 0px 200px;
     padding-left: 20px;
     background-color: #F8F8FF;
 }
