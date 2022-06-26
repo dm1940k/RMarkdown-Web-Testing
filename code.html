@@ -54,7 +54,26 @@
 
     <!--End of sidebar JS modifier-->
 
-    <div id="main" class="content">
+    <script>
+        var touchDevice = ('ontouchstart' in document.documentElement);
+
+        function mobileNav() {
+            if (touchDevice) {
+                document.getElementById("mySidebar").style.width = "100%";
+                document.getElementById("mySidebar").style.height = "80px";
+                document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
+                document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
+                document.getElementById("mobileFriendlyBody").style.padding = "10px";
+                document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
+            } else {
+
+            }
+        }
+
+    </script>
+
+
+    <div id="mobileFriendlyBody" class="content">
         <h1>Programming</h1>
         <br />
         <br />

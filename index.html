@@ -36,21 +36,8 @@
 
 
     <script>
-        var mini = true;
 
-        function toggleSidebar() {
-            if (mini) {
-                console.log("opening sidebar");
-                document.getElementById("mySidebar").style.width = "250px";
-                document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
-                this.mini = false;
-            } else {
-                console.log("closing sidebar");
-                document.getElementById("mySidebar").style.width = "85px";
-                document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
-                this.mini = true;
-            }
-        }
+
 
     </script>
 
@@ -70,6 +57,21 @@
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
                 document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
             } else {
+                var mini = true;
+
+                function toggleSidebar() {
+                    if (mini) {
+                        console.log("opening sidebar");
+                        document.getElementById("mySidebar").style.width = "250px";
+                        document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
+                        this.mini = false;
+                    } else {
+                        console.log("closing sidebar");
+                        document.getElementById("mySidebar").style.width = "85px";
+                        document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
+                        this.mini = true;
+                    }
+                }
 
             }
         }
