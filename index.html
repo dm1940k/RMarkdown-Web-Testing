@@ -19,7 +19,7 @@
     <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
 
 
-    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+    <div id="mySidebar" class="sidebar" onmouseover="mobileNav()" onmouseout="mobileNav()">
         <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
             <img id="mobileFriendlyLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
         </a1><br>
@@ -33,31 +33,50 @@
     <!--End of the sidebar snippet-->
     <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
 
-
-
-    <script>
-
-        var touchDevice = ('ontouchstart' in document.documentElement);
+    <!--<script>
         var mini = true;
 
         function toggleSidebar() {
-            if (mini == true && touchDevice == false) {
+            if (mini) {
                 console.log("opening sidebar");
                 document.getElementById("mySidebar").style.width = "250px";
                 document.getElementById("mobileFriendlyLogo").style.padding = "8px 8px 8px 75px";
                 this.mini = false;
-            } else if (mini == false && touchDevice == false) {
+            } else {
                 console.log("closing sidebar");
                 document.getElementById("mySidebar").style.width = "85px";
                 document.getElementById("mobileFriendlyLogo").style.padding = "0px 0px 0px 0px";
                 this.mini = true;
-            } else if (touchDevice == true) {
+            }
+        }
+
+    </script>-->
+
+    <script>
+        var mini = false;
+
+        var touchDevice = ('ontouchstart' in document.documentElement);
+
+        function mobileNav() {
+            if (touchDevice) {
                 document.getElementById("mySidebar").style.width = "100%";
                 document.getElementById("mySidebar").style.height = "80px";
                 document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
                 document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
                 document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
+            } else {
+                if (mini) {
+                    console.log("opening sidebar");
+                    document.getElementById("mySidebar").style.width = "250px";
+                    document.getElementById("mobileFriendlyLogo").style.padding = "8px 8px 8px 75px";
+                    this.mini = false;
+                } else {
+                    console.log("closing sidebar");
+                    document.getElementById("mySidebar").style.width = "85px";
+                    document.getElementById("mobileFriendlyLogo").style.padding = "0px 0px 0px 0px";
+                    this.mini = true;
+                }
             }
         }
 
@@ -65,8 +84,6 @@
 
 
     <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
-
-
     <!--<script>
         var touchDevice = ('ontouchstart' in document.documentElement);
 
@@ -84,14 +101,9 @@
         }
 
     </script>-->
-
-
-
-
-
     <!--End of sidebar JS modifier-->
 
-    <div id="mobileFriendlyBody" class="content" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+    <div id="mobileFriendlyBody" class="content">
         <h1>Dan Moriarty</h1>
         <h4 style="text-align:center;">Hacker Man</h4>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
