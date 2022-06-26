@@ -37,7 +37,29 @@
 
     <script>
 
+        var touchDevice = ('ontouchstart' in document.documentElement);
+        var mini = true;
 
+        function toggleSidebar() {
+            if (mini == true && touchDevice == false) {
+                console.log("opening sidebar");
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("mobileFriendlyLogo").style.padding = "8px 8px 8px 75px";
+                this.mini = false;
+            } else if (mini == false && touchDevice == false) {
+                console.log("closing sidebar");
+                document.getElementById("mySidebar").style.width = "85px";
+                document.getElementById("mobileFriendlyLogo").style.padding = "0px 0px 0px 0px";
+                this.mini = true;
+            } else if (touchDevice == true) {
+                document.getElementById("mySidebar").style.width = "100%";
+                document.getElementById("mySidebar").style.height = "80px";
+                document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
+                document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
+                document.getElementById("mobileFriendlyBody").style.padding = "10px";
+                document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
+            }
+        }
 
     </script>
 
@@ -45,7 +67,7 @@
     <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
 
 
-    <script>
+    <!--<script>
         var touchDevice = ('ontouchstart' in document.documentElement);
 
         function mobileNav() {
@@ -57,26 +79,11 @@
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
                 document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
             } else {
-                var mini = true;
-
-                function toggleSidebar() {
-                    if (mini) {
-                        console.log("opening sidebar");
-                        document.getElementById("mySidebar").style.width = "250px";
-                        document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
-                        this.mini = false;
-                    } else {
-                        console.log("closing sidebar");
-                        document.getElementById("mySidebar").style.width = "85px";
-                        document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
-                        this.mini = true;
-                    }
-                }
 
             }
         }
 
-    </script>
+    </script>-->
 
 
 
