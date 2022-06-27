@@ -159,7 +159,7 @@ div.relative-right {
 
 .sidebar {
     height: 100%;
-    width: 85px;
+    width: 90px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -167,7 +167,7 @@ div.relative-right {
     background-color: #2F4F4F;
     transition: 0.5s;
     overflow-x: hidden;
-    padding: 0px 0px 0px 0px;
+    padding: 30px 0px 0px 0px;
     white-space: nowrap;
     font-family: 'Roboto Slab', serif;
     font-weight: 600;
@@ -227,7 +227,7 @@ div.relative-right {
 
 .material-icons {
     padding-bottom: 3px;
-    margin-right: 30px;
+    margin-right: 35px;
 }
 
 

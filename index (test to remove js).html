@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="StyleSheet1.css">
     <link rel="icon" href="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-dark.png">
 
 </head>
@@ -30,27 +30,6 @@
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
     </div>
 
-    <!--End of the sidebar snippet-->
-    <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
-
-    <!--<script>
-        var mini = true;
-
-        function toggleSidebar() {
-            if (mini) {
-                console.log("opening sidebar");
-                document.getElementById("mySidebar").style.width = "250px";
-                document.getElementById("mobileFriendlyLogo").style.padding = "8px 8px 8px 75px";
-                this.mini = false;
-            } else {
-                console.log("closing sidebar");
-                document.getElementById("mySidebar").style.width = "85px";
-                document.getElementById("mobileFriendlyLogo").style.padding = "0px 0px 0px 0px";
-                this.mini = true;
-            }
-        }
-
-    </script>-->
 
     <script>
         var mini = false;
@@ -65,19 +44,20 @@
                 document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
                 document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
-                document.getElementById("mobileFriendlyLogo").style.padding = "0px 0px 0px 0px;";
+                document.getElementById("mobileFriendlyLogo").style.margin = "10px 0px 0px 0px;";
+
 
 
             } else {
                 if (mini) {
                     console.log("opening sidebar");
                     document.getElementById("mySidebar").style.width = "250px";
-                    document.getElementById("mobileFriendlyLogo").style.padding = "8px 8px 8px 75px";
+                    document.getElementById("mobileFriendlyLogo").style.margin = "0px 0px 0px 75px";
                     this.mini = false;
                 } else {
                     console.log("closing sidebar");
                     document.getElementById("mySidebar").style.width = "90px";
-                    document.getElementById("mobileFriendlyLogo").style.padding = "0px 0px 0px 0px";
+                    document.getElementById("mobileFriendlyLogo").style.margin = "0px 0px 0px 0px";
                     this.mini = true;
                 }
             }
@@ -86,25 +66,6 @@
     </script>
 
 
-    <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
-    <!--<script>
-        var touchDevice = ('ontouchstart' in document.documentElement);
-
-        function mobileNav() {
-            if (touchDevice) {
-                document.getElementById("mySidebar").style.width = "100%";
-                document.getElementById("mySidebar").style.height = "80px";
-                document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
-                document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
-                document.getElementById("mobileFriendlyBody").style.padding = "10px";
-                document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
-            } else {
-
-            }
-        }
-
-    </script>-->
-    <!--End of sidebar JS modifier-->
 
     <div id="mobileFriendlyBody" class="content">
         <h1>Dan Moriarty</h1>
@@ -132,7 +93,7 @@
             I plan to use this portfolio site to highlight those endeavours as well.
         </p>
 
-        <!--This snippet adds the social icon/links-->
+        <!--Social Links-->
         <p>
             <a href="https://github.com/dm1940k" target="_blank" rel="noopener noreferrer">
                 <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/github-icon.png" alt="Github Link" style="width:50px; height:auto;">
@@ -142,7 +103,7 @@
             </a>
         </p>
 
-        <!--End of icon/link snippet-->
+        <!--End Social Links-->
     </div>
 
 </body>

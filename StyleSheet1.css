@@ -1,12 +1,9 @@
-﻿/* Theming */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"); /* import font */
-
-:root {
-    --white: #f9f9f9;
-    --black: #36383F;
-    --gray: #85888C;
+﻿
+{
+    box-sizing: border-box;
 }
-/* variables*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
 
 /* Reset */
 * {
@@ -16,33 +13,84 @@
 }
 
 body {
-    background-color: var(--white);
-    font-family: "Poppins", sans-serif;
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0;
+    background-color: #F8F8FF;
 }
 
-a {
-    text-decoration: none;
+.main {
+
+}
+
+.header {
+
 }
 
 ul {
     list-style: none;
 }
 
-
-/* Header */
-.header {
-    background-color: var(--black);
-    box-shadow: 1px 1px 5px 0px var(--gray);
-    position: sticky;
-    top: 0;
-    width: 100%;
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 40px;
+    text-align: center;
 }
-/* Logo */
-.logo {
-    display: inline-block;
-    color: var(--white);
-    font-size: 60px;
-    margin-left: 10px;
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 35px;
+}
+
+h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 30px;
+}
+
+h4 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 25px;
+}
+
+h5 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+}
+
+h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 15px;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+a {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+a1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 /* Nav menu */
@@ -64,6 +112,13 @@ ul {
         background-color: var(--gray);
     }
 
+.nav {
+    max-height: 0;
+    transition: max-height .5s ease-out;
+}
+
+
+
 /* Menu Icon */
 .hamb {
     cursor: pointer;
@@ -82,6 +137,28 @@ ul {
     /* Style span tag */
 
     .hamb-line::before,
+    .hamb-line::after {
+        background: var(--white);
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+
+    .hamb-line::before {
+        top: 5px;
+    }
+
+    .hamb-line::after {
+        top: -5px;
+    }
+
+.side-menu {
+    display: none;
+}
+    /* Hide checkbox */
     /* Toggle menu icon */
     .side-menu:checked ~ nav {
         max-height: 100%;
@@ -119,3 +196,150 @@ ul {
         background-color: transparent;
         color: var(--gray);
     }
+
+    .hamb {
+        display: none;
+    }
+}
+
+/* Style the content */
+.content {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0px 300px 0px 200px;
+    padding-left: 20px;
+    background-color: #F8F8FF;
+}
+
+.image-center {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* Start of photo gallery section*/
+/* Floats and responsive layout pulled from https://www.w3schools.com/howto/howto_css_images_side_by_side.asp */
+
+.column {
+    flex: 33.33%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    border-radius: 5px;
+}
+
+.column:hover {
+    transform: scale(1.02);
+}
+
+.gallery-photo {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.gallery {
+    margin-left: 135px;
+    margin-right: 85px;
+}
+
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+    }
+}
+/* End of photo gallery section */
+
+
+/* Below snippets pulled from https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1 */
+
+.sidebar {
+    height: 100%;
+    width: 90px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2F4F4F;
+    transition: 0.5s;
+    overflow-x: hidden;
+    padding: 30px 0px 0px 0px;
+    white-space: nowrap;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    top: 0;
+}
+
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #DCDCDC;
+        display: block;
+        transition: 0.3s;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        font-size: 16px;
+        font-style: normal;
+    }
+
+    .sidebar a1 {
+        padding: 0px 0px 0px 19px;
+        display: block;
+    }
+
+    .sidebar a:hover {
+        font-weight: 700;
+        background-color: #DCDCDC;
+        color: #2F4F4F;
+    }
+
+
+
+
+.logo {
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.material-icons,
+.icon-text {
+    vertical-align: middle;
+}
+
+.material-icons {
+    padding-bottom: 3px;
+    margin-right: 35px;
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+        .sidebar a {
+            font-size: 18px;
+        }
+}
+
+@media screen and (max-width: 600px) {
+    .content {
+        margin-left: 85px;
+        margin-right: 20px;
+        padding-left: 10px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
