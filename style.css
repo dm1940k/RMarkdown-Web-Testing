@@ -167,7 +167,7 @@ div.relative-right {
     background-color: #2F4F4F;
     transition: 0.5s;
     overflow-x: hidden;
-    padding: 60px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     white-space: nowrap;
     font-family: 'Roboto Slab', serif;
     font-weight: 600;
