@@ -59,12 +59,15 @@
 
         function mobileNav() {
             if (touchDevice) {
+                console.log("mobile menu activated")
                 document.getElementById("mySidebar").style.width = "100%";
                 document.getElementById("mySidebar").style.height = "80px";
                 document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
                 document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
                 document.getElementById("mobileFriendlyBody").style.padding = "10px";
-                document.getElementById("mobileFriendlyLogo").style.padding = "10px 0px 0px 10px;";
+                document.getElementById("mobileFriendlyLogo").style.padding = "30px 0px 0px 0px;";
+
+
             } else {
                 if (mini) {
                     console.log("opening sidebar");
@@ -105,7 +108,6 @@
 
     <div id="mobileFriendlyBody" class="content">
         <h1>Dan Moriarty</h1>
-        <h4 style="text-align:center;">Hacker Man</h4>
         <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
             <img class="image-center" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-circle-dark.png" alt="Logo link" style="width: 200px; height: auto;">
         </a>
