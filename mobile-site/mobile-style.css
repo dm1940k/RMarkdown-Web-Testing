@@ -84,6 +84,7 @@ ul {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    z-index: -1;
 }
 
 .content {
@@ -117,6 +118,7 @@ ul {
     background-color: #2F4F4F;
     overflow: hidden;
     color: #F8F8FF;
+    z-index:1;
 }
 
 .menu a {
