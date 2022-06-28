@@ -12,70 +12,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="desktop-style.css">
     <link rel="icon" href="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-dark.png">
 
 </head>
 <body>
 
 
-    <!--This is the chunk of code that makes the sidebar work-->
+    <!--Side Bar-->
     <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
 
 
-    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSideBar()" onmouseout="toggleSideBar()">
         <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img id="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+            <img id="logo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
         </a1><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/desktop-site/desktop-index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/desktop-site/desktop-case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
         </a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/code"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/desktop-site/desktop-code"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/desktop-site/desktop-photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
     </div>
 
-    <!--End of the sidebar snippet-->
-    <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
+
+    <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
 
     <script>
-        var mini = true;
+        var mini = false;
 
-        function toggleSidebar() {
+        function toggleSideBar() {
             if (mini) {
                 console.log("opening sidebar");
                 document.getElementById("mySidebar").style.width = "250px";
-                document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
+                document.getElementById("logo").style.margin = "0px 0px 0px 75px";
                 this.mini = false;
             } else {
                 console.log("closing sidebar");
-                document.getElementById("mySidebar").style.width = "85px";
-                document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
+                document.getElementById("mySidebar").style.width = "90px";
+                document.getElementById("logo").style.margin = "0px 0px 0px 0px";
                 this.mini = true;
             }
+
         }
 
     </script>
 
-    <script>
-
-        var grow = true;
-
-        function growOnMouseOver() {
-            if (grow) {
-                console.log("shrinking element");
-                document.getElementById("grower").style.width = "99%";
-                this.grow = false;
-            } else {
-                console.log("unshrinking element");
-                document.getElementById("grower").style.width = "100%";
-                this.grow = true;
-            }
-        }
-
-    </script>
-
-    <!--The above doesn't currently work, but it's my attmept to make an image that shift a little when you mouse over it to provide visible feedback.-->
-
+    <!--End Side Bar-->
 
     <div id="main" class="content">
         <h2 style="text-align:center;">This is a test page for hosting photography</h2>

@@ -11,13 +11,12 @@
 
     <!-- The following 4 lines connect to the css and fontkit in order to properly format the sidebar  -->
 
-    <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-style.css">
     <link rel="icon" href="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-dark.png">
 
     <!--End of css insert-->
@@ -7712,42 +7711,26 @@
 <body>
 
 
-    <!--This is the chunk of code that makes the sidebar work-->
-    <!--https://medium.com/@9cv9official/create-a-beautiful-hover-triggered-expandable-sidebar-with-simple-html-css-and-javascript-9f5f80a908d1-->
+    <header class="header">
+        <!-- Logo -->
+        <a class="logo">
+            <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+        </a>
 
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
 
-    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
-        <a1 href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
-            <img id="myLogo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
-        </a1><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html"><span><i class="material-icons">home</i><span class="icon-text">Home</span></a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html"><i class="material-icons">bar_chart</i><span class="icon-text"></span>Data Analysis</a></span>
-        </a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/code"><i class="material-icons">code</i><span class="icon-text"></span>Programming</span></a><br>
-        <a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html"><i class="material-icons">camera_roll</i><span class="icon-text"></span>Photography<span></a>
-    </div>
-
-    <!--End of the sidebar snippet-->
-    <!--The below JS script is used to expand and contract the sidebar and slides the logo to remain centered when expanded-->
-
-    <script>
-        var mini = true;
-
-        function toggleSidebar() {
-            if (mini) {
-                console.log("opening sidebar");
-                document.getElementById("mySidebar").style.width = "250px";
-                document.getElementById("myLogo").style.padding = "8px 8px 8px 75px";
-                this.mini = false;
-            } else {
-                console.log("closing sidebar");
-                document.getElementById("mySidebar").style.width = "85px";
-                document.getElementById("myLogo").style.padding = "0px 0px 0px 0px";
-                this.mini = true;
-            }
-        }
-
-    </script>
+        <!-- Menu -->
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/mobile-site/mobile-index.html">Home</a><br></li>
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/mobile-site/mobile-case-study-1.html">Data Analysis</a><br></li>
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/mobile-site/mobile-code">Programming</a><br></li>
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/mobile-site/mobile-photography.html">Photography</a><br></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container-fluid main-container" style="margin-left: 135px;">
 
@@ -7917,7 +7900,7 @@
 
 
 
-    <div id="main" class="content">
+    <div>
         <!--This snippet adds the social icon/links-->
         <p>
             <a href="https://github.com/dm1940k" target="_blank" rel="noopener noreferrer">

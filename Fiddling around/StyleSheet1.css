@@ -105,7 +105,7 @@ a1 {
 .menu a {
     display: block;
     padding: 30px;
-    color: var(--white);
+    color: #F8F8FF;
 }
 
     .menu a:hover {

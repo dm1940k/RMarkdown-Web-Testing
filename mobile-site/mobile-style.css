@@ -1,0 +1,264 @@
+﻿/* Theming */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    background-color: #F8F8FF;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 40px;
+    text-align: center;
+    margin: 50px auto;
+    
+}
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 35px;
+}
+
+h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 30px;
+}
+
+h4 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 25px;
+}
+
+h5 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+}
+
+h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 15px;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+    margin: 15px;
+}
+
+
+a {
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+ul {
+    list-style: none;
+}
+
+.image-center {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0px 50px 0px 50px;
+    background-color: #F8F8FF;
+}
+
+
+/* Header */
+.header {
+    background-color: #2F4F4F;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+/* Logo */
+.logo {
+    display: inline-block;
+    margin: 10px;
+}
+
+/* Nav menu */
+.nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #2F4F4F;
+    overflow: hidden;
+    color: #F8F8FF;
+}
+
+.menu a {
+    display: block;
+    padding: 30px;
+    color: #F8F8FF;
+}
+
+    .menu a:hover {
+        background-color: #F8F8FF;
+    }
+
+.nav {
+    max-height: 0;
+    transition: max-height .5s ease-out;
+}
+
+/* Menu Icon */
+
+.hamb {
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+}
+
+
+.hamb-line {
+    background: #F8F8FF;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+}
+
+    .hamb-line::before,
+    .hamb-line::after {
+        background: #F8F8FF;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+
+    .hamb-line::before {
+        top: 5px;
+    }
+
+    .hamb-line::after {
+        top: -5px;
+    }
+
+
+.side-menu {
+    display: none;
+}
+
+    /* Toggle menu icon */
+
+    .side-menu:checked ~ nav {
+        max-height: 100%;
+    }
+
+    .side-menu:checked ~ .hamb .hamb-line {
+        background: transparent;
+    }
+
+        .side-menu:checked ~ .hamb .hamb-line::before {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        .side-menu:checked ~ .hamb .hamb-line::after {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+
+/* Responsiveness */
+
+@media (min-width: 768px) {
+    .nav {
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+        background-color: transparent;
+    }
+
+    .menu li {
+        float: left;
+    }
+
+    .menu a:hover {
+        background-color: transparent;
+        color: #F8F8FF;
+    }
+
+    .hamb {
+        display: none;
+    }
+}
+
+
+
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+    flex: 33.33%;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Floats and responsive layout pulled from https://www.w3schools.com/howto/howto_css_images_side_by_side.asp */
+
+/* Clear floats after image containers */
+.row {
+    display: flex;
+    border-radius: 5px;
+}
+
+.column:hover {
+    transform: scale(1.02);
+}
+
+.gallery-photo {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.gallery {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (min-width: 768px) {
+    .column {
+        width: 100%;
+    }
+}
+
+

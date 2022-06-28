@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mobile Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="StyleSheet2.css">
+    <link rel="icon" href="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-dark.png">
+
+</head>
+
+<body onload="mobileNav()">
+
+    <script>
+        var mini = false;
+
+        var touchDevice = ('ontouchstart' in document.documentElement);
+
+        function mobileNav() {
+            if (touchDevice) {
+                console.log("mobile menu activated")
+                //document.getElementById("mySidebar").style.width = "100%";
+                //document.getElementById("mySidebar").style.height = "80px";
+                //document.getElementById("mySidebar").style.padding = "5px 5px 5px 5px;";
+                //document.getElementById("mobileFriendlyBody").style.margin = "105px 20px 0px 20px";
+                //document.getElementById("mobileFriendlyBody").style.padding = "10px";
+                //document.getElementById("mobileFriendlyLogo").style.margin = "10px 0px 0px 0px;";
+
+
+
+
+
+
+
+
+            } else {
+                document.getElementById("nav").style.maxHeight = "none";
+                document.getElementById("nav").style.top = "0";
+                document.getElementById("nav").style.position = "relative";
+                document.getElementById("nav").style.float = "none";
+                document.getElementById("nav").style.width = "150px";
+                document.getElementById("nav").style.height = "100%";
+                document.getElementById("hamb").style.display = "none";
+                document.getElementById("menuli").style.float = "none";
+                document.getElementById("header").style.width = "150px";
+                document.getElementById("header").style.height = "100%";
+
+
+
+                //if (mini) {
+                //    console.log("opening sidebar");
+                //    document.getElementById("mySidebar").style.width = "250px";
+                //    document.getElementById("mobileFriendlyLogo").style.margin = "0px 0px 0px 75px";
+                //    this.mini = false;
+                //} else {
+                //    console.log("closing sidebar");
+                //    document.getElementById("mySidebar").style.width = "90px";
+                //    document.getElementById("mobileFriendlyLogo").style.margin = "0px 0px 0px 0px";
+                //    this.mini = true;
+                //}
+            }
+        }
+
+    </script>
+
+    <!--End Side Bar-->
+
+
+    <!-- Navigation bar -->
+    <div class="header" id="header">
+        <!-- Logo -->
+        <a href="#" class="logo">LR</a>
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamb" for="side-menu" id="hamb"><span class="hamb-line"></span></label>
+        <!-- Menu -->
+        <nav class="nav" id="nav">
+            <ul class="menu">
+                <li id="menuli"><a href="#">Gallery</a></li>
+                <li id="menuli"><a href="#">Blog</a> </li>
+                <li id="menuli"><a href="#">About</a></li>
+
+                <li id="menuli"><a href="#">About</a></li>
+                <li id="menuli"><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Main content -->
+    
+        <div>
+            <article>
+                <h1>
+                    Poop
+                </h1>
+                <p>
+                    More Content
+                </p>
+            </article>
+        </div>
+
+    
+
+</body>
+</html>
