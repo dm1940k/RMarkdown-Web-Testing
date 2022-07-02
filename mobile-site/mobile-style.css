@@ -102,13 +102,13 @@ ul {
     position: sticky;
     top: 0;
     width: 100%;
+    z-index:1;
 }
 
 /* Logo */
 .logo {
     display: inline-block;
     margin: 10px;
-    z-index:0;
 }
 
 /* Nav menu */
@@ -122,19 +122,27 @@ ul {
     z-index:1;
 }
 
+.menu {
+    z-index: 1;
+}
+
 .menu a {
     display: block;
     padding: 30px;
     color: #F8F8FF;
+
 }
 
-    .menu a:hover {
+
+/*Revisit hover function for mobile, probably should just embed removed.*/
+/*    .menu a:hover {
         background-color: #F8F8FF;
-    }
+    }*/
 
 .nav {
     max-height: 0;
-    transition: max-height .5s ease-out;
+    transition: max-height .2s ease-out;
+
 }
 
 /* Menu Icon */
@@ -143,6 +151,7 @@ ul {
     cursor: pointer;
     float: right;
     padding: 40px 20px;
+    z-index:1;
 }
 
 
