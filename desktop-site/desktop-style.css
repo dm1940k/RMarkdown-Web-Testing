@@ -79,11 +79,68 @@ a1 {
     font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-style: normal;
-    margin: 0px 300px 0px 200px;
+    margin: 0px 250px 0px 250px;
     padding-left: 20px;
     background-color: #F8F8FF;
 }
 
+/*.calculator {
+    background-color: #889E9E;
+    box-shadow: 0px 0px 4px 1px #889E9E;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 200px 20px 200px;
+}*/
+
+/*Calculator styling*/
+
+.center {
+    text-align: center;
+}
+
+.results {
+    margin-left: 44%;
+}
+
+.button {
+    background-color: #F8F8FF;
+    font-family: 'Roboto Slab', serif;
+    border: none;
+    border-radius: 3px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.container {
+    height: 600px;
+    width: 50%;
+    position: relative;
+    background-color: #889E9E;
+    box-shadow: 0px 0px 4px 1px #889E9E;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*Calculator styling end*/
+
+
+/*.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}*/
 
 .circle-clip-scale {
     clip-path: circle(40%);
