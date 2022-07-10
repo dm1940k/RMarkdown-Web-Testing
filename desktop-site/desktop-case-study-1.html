@@ -7741,6 +7741,28 @@
 
     <!--Mobile detection script derived from post by Mudaser Ali here: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser-->
 
+    <script>
+        var mini = true;
+
+        function toggleSideBar() {
+            if (mini) {
+                console.log("opening sidebar");
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("logo").style.margin = "0px 0px 0px 75px";
+                this.mini = false;
+            } else {
+                console.log("closing sidebar");
+                document.getElementById("mySidebar").style.width = "90px";
+                document.getElementById("logo").style.margin = "0px 0px 0px 0px";
+                this.mini = true;
+            }
+
+        }
+
+    </script>
+
+    <!--End Side Bar-->
+
 
 
 
