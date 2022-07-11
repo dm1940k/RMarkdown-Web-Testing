@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- The sidebar -->
-    <div class="sidebar">
+    <div id="mySidebar" class="sidebar" onmouseover="sideBarCheck()" onmouseout="sideBarCheck()">
         <a class="active" href="#home">Home</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
@@ -19,5 +19,44 @@
     <div class="content">
         TEST TEST TEST TEST
     </div>
+
+
+
+
+    <p id="demo"></p>
+    <!-- Sorta works, but not really. I want this script to ONLY operate when the page is at full screen and
+        the menu is a sidebar. If the page is smaller(in this case smaller than 700px wide) I want this script
+        to check and decide not to make any modification. If I can get this to work them it should allow for 
+        a responsive sidebar that only operates when there is a sidebar, and all other times lays dormant.-->
+    <script>
+        var w = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+        var mini = true;
+
+        function sideBarCheck() {
+            if (w => 700) {
+                console.log("narrow screen");
+                    if (mini) {
+                        console.log("opening sidebar");
+                        document.getElementById("mySidebar").style.width = "250px";
+
+                        this.mini = false;
+                    } else {
+                        console.log("closing sidebar");
+                        document.getElementById("mySidebar").style.width = "90px";
+
+                        this.mini = true;
+                    }
+            } else {
+                console.log("full-sized screen");
+            }
+        }
+    </script>
+
+
+
+
+
 </body>
 </html>
