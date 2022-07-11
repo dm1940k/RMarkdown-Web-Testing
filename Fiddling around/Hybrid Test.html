@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- The sidebar -->
-    <div id="mySidebar" class="sidebar" onmouseover="sideBarCheck()" onmouseout="sideBarCheck()">
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSideBar()" onmouseout="toggleSideBar()">
         <a class="active" href="#home">Home</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
@@ -24,36 +24,58 @@
 
 
     <p id="demo"></p>
-    <!-- Sorta works, but not really. I want this script to ONLY operate when the page is at full screen and
-        the menu is a sidebar. If the page is smaller(in this case smaller than 700px wide) I want this script
-        to check and decide not to make any modification. If I can get this to work them it should allow for 
-        a responsive sidebar that only operates when there is a sidebar, and all other times lays dormant.-->
+
+
+    <!--This little snippet makes the menu reset itself when resizing, which solves a problem with the script below where the menu would get stuck if it had already been moused over then the screen was resized.
+        The below script listens for the screen to resize then sets the nav bar width to the full screen or mid screen default, bypassing the sticking issue. 
+        Found help making it work here https://stackoverflow.com/questions/13651274/how-can-i-attach-a-window-resize-event-listener-in-javascript. Essentially the same code I used below to solve the asked problem, but I added the if/else sidebar bit.-->
+
     <script>
-        var w = window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth;
-        var mini = true;
 
-        function sideBarCheck() {
-            if (w => 700) {
-                console.log("narrow screen");
-                    if (mini) {
-                        console.log("opening sidebar");
-                        document.getElementById("mySidebar").style.width = "250px";
-
-                        this.mini = false;
-                    } else {
-                        console.log("closing sidebar");
-                        document.getElementById("mySidebar").style.width = "90px";
-
-                        this.mini = true;
-                    }
-            } else {
-                console.log("full-sized screen");
-            }
+        if (window.attachEvent) {
+            window.attachEvent('onresize', function () {
+                if (matchMedia('(min-width: 700px)').matches) {
+                    document.getElementById("mySidebar").style.width = "90px";
+                } else {
+                    document.getElementById("mySidebar").style.width = "100%";
+                }
+            });
         }
+        else if (window.addEventListener) {
+            window.addEventListener('resize', function () {
+                if (matchMedia('(min-width: 700px)').matches) {
+                    document.getElementById("mySidebar").style.width = "90px";
+                } else {
+                    document.getElementById("mySidebar").style.width = "100%";
+                }
+            }, true);
+        } else {
+            //The browser does not support Javascript event binding
+        }
+
     </script>
 
+    <script>
+        var mini = true;
+
+        function toggleSideBar() {
+            if (mini && matchMedia('(min-width: 700px)').matches) {
+                console.log("opening sidebar");
+                document.getElementById("mySidebar").style.width = "250px";
+                this.mini = false;
+            } else if (matchMedia('(min-width: 700px)').matches) {
+                console.log("closing sidebar");
+                document.getElementById("mySidebar").style.width = "90px";
+                this.mini = true;
+            } else {
+                console.log("screen too small");
+                document.getElementById("mySidebar").style.width = "100%";
+                this.mini = true;
+            }
+
+        }
+
+    </script>
 
 
 
