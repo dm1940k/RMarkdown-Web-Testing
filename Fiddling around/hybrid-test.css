@@ -1,37 +1,145 @@
-﻿body
-{
+﻿body {
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    font-style: normal;
+    background-color: #F8F8FF;
 }
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 40px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 35px;
+}
+
+h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 30px;
+}
+
+h4 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 25px;
+}
+
+h5 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+}
+
+h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 15px;
+}
+
+p {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+a {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+a1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+{
+    box-sizing: border-box;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+/*Above is deco*/
 
 /* The side navigation menu */
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 90px;
-    background-color: #f1f1f1;
-    position: fixed;
     height: 100%;
+    width: 90px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2F4F4F;
+    transition: 0.3s;
+    overflow-x: hidden;
+    padding: 30px 0px 0px 0px;
+    white-space: nowrap;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    top: 0;
     overflow: auto;
 }
 
-    /* Sidebar links */
-    .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
+    .sidebar ul li {
+        padding: 8px 8px 8px 32px;
         text-decoration: none;
+        font-size: 25px;
+        color: #DCDCDC;
+        display: block;
+        transition: 0.3s;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        font-size: 16px;
+        font-style: normal;
     }
 
-        /* Active/current link */
-        .sidebar a.active {
-            background-color: #04AA6D;
-            color: white;
-        }
 
-        /* Links on mouse-over */
-        .sidebar a:hover:not(.active) {
-            background-color: #555;
-            color: white;
-        }
+    .sidebar ul li:hover {
+        font-weight: 700;
+        background-color: #DCDCDC;
+        color: #2F4F4F;
+    }
+
+
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #DCDCDC;
+        display: block;
+        transition: 0.3s;
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        font-size: 16px;
+        font-style: normal;
+    }
+
+    .sidebar a1 {
+        padding: 0px 0px 0px 19px;
+        display: block;
+    }
+
+    .sidebar a:hover {
+        font-weight: 700;
+        background-color: #DCDCDC;
+        color: #2F4F4F;
+    }
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
@@ -45,7 +153,7 @@ div.content {
     .sidebar {
         width: 100%;
         height: auto;
-        position: relative;
+        /*position: sticky*/;
     }
 
         .sidebar a {
@@ -57,10 +165,142 @@ div.content {
     }
 }
 
+
+
+
+
+/*nav stuff*/
+
+/* Nav menu */
+.nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--black);
+    overflow: hidden;
+}
+
+.menu a {
+    display: block;
+    padding: 30px;
+    color: var(--white);
+}
+
+    .menu a:hover {
+        background-color: var(--grey);
+    }
+
+.nav {
+    max-height: 0;
+    transition: max-height .5s ease-out;
+}
+
+
+
+
+
+
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 400px) {
+/*@media screen and (max-width: 400px) {
     .sidebar a {
         text-align: center;
         float: none;
+    }
+}*/
+
+
+/*Hamburger menu stuff*/
+
+/*Creating hamburger menu*/
+
+/* Menu Icon */
+.hamb {
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+}
+/* Style label tag */
+
+.hamb-line {
+    background: var(--white);
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+}
+    /* Style span tag */
+
+    .hamb-line::before,
+    .hamb-line::after {
+        background: var(--white);
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+
+    .hamb-line::before {
+        top: 5px;
+    }
+
+    .hamb-line::after {
+        top: -5px;
+    }
+
+.side-menu {
+    display: none;
+}
+    /* Hide checkbox */
+
+
+    /* End Creating hamburger menu*/
+
+
+
+
+
+/* Toggle menu icon */
+.side-menu:checked ~ nav {
+    max-height: 100%;
+}
+
+.side-menu:checked ~ .hamb .hamb-line {
+    background: transparent;
+}
+
+    .side-menu:checked ~ .hamb .hamb-line::before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    .side-menu:checked ~ .hamb .hamb-line::after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+
+/* Responsiveness */
+@media (min-width: 400px) {
+    .nav {
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+    }
+
+    .menu li {
+        float: left;
+    }
+
+    .menu a:hover {
+        background-color: transparent;
+        color: var(--gray);
+    }
+
+    .hamb {
+        display: none;
     }
 }

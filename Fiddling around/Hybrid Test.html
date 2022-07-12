@@ -8,74 +8,116 @@
 </head>
 <body>
     <!-- The sidebar -->
-    <div id="mySidebar" class="sidebar" onmouseover="toggleSideBar()" onmouseout="toggleSideBar()">
-        <a class="active" href="#home">Home</a>
+    <!--<div id="mySidebar" class="sidebar" onmouseover="toggleSideBar()" onmouseout="toggleSideBar()">
+        <a class="active" href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
+            <img id="logo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+        </a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
-    </div>
+    </div>-->
 
     <!-- Page content -->
-    <div class="content">
+    <!--<div class="content">
         TEST TEST TEST TEST
-    </div>
+    </div>-->
 
 
 
 
-    <p id="demo"></p>
+
+
+    <header id ="mySidebar" class="sidebar" onmouseover="toggleSideBar()" onmouseout="toggleSideBar()">
+        <!-- Logo -->
+        <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
+            <img id="logo" class="logo" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+        </a>
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <!-- Menu -->
+        <nav class="nav" >
+            <ul class="menu">
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Blog</a> </li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+
+
+        <!--This little snippet makes the menu reset itself when resizing, which solves a problem with the script below where the menu would get stuck if it had already been moused over then the screen was resized.
+    The below script listens for the screen to resize then sets the nav bar width to the full screen or mid screen default, bypassing the sticking issue.
+    Found help making it work here https://stackoverflow.com/questions/13651274/how-can-i-attach-a-window-resize-event-listener-in-javascript. Essentially the same code I used below to solve the asked problem, but I added the if/else sidebar bit.-->
+
+
+        <script>
+
+            if (window.attachEvent) {
+                window.attachEvent('onresize', function () {
+                    if (matchMedia('(min-width: 700px)').matches) {
+                        document.getElementById("mySidebar").style.width = "90px";
+                    } else {
+                        document.getElementById("mySidebar").style.width = "100%";
+                    }
+                });
+            }
+            else if (window.addEventListener) {
+                window.addEventListener('resize', function () {
+                    if (matchMedia('(min-width: 700px)').matches) {
+                        document.getElementById("mySidebar").style.width = "90px";
+                    } else {
+                        document.getElementById("mySidebar").style.width = "100%";
+                    }
+                }, true);
+            } else {
+                //The browser does not support Javascript event binding
+            }
+
+        </script>
+
+        <script>
+            var mini = true;
+
+            function toggleSideBar() {
+                if (mini && matchMedia('(min-width: 700px)').matches) {
+                    console.log("opening sidebar");
+                    document.getElementById("mySidebar").style.width = "250px";
+                    this.mini = false;
+                } else if (matchMedia('(min-width: 700px)').matches) {
+                    console.log("closing sidebar");
+                    document.getElementById("mySidebar").style.width = "90px";
+                    this.mini = true;
+                } else {
+                    console.log("screen too small");
+                    document.getElementById("mySidebar").style.width = "100%";
+                    this.mini = true;
+                }
+
+            }
+
+        </script>
+    </header>
+
+
 
 
     <!--This little snippet makes the menu reset itself when resizing, which solves a problem with the script below where the menu would get stuck if it had already been moused over then the screen was resized.
-        The below script listens for the screen to resize then sets the nav bar width to the full screen or mid screen default, bypassing the sticking issue. 
+        The below script listens for the screen to resize then sets the nav bar width to the full screen or mid screen default, bypassing the sticking issue.
         Found help making it work here https://stackoverflow.com/questions/13651274/how-can-i-attach-a-window-resize-event-listener-in-javascript. Essentially the same code I used below to solve the asked problem, but I added the if/else sidebar bit.-->
 
-    <script>
 
-        if (window.attachEvent) {
-            window.attachEvent('onresize', function () {
-                if (matchMedia('(min-width: 700px)').matches) {
-                    document.getElementById("mySidebar").style.width = "90px";
-                } else {
-                    document.getElementById("mySidebar").style.width = "100%";
-                }
-            });
-        }
-        else if (window.addEventListener) {
-            window.addEventListener('resize', function () {
-                if (matchMedia('(min-width: 700px)').matches) {
-                    document.getElementById("mySidebar").style.width = "90px";
-                } else {
-                    document.getElementById("mySidebar").style.width = "100%";
-                }
-            }, true);
-        } else {
-            //The browser does not support Javascript event binding
-        }
 
-    </script>
-
-    <script>
-        var mini = true;
-
-        function toggleSideBar() {
-            if (mini && matchMedia('(min-width: 700px)').matches) {
-                console.log("opening sidebar");
-                document.getElementById("mySidebar").style.width = "250px";
-                this.mini = false;
-            } else if (matchMedia('(min-width: 700px)').matches) {
-                console.log("closing sidebar");
-                document.getElementById("mySidebar").style.width = "90px";
-                this.mini = true;
-            } else {
-                console.log("screen too small");
-                document.getElementById("mySidebar").style.width = "100%";
-                this.mini = true;
-            }
-
-        }
-
-    </script>
+    <!-- Main content -->
+    <main>
+        <article>
+            <h1>
+                Header 1
+            </h1>
+            <p>
+                Paragraph
+            </p>
+        </article>
+    </main>
 
 
 
