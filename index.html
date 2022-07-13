@@ -9,38 +9,79 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-style.css">
     <link rel="icon" href="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-dark.png">
-
-
-
-
-
-
-
-
-
 
 </head>
 <body>
 
-
-    <script>
-
-        var touchDevice = ('ontouchstart' in document.documentElement);
-
-        window.onload = function mobileNav() {
-            if (touchDevice) {
-                location.href = "https://main--subtle-sunshine-6418fc.netlify.app/mobile-site/mobile-index.html";
-            } else {
-                location.href = "https://main--subtle-sunshine-6418fc.netlify.app/desktop-site/desktop-index.html";
-            }
-        }
-
-    </script>
+    <!--mobile nav found here https://github.com/Ivy-Walobwa/responsive-pure-css-menu-->
 
 
+    <header class="header">
+        <!-- Logo -->
+        <a class="logo">
+        <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-light.png" alt="Logo link" style="width: 50px; height: auto;  ">
+        </a>
 
+        <!-- Hamburger icon -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
 
+        <!-- Menu -->
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">Home</a><br></li>
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/case-study-1.html">Data Analysis</a><br></li>
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/code.html">Programming</a><br></li>
+                <li><a href="https://main--subtle-sunshine-6418fc.netlify.app/photography.html">Photography</a><br></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+
+            <h1 style="margin: 25px auto;">Dan Moriarty</h1>
+            <a href="https://main--subtle-sunshine-6418fc.netlify.app/index.html">
+                <img class="image-center" src="https://main--subtle-sunshine-6418fc.netlify.app/images/logo-circle-dark.png" alt="Logo link" style="width: 200px; height: auto;">
+            </a>
+            <br />
+            <br />
+            <p>
+                I am a self taught programmer and data analyst in search of my first developer or data analysis position.
+                I have chosen to focus on C# and ASP.NET for software, and R for data. I am also familiar with HTML, CSS, Excel, SQL, and Ruby.
+                I am currently working to create a D&D dungeon generator, as well as this portfolio site.
+                The most compelling aspect of programming and data analysis for me are the moments when I discover a new way to do something or solve a problem.
+            </p>
+            <br />
+            <p>
+                I have spent the last 6 years in liquor production and sales.
+                As a cocktail room manager I found myself using data in order to direct our menu and events program.
+                In my production role I learned to use Excel for recipe development, which opened my eyes to the possibilities programming offered.
+                I've since used C# to write a volume calculator for our milk-tank-turned-mixing-tank, which quickly converts milk pounds to gallons and liters and is used almost every week.
+            </p>
+            <br />
+            <p>
+                I hope to continue to grow my depth and breath of knowledge in the skills above, and maybe even turn them towards my other interests, like mechanical design or carpentry.
+                I plan to use this portfolio site to highlight those endeavours as well.
+            </p>
+            <br />
+
+        </div>
+            <!--Social Links-->
+        <div>
+            <p>
+                <a href="https://github.com/dm1940k" target="_blank" rel="noopener noreferrer">
+                    <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/github-icon.png" alt="Github Link" style="width:50px; height:auto;">
+                </a>
+                <a href="https://www.linkedin.com/in/d-moriarty" target="_blank" rel="noopener noreferrer">
+                    <img src="https://main--subtle-sunshine-6418fc.netlify.app/images/linkedin-icon.png" alt="LinkedIn Link" style="width:50px; height:auto;">
+                </a>
+            </p>
+
+            <!--End Social Links-->
+        </div>
+    </main>
 </body>
 </html>
