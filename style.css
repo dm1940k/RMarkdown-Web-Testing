@@ -95,7 +95,9 @@ ul {
     background-color: #F8F8FF;
 }
 
-
+.socials {
+    margin: 25px 50px 25px 50px;
+}
 /*Calculator styling*/
 
 .center {
@@ -279,7 +281,11 @@ ul {
 }
 
 
-
+@media (min-width: 1150px){
+    .content {
+        margin: 0px 200px 0px 200px;
+    }
+}
 
 
 /* Three image containers (use 25% for four, and 50% for two, etc) */
