@@ -326,17 +326,13 @@ function pronoun3(gender) {
             pronoun3 = "his";
             break;
         case "female":
-            pronoun3 = "hers";
+            pronoun3 = "her";
             break;
         case "either":
             pronoun3 = "their";
             break;
     }
     return pronoun3;
-}
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function isAre(gender) {
@@ -353,6 +349,92 @@ function isAre(gender) {
     return isAre;
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
+function race_stats(char_race) {
+
+    var stat_array = [];
+
+    switch (char_race) {
+        case "Dragonborn":
+            stat_array = [2, 0, 0, 0, 0, 1];
+            break;
+        case "Dwarf":
+            stat_array = [0, 0, 3, 0, 0, 0];
+            break;
+        case "Elf":
+            stat_array = [0, 2, 0, 0, 0, 0];
+            break;
+        case "Gnome":
+            stat_array = [0, 0, 0, 2, 0, 0];
+            break;
+        case "Half-elf":
+            stat_array = [0, 0, 0, 0, 0, 2];
+            break;
+        case "Halfling":
+            stat_array = [0, 2, 0, 0, 0, 0];
+            break;
+        case "Half-Orc":
+            stat_array = [2, 0, 1, 0, 0, 0];
+            break;
+        case "Human":
+            stat_array = [1, 1, 1, 1, 1, 1];
+            break;
+
+    }
+    return stat_array;
+}
+
+function roll_dice(sides, rolls) {
+
+    var numbers = [];
+    for (let i = 0; i < rolls; i++) {
+        numbers.push(Math.ceil(Math.random() * sides))
+    }
+
+    return numbers;
+}
+
+
+function stat_roller() {
+
+    var rolled_stat = roll_dice(6, 4);
+    rolled_stat.sort(function (a, b) { return b - a });
+    rolled_stat.pop();
+
+    var total = 0;
+    for (var i in rolled_stat) {
+        total += rolled_stat[i];
+    }
+    return total;
+}
+
+
+function rolled_stats() {
+
+    var rolled_stats = [];
+
+    for (let i = 0; i < 6; i++) {
+        rolled_stats.push(stat_roller());
+    }
+    return rolled_stats;
+
+}
+
+function char_stats(char_race) {
+
+    var rolled = rolled_stats();
+    var race = race_stats(char_race);
+
+    var stats = rolled.map((a, i) => a + race[i])
+
+    return stats;
+}
+
+
 //Output
 
 
@@ -363,10 +445,10 @@ function character() {
     var char_race = race_array[randomize(race_array)];
     var character_name = namer(gender, char_race);
 
+    var char_stat = char_stats(char_race);
 
-   
 
-    document.getElementById("charSheet").innerHTML = "Your character's name is <br>" + character_name + ". <br>" + capitalizeFirstLetter(pronoun1(gender)) + " " + isAre(gender) + " a " + " level " + level[randomize(level)] + " " + char_race + " " + char_class[randomize(char_class)] + ".<br> " + capitalizeFirstLetter(pronoun1(gender)) + " " + isAre(gender) + " " + alignment[randomize(alignment)] + ".";
+    document.getElementById("charSheet").innerHTML = "Your character's name is <br>" + character_name + ". <br>" + capitalizeFirstLetter(pronoun1(gender)) + " " + isAre(gender) + " a " + " level " + level[randomize(level)] + " " + char_race + " " + char_class[randomize(char_class)] + ".<br> " + capitalizeFirstLetter(pronoun1(gender)) + " " + isAre(gender) + " " + alignment[randomize(alignment)] + ". <br>" + capitalizeFirstLetter(pronoun3(gender)) + " attributes are:" + "<br>Str: " + char_stat[0] + "<br>Dex: " + char_stat[1] + "<br>Con: " + char_stat[2] + "<br>Int: " + char_stat[3] + "<br>Wis: " + char_stat[4] + "<br>Cha: " + char_stat[5];
     
 }
 
