@@ -246,7 +246,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "half-Orc":
+        case "half-orc":
             if (gender == "male") {
                 first_name = orc_first_name_male.concat(human_first_name_male);
             } else if (gender == "female") {
@@ -767,7 +767,7 @@ function character() {
     var char_atts = char_attributes(char_race);
     var char_proficiency = proficiency(char_level);
 
-    document.getElementById("charSheet").innerHTML = "Your character's name is " + char_name + ". <br>" + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " a " + " level " + char_level + " " + capitalizeFirstLetter(char_race) + " " + capitalizeFirstLetter(char_class) + ".<br> " + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " " + char_align + ". <br>" + capitalizeFirstLetter(pronoun3(char_gender)) + " attributes are:" + "<br>Str: " + char_atts[0] + "<br>Dex: " + char_atts[1] + "<br>Con: " + char_atts[2] + "<br>Int: " + char_atts[3] + "<br>Wis: " + char_atts[4] + "<br>Cha: " + char_atts[5];
+    document.getElementById("charSheet").innerHTML = "Your character's name is " + char_name + ". <br>" + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " a " + " level " + char_level + " " + capitalizeFirstLetter(char_race) + " " + capitalizeFirstLetter(char_class) + ".<br> " + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " " + char_align + ". <br>" + capitalizeFirstLetter(pronoun3(char_gender)) + " attributes are:" + "<br>Str: " + char_atts[0] + "<br>Dex: " + char_atts[1] + "<br>Con: " + char_atts[2] + "<br>Int: " + char_atts[3] + "<br>Wis: " + char_atts[4] + "<br>Cha: " + char_atts[5] + "<br> Your proficiency bonus is +" + char_proficiency;
     
 }
 
