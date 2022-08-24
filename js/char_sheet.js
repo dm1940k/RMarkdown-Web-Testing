@@ -161,7 +161,6 @@ function randomize(x) {
 }
 
 function namer(gender,char_race) {
-    console.log("namer" + char_race);
     var character_name;
     switch (char_race) {
 
@@ -280,7 +279,6 @@ function namer(gender,char_race) {
             character_name = "Thwombly Juventas";
 
     }
-    console.log(character_name);
     return character_name;
 }
 
@@ -405,7 +403,6 @@ function race_stats(char_race) {
             stat_array = [2, 0, 0, 0, 1, 0];
 
     }
-    console.log("race_stats");
     return stat_array;
 }
 
@@ -419,7 +416,6 @@ function stat_roller() {
     for (var i in rolled_stat) {
         total += rolled_stat[i];
     }
-    console.log("stat_roller");
     return total;
 }
 
@@ -430,7 +426,6 @@ function rolled_stats() {
     for (let i = 0; i < 6; i++) {
         rolled_stats.push(stat_roller());
     }
-    console.log("rolled_stats");
     return rolled_stats;
 }
 
@@ -441,9 +436,81 @@ function char_attributes(char_race) {
 
     var stats = rolled.map((a, i) => a + race1[i])
 
-    console.log("char_atts");
     return stats;
 }
+
+function proficiency(char_level) {
+
+    switch (char_level) {
+        case 1:
+            prof_bonus = 2;
+            break;
+        case 2:
+            prof_bonus = 2;
+            break;
+        case 3:
+            prof_bonus = 2;
+            break;
+        case 4:
+            prof_bonus = 2;
+            break;
+        case 5:
+            prof_bonus = 3;
+            break;
+        case 6:
+            prof_bonus = 3;
+            break;
+        case 7:
+            prof_bonus = 3;
+            break;
+        case 8:
+            prof_bonus = 3;
+            break;
+        case 9:
+            prof_bonus = 4;
+            break;
+        case 10:
+            prof_bonus = 4;
+            break;
+        case 11:
+            prof_bonus = 4;
+            break;
+        case 12:
+            prof_bonus = 4;
+            break;
+        case 13:
+            prof_bonus = 5;
+            break;
+        case 14:
+            prof_bonus = 5;
+            break;
+        case 15:
+            prof_bonus = 5;
+            break;
+        case 16:
+            prof_bonus = 5;
+            break;
+        case 17:
+            prof_bonus = 6;
+            break;
+        case 18:
+            prof_bonus = 6;
+            break;
+        case 19:
+            prof_bonus = 6;
+            break;
+        case 20:
+            prof_bonus = 6;
+            break;
+
+    }
+    return prof_bonus;
+}
+
+//function hitpoints(char_class, char_level) {
+
+
+//}
 
 function classer() {
 
@@ -507,10 +574,14 @@ function classer() {
         default:
             char_class = "cleric";
     }
-    console.log("classer")
     return char_class;
 }
 
+//function class_stats(char_class) {
+
+    
+
+//}
 
 function aligner() {
     var alignment_array = ["Lawful Good", "Lawful Nuetral", "Lawful Evil", "Nuetral Good", "True Nuetral", "Nuetral Evil", "Chaotic Good", "Chaotic Nuetral", "Chaotic Evil"];
@@ -552,16 +623,10 @@ function aligner() {
         default:
             char_alignment = "Lawful Good";
     }
-    console.log("aligner")
     return char_alignment;
 
     //Don't know if I want to make alignment truly random 
 }
-//function class_stats(char_class) {
-
-    
-
-//}
 
 function racer() {
     var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
@@ -606,11 +671,8 @@ function racer() {
         default:
             char_race = "tortle";
     }
-    console.log("racer");
-    console.log(char_race);
     return char_race;
 }
-
 
 function leveler() {
     var level = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -687,7 +749,6 @@ function leveler() {
             char_level = 13;
 
     }
-    console.log(char_level);
     return char_level;
 }
 
@@ -704,8 +765,7 @@ function character() {
     var char_align = aligner();
     var char_name = namer(char_gender, char_race);
     var char_atts = char_attributes(char_race);
-    console.log(char_race);
-    console.log("character " + char_race);
+    var char_proficiency = proficiency(char_level);
 
     document.getElementById("charSheet").innerHTML = "Your character's name is " + char_name + ". <br>" + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " a " + " level " + char_level + " " + capitalizeFirstLetter(char_race) + " " + capitalizeFirstLetter(char_class) + ".<br> " + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " " + char_align + ". <br>" + capitalizeFirstLetter(pronoun3(char_gender)) + " attributes are:" + "<br>Str: " + char_atts[0] + "<br>Dex: " + char_atts[1] + "<br>Con: " + char_atts[2] + "<br>Int: " + char_atts[3] + "<br>Wis: " + char_atts[4] + "<br>Cha: " + char_atts[5];
     
