@@ -65,7 +65,7 @@ Half-Orcs
 Humans
 
 Levels: 
-1-20
+1-20 x
 
 Classes:
 Barbarian
@@ -81,6 +81,19 @@ Sorcerer
 Warlock
 Wizard
 
+
+Character:
+First Name x
+Last Name x
+Race x 
+Class x
+Alignment x
+Attributes x
+Racial Modifiers
+Class Modifiers
+Skills
+Spells
+Flavor
 */
 
 
@@ -140,16 +153,6 @@ var dragonborn_last_name = ["Pabroth", "Sulziros", "Lorlasar", "Medhazar", "Lumi
 
 //-End names
 
-
-var race_array = ["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-elf", "Halfling", "Half-Orc", "Human"];
-
-var char_class = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"];
-
-var level = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
-var gender_array = ["male", "female", "either"];
-
-var alignment = ["Lawful Good", "Lawful Nuetral", "Lawful Evil", "Nuetral Good", "True Nuetral", "Nuetral Evil", "Chaotic Good", "Chaotic Nuetral", "Chaotic Evil"];
 //Functions
 
 function randomize(x) {
@@ -158,12 +161,11 @@ function randomize(x) {
 }
 
 function namer(gender,char_race) {
+    console.log("namer" + char_race);
+    var character_name;
+    switch (char_race) {
 
-    var race = char_race;
-    let character_name;
-    switch (race) {
-
-        case "Dragonborn":
+        case "dragonborn":
 
             if (gender == "male") {
                 first_name = dragonborn_first_name_male;
@@ -177,7 +179,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "Dwarf":
+        case "dwarf":
             if (gender == "male") {
                 first_name = dwarf_first_name_male;
             } else if (gender == "female") {
@@ -190,7 +192,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "Elf":
+        case "elf":
             if (gender == "male") {
                 first_name = elf_first_name_male;
             } else if (gender == "female") {
@@ -203,7 +205,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "Gnome":
+        case "gnome":
             if (gender == "male") {
                 first_name = gnome_first_name_male;
             } else if (gender == "female") {
@@ -216,7 +218,7 @@ function namer(gender,char_race) {
  
             break;
 
-        case "Half-elf":
+        case "half-elf":
 
             if (gender == "male") {
                 first_name = elf_first_name_male.concat(human_first_name_male);
@@ -231,7 +233,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "Halfling":
+        case "halfling":
 
             if (gender == "male") {
                 first_name = halfling_first_name_male;
@@ -245,7 +247,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "Half-Orc":
+        case "half-Orc":
             if (gender == "male") {
                 first_name = orc_first_name_male.concat(human_first_name_male);
             } else if (gender == "female") {
@@ -260,7 +262,7 @@ function namer(gender,char_race) {
 
             break;
 
-        case "Human":
+        case "human":
 
             if (gender == "male") {
                 first_name = human_first_name_male;
@@ -275,10 +277,17 @@ function namer(gender,char_race) {
 
         default:
 
-        character_name = "Thombly Juventas";
+            character_name = "Thwombly Juventas";
 
     }
+    console.log(character_name);
     return character_name;
+}
+
+function gender() {
+    var gender_array = ["male", "female", "either"];
+    var random_gender = gender_array[randomize(gender_array)];
+    return random_gender;
 }
 
 function pronoun1(gender) {
@@ -353,41 +362,6 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
-function race_stats(char_race) {
-
-    var stat_array = [];
-
-    switch (char_race) {
-        case "Dragonborn":
-            stat_array = [2, 0, 0, 0, 0, 1];
-            break;
-        case "Dwarf":
-            stat_array = [0, 0, 3, 0, 0, 0];
-            break;
-        case "Elf":
-            stat_array = [0, 2, 0, 0, 0, 0];
-            break;
-        case "Gnome":
-            stat_array = [0, 0, 0, 2, 0, 0];
-            break;
-        case "Half-elf":
-            stat_array = [0, 0, 0, 0, 0, 2];
-            break;
-        case "Halfling":
-            stat_array = [0, 2, 0, 0, 0, 0];
-            break;
-        case "Half-Orc":
-            stat_array = [2, 0, 1, 0, 0, 0];
-            break;
-        case "Human":
-            stat_array = [1, 1, 1, 1, 1, 1];
-            break;
-
-    }
-    return stat_array;
-}
-
 function roll_dice(sides, rolls) {
 
     var numbers = [];
@@ -398,6 +372,42 @@ function roll_dice(sides, rolls) {
     return numbers;
 }
 
+function race_stats(char_race) {
+
+    var stat_array = [];
+
+    switch (char_race) {
+        case "dragonborn":
+            stat_array = [2, 0, 0, 0, 0, 1];
+            break;
+        case "dwarf":
+            stat_array = [0, 0, 3, 0, 0, 0];
+            break;
+        case "elf":
+            stat_array = [0, 2, 0, 0, 0, 0];
+            break;
+        case "gnome":
+            stat_array = [0, 0, 0, 2, 0, 0];
+            break;
+        case "half-elf":
+            stat_array = [0, 0, 0, 0, 0, 2];
+            break;
+        case "halfling":
+            stat_array = [0, 2, 0, 0, 0, 0];
+            break;
+        case "half-orc":
+            stat_array = [2, 0, 1, 0, 0, 0];
+            break;
+        case "human":
+            stat_array = [1, 1, 1, 1, 1, 1];
+            break;
+        default:
+            stat_array = [2, 0, 0, 0, 1, 0];
+
+    }
+    console.log("race_stats");
+    return stat_array;
+}
 
 function stat_roller() {
 
@@ -409,9 +419,9 @@ function stat_roller() {
     for (var i in rolled_stat) {
         total += rolled_stat[i];
     }
+    console.log("stat_roller");
     return total;
 }
-
 
 function rolled_stats() {
 
@@ -420,35 +430,284 @@ function rolled_stats() {
     for (let i = 0; i < 6; i++) {
         rolled_stats.push(stat_roller());
     }
+    console.log("rolled_stats");
     return rolled_stats;
-
 }
 
-function char_stats(char_race) {
+function char_attributes(char_race) {
 
     var rolled = rolled_stats();
-    var race = race_stats(char_race);
+    var race1 = race_stats(char_race);
 
-    var stats = rolled.map((a, i) => a + race[i])
+    var stats = rolled.map((a, i) => a + race1[i])
 
+    console.log("char_atts");
     return stats;
+}
+
+function classer() {
+
+    var classes = ["barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "warlock", "wizard"];
+    var random_class = classes[randomize(classes)];
+    var class_input = document.getElementById("class").value;
+    var char_class;
+
+    switch (class_input) {
+        case "barbarian":
+            char_class = "barbarian";
+            break;
+
+        case "bard":
+            char_class = "bard";
+
+            break;
+        case "cleric":
+            char_class = "cleric";
+
+            break;
+        case "druid":
+            char_class = "druid";
+
+            break;
+        case "fighter":
+            char_class = "fighter";
+
+            break;
+        case "monk":
+            char_class = "monk";
+
+            break;
+        case "paladin":
+            char_class = "paladin";
+
+            break;
+        case "ranger":
+            char_class = "ranger";
+
+            break;
+        case "rogue":
+            char_class = "rogue";
+
+            break;
+        case "sorcerer":
+            char_class = "sorcerer";
+
+            break;
+        case "warlock":
+            char_class = "warlock";
+
+            break;
+        case "wizard":
+            char_class = "wizard";
+
+            break;
+        case "random":
+            char_class = random_class;
+            break;
+        default:
+            char_class = "cleric";
+    }
+    console.log("classer")
+    return char_class;
+}
+
+
+function aligner() {
+    var alignment_array = ["Lawful Good", "Lawful Nuetral", "Lawful Evil", "Nuetral Good", "True Nuetral", "Nuetral Evil", "Chaotic Good", "Chaotic Nuetral", "Chaotic Evil"];
+    var random_alignment = alignment_array[randomize(alignment_array)];
+    var alignment_input = document.getElementById("alignment").value;
+    var char_alignment;
+
+    switch (alignment_input) {
+        case "lawful good":
+            char_alignment = "Lawful Good";
+            break;
+        case "lawful nuetral":
+            char_alignment = "Lawful Nuetral";
+            break;
+        case "lawful evil":
+            char_alignment = "Lawful Evil";
+            break;
+        case "nuetral good":
+            char_alignment = "Nuetral Good";
+            break;
+        case "true nuetral":
+            char_alignment = "True Nuetral";
+            break;
+        case "nuetral evil":
+            char_alignment = "Nuetral Evil";
+            break;
+        case "chaotic good":
+            char_alignment = "Chaotic Good";
+            break;
+        case "chaotic nuetral":
+            char_alignment = "Chaotic Nuetral";
+            break;    
+        case "chaotic evil":
+            char_alignment = "Chaotic Evil";
+            break;
+        case "random":
+            char_alignment = random_alignment;
+            break;
+        default:
+            char_alignment = "Lawful Good";
+    }
+    console.log("aligner")
+    return char_alignment;
+
+    //Don't know if I want to make alignment truly random 
+}
+//function class_stats(char_class) {
+
+    
+
+//}
+
+function racer() {
+    var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
+    var random_race = races[randomize(races)];
+    var race_input = document.getElementById("race").value;
+    var char_race;
+    switch (race_input) {
+        case "dragonborn":
+            char_race = "dragonborn";
+            break;
+
+        case "dwarf":
+            char_race = "dwarf";
+
+            break;
+        case "elf":
+            char_race = "elf";
+
+            break;
+        case "gnome":
+            char_race = "gnome";
+
+            break;
+        case "half-elf":
+            char_race = "half-elf";
+
+            break;
+        case "halfling":
+            char_race = "halfling";
+
+            break;
+        case "half-orc":
+            char_race = "half-orc";
+
+            break;
+        case "human":
+            char_race = "human";
+
+        case "random":
+            char_race = random_race;
+            break;
+        default:
+            char_race = "tortle";
+    }
+    console.log("racer");
+    console.log(char_race);
+    return char_race;
+}
+
+
+function leveler() {
+    var level = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    var random_level = level[randomize(level)];
+    var level_input = document.getElementById("level").value;
+    var char_level;
+
+    switch (level_input) {
+
+        case "1":
+            char_level = 1;
+            break;
+        case "2":
+            char_level = 2;
+            break;
+        case "3":
+            char_level = 3;
+            break;
+        case "4":
+            char_level = 4;
+            break;
+        case "5":
+            char_level = 5;
+            break;
+        case "6":
+            char_level = 6;
+            break;
+        case "7":
+            char_level = 7;
+            break;
+        case "8":
+            char_level = 8;
+            break;
+        case "9":
+            char_level = 9;
+            break;
+        case "10":
+            char_level = 10;
+            break;
+        case "11":
+            char_level = 11;
+            break;
+        case "12":
+            char_level = 12;
+            break;
+        case "13":
+            char_level = 13;
+            break;
+        case "14":
+            char_level = 14;
+            break;
+        case "15":
+            char_level = 15;
+            break;
+        case "16":
+            char_level = 16;
+            break;
+        case "17":
+            char_level = 17;
+            break;
+        case "18":
+            char_level = 18;
+            break;
+        case "19":
+            char_level = 19;
+            break;
+        case "20":
+            char_level = 20;
+            break;
+        case "random":
+            char_level = random_level;
+            break;
+        default:
+            char_level = 13;
+
+    }
+    console.log(char_level);
+    return char_level;
 }
 
 
 //Output
 
 
-
 function character() {
 
-    var gender = gender_array[randomize(gender_array)];
-    var char_race = race_array[randomize(race_array)];
-    var character_name = namer(gender, char_race);
+    var char_gender = gender();
+    var char_level = leveler();
+    var char_class = classer();
+    var char_race = racer();
+    var char_align = aligner();
+    var char_name = namer(char_gender, char_race);
+    var char_atts = char_attributes(char_race);
+    console.log(char_race);
+    console.log("character " + char_race);
 
-    var char_stat = char_stats(char_race);
-
-
-    document.getElementById("charSheet").innerHTML = "Your character's name is <br>" + character_name + ". <br>" + capitalizeFirstLetter(pronoun1(gender)) + " " + isAre(gender) + " a " + " level " + level[randomize(level)] + " " + char_race + " " + char_class[randomize(char_class)] + ".<br> " + capitalizeFirstLetter(pronoun1(gender)) + " " + isAre(gender) + " " + alignment[randomize(alignment)] + ". <br>" + capitalizeFirstLetter(pronoun3(gender)) + " attributes are:" + "<br>Str: " + char_stat[0] + "<br>Dex: " + char_stat[1] + "<br>Con: " + char_stat[2] + "<br>Int: " + char_stat[3] + "<br>Wis: " + char_stat[4] + "<br>Cha: " + char_stat[5];
+    document.getElementById("charSheet").innerHTML = "Your character's name is " + char_name + ". <br>" + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " a " + " level " + char_level + " " + capitalizeFirstLetter(char_race) + " " + capitalizeFirstLetter(char_class) + ".<br> " + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " " + char_align + ". <br>" + capitalizeFirstLetter(pronoun3(char_gender)) + " attributes are:" + "<br>Str: " + char_atts[0] + "<br>Dex: " + char_atts[1] + "<br>Con: " + char_atts[2] + "<br>Int: " + char_atts[3] + "<br>Wis: " + char_atts[4] + "<br>Cha: " + char_atts[5];
     
 }
 
