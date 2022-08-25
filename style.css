@@ -148,6 +148,7 @@ ul {
     top: 0;
     width: 100%;
     z-index:1;
+    height: 90px;
 }
 
 /* Logo */
@@ -166,6 +167,7 @@ ul {
     color: #F8F8FF;
     z-index:1;
 }
+
 
 .menu {
     z-index: 1;
@@ -190,6 +192,10 @@ ul {
 
 }
 
+.nav li:hover {
+  background-color: #547575;
+  height: 90px;
+}
 /* Menu Icon */
 
 .hamb {
@@ -280,7 +286,12 @@ ul {
     }
 }
 
-
+@media (max-width: 768px){
+    .menu li {
+        height:90px;  
+    }
+  
+}
 @media (min-width: 1150px){
     .content {
         margin: 0px 200px 0px 200px;
