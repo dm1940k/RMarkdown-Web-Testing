@@ -356,6 +356,21 @@ function isAre(gender) {
     return isAre;
 }
 
+function haveHas(gender) {
+  var haveHas;
+
+  switch (gender){
+    case "male":
+    case "female":
+      haveHas = "has";
+      break;
+    case "either":
+      haveHas = "have";
+      break;
+  }
+  return haveHas;
+}
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -439,6 +454,85 @@ function char_attributes(char_race) {
     return stats;
 }
 
+function modifiers(ability_score){
+  var score_mod;
+    switch(ability_score){
+      case 1:
+        score_mod = -5;
+        break;
+      case 2:
+      case 3:
+        score_mod = -4;
+        break;
+      case 4:
+      case 5:
+        score_mod = -3;
+        break;
+      case 6:
+      case 7:
+        score_mod = -2;
+        break;
+      case 8:
+      case 9:
+        score_mod = -1;
+        break;
+      case 10:
+      case 11:
+        score_mod = 0;
+        break;
+      case 12:
+      case 13:
+        score_mod = 1;
+        break;
+      case 14:
+      case 15:
+        score_mod = 2;
+        break;
+      case 16:
+      case 17:
+        score_mod = 3;
+        break;
+      case 18:
+      case 19:
+        score_mod = 4;
+        break; 
+      case 20:
+      case 21:
+        score_mod = 5;
+        break;
+      case 22:
+      case 23:
+        score_mod = 6;
+        break;
+      case 24:
+      case 25:
+        score_mod = 7;
+        break;
+      case 26:
+      case 27:
+        score_mod = 8;
+        break;
+      case 28:
+      case 29:
+        score_mod = 9;
+        break;
+      case 30:
+        score_mod = 10;
+        break;
+    }
+  return score_mod;
+}
+
+function plus_minus(mod) {
+  var plu_min = "";
+  if (mod > 0) {
+    plu_min = "+";
+  } else {
+    plu_min = "";
+  }
+  return plu_min;  
+}
+
 function proficiency(char_level) {
 
     switch (char_level) {
@@ -507,10 +601,76 @@ function proficiency(char_level) {
     return prof_bonus;
 }
 
-//function hitpoints(char_class, char_level) {
+function hitdie(char_class) {
 
+  var hit_die;
 
-//}
+     switch (char_class) {
+        case "barbarian":
+            hit_die = 12;
+            break;
+
+        case "bard":
+            hit_die = 8;
+
+            break;
+        case "cleric":
+            hit_die = 8;
+
+            break;
+        case "druid":
+            hit_die = 8;
+
+            break;
+        case "fighter":
+            hit_die = 10;
+
+            break;
+        case "monk":
+            hit_die = 8;
+
+            break;
+        case "paladin":
+            hit_die = 10;
+
+            break;
+        case "ranger":
+            hit_die = 10;
+
+            break;
+        case "rogue":
+            hit_die = 8;
+
+            break;
+        case "sorcerer":
+            hit_die = 6;
+
+            break;
+        case "warlock":
+            hit_die = 8;
+
+            break;
+        case "wizard":
+            hit_die = 6;
+
+            break;
+     }
+  return hit_die;
+}
+
+function hitpoints(con_mod, char_level, char_class) {
+  var first_level = hitdie(char_class) + con_mod;
+  var subsequent_rolls = (roll_dice(hitdie(char_class), char_level));
+  
+  var sub_roll_total = 0;
+  for (var i in subsequent_rolls) {
+      sub_roll_total += subsequent_rolls[i];
+  }
+  
+  
+  var hp = first_level + sub_roll_total + (con_mod * char_level);
+  return hp;
+}
 
 function classer() {
 
@@ -766,9 +926,29 @@ function character() {
     var char_name = namer(char_gender, char_race);
     var char_atts = char_attributes(char_race);
     var char_proficiency = proficiency(char_level);
+    var str_modifier = modifiers(char_atts[0]);
+    var dex_modifier = modifiers(char_atts[1]);
+    var con_modifier = modifiers(char_atts[2]);
+    var int_modifier = modifiers(char_atts[3]);
+    var wis_modifier = modifiers(char_atts[4]);
+    var cha_modifier = modifiers(char_atts[5]);
+    var char_hitpoints = hitpoints(con_modifier, char_level, char_class);
 
-    document.getElementById("charSheet").innerHTML = "Your character's name is " + char_name + ". <br>" + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " a " + " level " + char_level + " " + capitalizeFirstLetter(char_race) + " " + capitalizeFirstLetter(char_class) + ".<br> " + capitalizeFirstLetter(pronoun1(char_gender)) + " " + isAre(char_gender) + " " + char_align + ". <br>" + capitalizeFirstLetter(pronoun3(char_gender)) + " attributes are:" + "<br>Str: " + char_atts[0] + "<br>Dex: " + char_atts[1] + "<br>Con: " + char_atts[2] + "<br>Int: " + char_atts[3] + "<br>Wis: " + char_atts[4] + "<br>Cha: " + char_atts[5] + "<br> Your proficiency bonus is +" + char_proficiency;
-    
+
+    var char_sheet = `Your character's name is ${char_name}. 
+    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
+    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
+    <br>${capitalizeFirstLetter(pronoun3(char_gender))} attributes are: 
+    <br>Str: ${char_atts[0]} (${plus_minus(str_modifier)}${str_modifier})
+    <br>Dex: ${char_atts[1]} (${plus_minus(dex_modifier)}${dex_modifier})
+    <br>Con: ${char_atts[2]} (${plus_minus(con_modifier)}${con_modifier})
+    <br>Int: ${char_atts[3]} (${plus_minus(int_modifier)}${int_modifier})
+    <br>Wis: ${char_atts[4]} (${plus_minus(wis_modifier)}${wis_modifier})
+    <br>Cha: ${char_atts[5]} (${plus_minus(cha_modifier)}${cha_modifier})
+    <br>${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency)}${char_proficiency}. <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.`;
+
+    document.getElementById("charSheet").innerHTML = char_sheet;
+  
 }
 
 
