@@ -181,15 +181,9 @@ ul {
 }
 
 
-/*Revisit hover function for mobile, probably should just embed removed.*/
-/*    .menu a:hover {
-        background-color: #F8F8FF;
-    }*/
-
 .nav {
     max-height: 0;
     transition: max-height .2s ease-out;
-
 }
 
 .nav li:hover {
@@ -284,17 +278,17 @@ ul {
     .hamb {
         display: none;
     }
+
 }
 
 @media (max-width: 768px){
     .menu li {
         height:90px;  
     }
-  
 }
 @media (min-width: 1150px){
     .content {
-        margin: 0px 200px 0px 200px;
+        margin: 0px 100px 0px 100px;
     }
 }
 
@@ -334,5 +328,7 @@ ul {
         width: 100%;
     }
 }
+
+
 
 
