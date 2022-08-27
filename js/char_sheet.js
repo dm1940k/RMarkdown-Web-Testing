@@ -68,7 +68,7 @@ Levels:
 1-20 x
 
 Classes:
-Barbarian
+Barbarian 
 Bard
 Cleric
 Druid
@@ -94,6 +94,7 @@ Class Modifiers
 Skills
 Spells
 Flavor
+
 */
 
 
@@ -104,8 +105,6 @@ document.getElementById("btn2").addEventListener("click", character);
 
 const btn = document.getElementById("btn2");
 
-
-//Variables
 
 //-Names
 
@@ -533,7 +532,7 @@ function plus_minus(mod) {
   return plu_min;  
 }
 
-function proficiency(char_level) {
+function proficiency_bonus(char_level) {
 
     switch (char_level) {
         case 1:
@@ -912,6 +911,385 @@ function leveler() {
     return char_level;
 }
 
+function speed(race) {
+
+    var speed;
+    switch (race) {
+
+        case "dragonborn":
+            speed = 30;
+            break;
+
+        case "dwarf":
+            speed = 25;
+
+            break;
+        case "elf":
+            speed = 30;
+
+            break;
+        case "gnome":
+            speed = 25;
+
+            break;
+        case "half-elf":
+            speed = 30;
+
+            break;
+        case "halfling":
+            speed = 25;
+
+            break;
+        case "half-orc":
+            speed = 30;
+
+            break;
+        case "human":
+            speed = 30;
+            break;
+    }
+    return speed;
+}
+
+function dark_vision(race) {
+
+    var darkvision;
+
+    switch (race) {
+
+        case "dragonborn":
+            darkvision = false;
+            break;
+
+        case "dwarf":
+            darkvision = true;
+
+            break;
+        case "elf":
+            darkvision = true;
+
+            break;
+        case "gnome":
+            darkvision = true;
+
+            break;
+        case "half-elf":
+            darkvision = true;
+
+            break;
+        case "halfling":
+            darkvision = false;
+
+            break;
+        case "half-orc":
+            darkvision = true;
+
+            break;
+        case "human":
+            darkvision = false;
+            break;
+    }
+
+    return darkvision;
+}
+
+
+function race_stat_array(char_race) {
+
+
+}
+
+function background_array() {
+
+    function background_picker() {
+
+        var back_roll = Math.ceil(Math.random() * 18)
+
+        switch (back_roll) {
+
+            case 1:
+                background = "acolyte";
+                break;
+            case 2:
+                background = "charlatan";
+                break;
+            case 3:
+                background = "criminal";
+                break;
+            case 4:
+                background = "entertainer";
+                break;
+            case 5:
+                background = "folk hero";
+                break;
+            case 6:
+                background = "gladiator";
+                break;
+            case 7:
+                background = "guild artisan";
+                break;
+            case 8:
+                background = "guild merchant";
+                break;
+            case 9:
+                background = "hermit";
+                break;
+            case 10:
+                background = "knight";
+                break;
+            case 11:
+                background = "noble";
+                break;
+            case 12:
+                background = "outlander";
+                break;
+            case 13:
+                background = "pirate";
+                break;
+            case 14:
+                background = "sage";
+                break;
+            case 15:
+                background = "sailor";
+                break;
+            case 16:
+                background = "soldier";
+                break;
+            case 17:
+                background = "spy";
+                break;
+            case 18:
+                background = "urchin";
+                break;
+        }
+        return background;
+    }
+
+    var rand_background = background_picker();
+
+    var features;
+
+    //array key: background, skill proficiencies, languages, equipment, feature
+
+    switch (rand_background) {
+
+        case "acolyte":
+            features = [["Acolyte"], ["Insight", "Religion"], ["random", "random"], ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"], [15], ["Shelter Of The Faithful"]];
+            break;
+        case "charlatan":
+            features = [["Charlatan"], ["Deception", "Sleight of Hand"], ["none", "none"], ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"], [15], ["False Identity"]];
+            break;
+        case "criminal":
+            features = [["Criminal"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+            break;
+        case "entertainer":
+            features = [["Entertainer"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "A Musical Instrument", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+            break;
+        case "folk hero":
+            features = [["Folk Hero"], ["none", "none"], ["Animal Handling", "Survival"], ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"], [10], ["Rustic Hospitality"]];
+            break;
+        case "gladiator":
+            features = [["Gladiator"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+            break;
+        case "guild artisan":
+            features = [["Guild Artisan"], ["Insight", "Persuasion"], ["random", "none"], ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+            break;
+        case "guild merchant":
+            features = [["Guild Merchant"], ["Insight", "Persuasion"], ["random", "random"], ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+            break;
+        case "hermit":
+            features = [["Hermit"], ["Medicine", "Religion"], ["random", "none"], ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"], [5], ["Discovery"]];
+            break;
+        case "knight":
+            features = [["Knight"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Retainers"]];
+            break;
+        case "noble":
+            features = [["Noble"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Position of Privilege"]];
+            break;
+        case "outlander":
+            features = [["Outlander"], ["Athletics", "Survival"], ["random", "none"], ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"], [10], ["Wanderer"]];
+            break;
+        case "pirate":
+            features = [["Pirate"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Bad Reputation"]];
+            break;
+        case "sage":
+            features = [["Sage"], ["Arcana", "History"], ["random", "random"], ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"], [10], ["Researcher"]];
+            break;
+        case "sailor":
+            features = [["Sailor"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Ship's Passage"]];
+            break;
+        case "soldier":
+            features = [["Soldier"], ["Athletics", "Intimidation"], ["none", "none"], ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"], [10], ["Military Rank"]];
+            break;
+        case "spy":
+            features = [["Spy"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+            break;
+        case "urchin":
+            features = [["Urchin"], ["Sleight Of Hand", "Stealth"], ["none", "none"], ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"], [10], ["City Secrets"]];
+            break;
+
+    }
+    return features;
+}
+
+
+//function languages(race, background) {
+
+//    function random_language() {
+
+//        var rand_lang;
+
+//        switch (rand_lang) {
+
+//            case 1:
+//                rand_lang = "Common";
+//                break;
+//            case 2:
+//                rand_lang = "Dwarvish";
+//                break;
+//            case 3:
+//                rand_lang = "Elvish";
+//                break;
+//            case 4:
+//                rand_lang = "Giant";
+//                break;
+//            case 5:
+//                rand_lang = "Gnomish";
+//                break;
+//            case 6:
+//                rand_lang = "Goblin";
+//                break;
+//            case 7:
+//                rand_lang = "Halfling";
+//                break;
+//            case 8:
+//                rand_lang = "Orc";
+//                break;
+//            case 9:
+//                rand_lang = "Abyssal";
+//                break;
+//            case 10:
+//                rand_lang = "Celestial";
+//                break;
+//            case 11:
+//                rand_lang = "Deep Speech";
+//                break;
+//            case 12:
+//                rand_lang = "Draconic";
+//                break;
+//            case 13:
+//                rand_lang = "Infernal";
+//                break;
+//            case 14:
+//                rand_lang = "Primordial";
+//                break;
+//            case 15:
+//                rand_lang = "Sylvan";
+//                break;
+//            case 16:
+//                rand_lang = "Undercommon";
+//                break;
+
+//        } 
+
+//    }
+
+//    var race_lang;
+
+//        switch (race) {
+
+//            case 1:
+//                race_lang = [];
+//                break;
+//            case 2:
+//                race_lang = [];
+//                break;
+//            case 3:
+//                race_lang = [];
+//                break;
+//            case 4:
+//                race_lang = [];
+//                break;
+//            case 5:
+//                race_lang = [];
+//                break;
+//            case 6:
+//                race_lang = [];
+//                break;
+//            case 7:
+//                race_lang = [];
+//                break;
+//            case 8:
+//                race_lang = [];
+//                break;
+
+//        } 
+
+
+//    var back_lang;
+
+//        switch (background) {
+
+//            case "acolyte":
+//                back_lang = [];
+//                break;
+//            case "charlatan":
+//                back_lang = [];
+//                break;
+//            case "criminal":
+//                back_lang = [];
+//                break;
+//            case "entertainer":
+//                back_lang = [];
+//                break;
+//            case "folk hero":
+//                back_lang = [];
+//                break;
+//            case "gladiator":
+//                back_lang = [];
+//                break;
+//            case "guild artisan":
+//                back_lang = [];
+//                break;
+//            case "guild merchant":
+//                back_lang = [];
+//                break;
+//            case "hermit":
+//                back_lang = [];
+//                break;
+//            case "knight":
+//                back_lang = [];
+//                break;
+//            case "noble":
+//                back_lang = [];
+//                break;
+//            case "outlander":
+//                back_lang = [];
+//                break;
+//            case "pirate":
+//                back_lang = [];
+//                break;
+//            case "sage":
+//                back_lang = [];
+//                break;
+//            case "sailor":
+//                back_lang = [];
+//                break;
+//            case "soldier":
+//                back_lang = [];
+//                break;
+//            case "spy":
+//                back_lang = [];
+//                break;
+//            case "urchin":
+//                back_lang = [];
+//                break;
+
+//        }
+
+//    Common, Dwarvish, Elvish, Giant, Gnomish, Goblin, Halfling, Orc, Abyssal, Celestial, Deep Speech, Draconic, Infernal, Primordial, Sylvan, and Undercommon
+
+//}
 
 //Output
 
@@ -925,7 +1303,7 @@ function character() {
     var char_align = aligner();
     var char_name = namer(char_gender, char_race);
     var char_atts = char_attributes(char_race);
-    var char_proficiency = proficiency(char_level);
+    var char_proficiency = proficiency_bonus(char_level);
     var str_modifier = modifiers(char_atts[0]);
     var dex_modifier = modifiers(char_atts[1]);
     var con_modifier = modifiers(char_atts[2]);
@@ -933,19 +1311,25 @@ function character() {
     var wis_modifier = modifiers(char_atts[4]);
     var cha_modifier = modifiers(char_atts[5]);
     var char_hitpoints = hitpoints(con_modifier, char_level, char_class);
+    var move_speed = speed(char_race);
+    var initiative = dex_modifier;
+
 
 
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
-    <br>${capitalizeFirstLetter(pronoun3(char_gender))} attributes are: 
-    <br>Str: ${char_atts[0]} (${plus_minus(str_modifier)}${str_modifier})
-    <br>Dex: ${char_atts[1]} (${plus_minus(dex_modifier)}${dex_modifier})
-    <br>Con: ${char_atts[2]} (${plus_minus(con_modifier)}${con_modifier})
-    <br>Int: ${char_atts[3]} (${plus_minus(int_modifier)}${int_modifier})
-    <br>Wis: ${char_atts[4]} (${plus_minus(wis_modifier)}${wis_modifier})
-    <br>Cha: ${char_atts[5]} (${plus_minus(cha_modifier)}${cha_modifier})
-    <br>${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency)}${char_proficiency}. <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.`;
+    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} attributes are: 
+    <br> Str: ${char_atts[0]} (${plus_minus(str_modifier)}${str_modifier})
+    <br> Dex: ${char_atts[1]} (${plus_minus(dex_modifier)}${dex_modifier})
+    <br> Con: ${char_atts[2]} (${plus_minus(con_modifier)}${con_modifier})
+    <br> Int: ${char_atts[3]} (${plus_minus(int_modifier)}${int_modifier})
+    <br> Wis: ${char_atts[4]} (${plus_minus(wis_modifier)}${wis_modifier})
+    <br> Cha: ${char_atts[5]} (${plus_minus(cha_modifier)}${cha_modifier})
+    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency)}${char_proficiency}. 
+    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
+    <br> Speed: ${move_speed}
+    <br> Initiative: ${initiative}`;
 
     document.getElementById("charSheet").innerHTML = char_sheet;
   
