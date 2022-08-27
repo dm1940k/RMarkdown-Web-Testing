@@ -54,15 +54,15 @@ Halflings x
 Half-Orcs x
 Humans x
 
-Race Stats: 
-Dragonborn
-Dwarves
-Elves
-Gnomes
-Half-Elves
-Halflings
-Half-Orcs
-Humans
+Race Stats: x
+Dragonborn x
+Dwarves x
+Elves x
+Gnomes x
+Half-Elves x
+Halflings x
+Half-Orcs x
+Humans x
 
 Levels: 
 1-20 x
@@ -81,6 +81,31 @@ Sorcerer
 Warlock
 Wizard
 
+Skills
+
+Strength
+    Athletics
+Dexterity
+    Acrobatics
+    Sleight of Hand
+    Stealth
+Intelligence
+    Arcana
+    History
+    Investigation
+    Nature
+    Religion
+Wisdom
+    Animal Handling
+    Insight
+    Medicine
+    Perception
+    Survival
+Charisma
+    Deception
+    Intimidation
+    Performance
+    Persuasion
 
 Character:
 First Name x
@@ -89,7 +114,7 @@ Race x
 Class x
 Alignment x
 Attributes x
-Racial Modifiers
+Racial Modifiers x
 Class Modifiers
 Skills
 Spells
@@ -152,12 +177,36 @@ var dragonborn_last_name = ["Pabroth", "Sulziros", "Lorlasar", "Medhazar", "Lumi
 
 //-End names
 
+
+
+
 //Functions
+
+
+//Utilities
 
 function randomize(x) {
     var random_number = Math.floor(Math.random() * x.length);
     return random_number;
 }
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function roll_dice(sides, rolls) {
+
+    var numbers = [];
+    for (let i = 0; i < rolls; i++) {
+        numbers.push(Math.ceil(Math.random() * sides))
+    }
+
+    return numbers;
+}
+
+
+
+//Flavor
 
 function namer(gender,char_race) {
     var character_name;
@@ -281,12 +330,6 @@ function namer(gender,char_race) {
     return character_name;
 }
 
-function gender() {
-    var gender_array = ["male", "female", "either"];
-    var random_gender = gender_array[randomize(gender_array)];
-    return random_gender;
-}
-
 function pronoun1(gender) {
 
     var pronoun1 = "";
@@ -341,6 +384,12 @@ function pronoun3(gender) {
     return pronoun3;
 }
 
+function gender() {
+    var gender_array = ["male", "female", "either"];
+    var random_gender = gender_array[randomize(gender_array)];
+    return random_gender;
+}
+
 function isAre(gender) {
 
     var isAre = "";
@@ -370,70 +419,24 @@ function haveHas(gender) {
   return haveHas;
 }
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
-function roll_dice(sides, rolls) {
 
-    var numbers = [];
-    for (let i = 0; i < rolls; i++) {
-        numbers.push(Math.ceil(Math.random() * sides))
-    }
 
-    return numbers;
-}
-
-function race_stats(char_race) {
-
-    var stat_array = [];
-
-    switch (char_race) {
-        case "dragonborn":
-            stat_array = [2, 0, 0, 0, 0, 1];
-            break;
-        case "dwarf":
-            stat_array = [0, 0, 3, 0, 0, 0];
-            break;
-        case "elf":
-            stat_array = [0, 2, 0, 0, 0, 0];
-            break;
-        case "gnome":
-            stat_array = [0, 0, 0, 2, 0, 0];
-            break;
-        case "half-elf":
-            stat_array = [0, 0, 0, 0, 0, 2];
-            break;
-        case "halfling":
-            stat_array = [0, 2, 0, 0, 0, 0];
-            break;
-        case "half-orc":
-            stat_array = [2, 0, 1, 0, 0, 0];
-            break;
-        case "human":
-            stat_array = [1, 1, 1, 1, 1, 1];
-            break;
-        default:
-            stat_array = [2, 0, 0, 0, 1, 0];
-
-    }
-    return stat_array;
-}
-
-function stat_roller() {
-
-    var rolled_stat = roll_dice(6, 4);
-    rolled_stat.sort(function (a, b) { return b - a });
-    rolled_stat.pop();
-
-    var total = 0;
-    for (var i in rolled_stat) {
-        total += rolled_stat[i];
-    }
-    return total;
-}
+//Attributes and Features
 
 function rolled_stats() {
+    function stat_roller() {
+
+        var rolled_stat = roll_dice(6, 4);
+        rolled_stat.sort(function (a, b) { return b - a });
+        rolled_stat.pop();
+
+        var total = 0;
+        for (var i in rolled_stat) {
+            total += rolled_stat[i];
+        }
+        return total;
+    }
 
     var rolled_stats = [];
 
@@ -446,12 +449,15 @@ function rolled_stats() {
 function char_attributes(char_race) {
 
     var rolled = rolled_stats();
-    var race1 = race_stats(char_race);
-
-    var stats = rolled.map((a, i) => a + race1[i])
+    var race_stats = race_array(char_race);
+    var race = race_stats[1];
+    var stats = rolled.map((a, i) => a + race[i])
 
     return stats;
 }
+
+
+
 
 function modifiers(ability_score){
   var score_mod;
@@ -787,51 +793,51 @@ function aligner() {
     //Don't know if I want to make alignment truly random 
 }
 
-function racer() {
-    var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
-    var random_race = races[randomize(races)];
-    var race_input = document.getElementById("race").value;
-    var char_race;
-    switch (race_input) {
-        case "dragonborn":
-            char_race = "dragonborn";
-            break;
+//function racer() {
+//    var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
+//    var random_race = races[randomize(races)];
+//    var race_input = document.getElementById("race").value;
+//    var char_race;
+//    switch (race_input) {
+//        case "dragonborn":
+//            char_race = "dragonborn";
+//            break;
 
-        case "dwarf":
-            char_race = "dwarf";
+//        case "dwarf":
+//            char_race = "dwarf";
 
-            break;
-        case "elf":
-            char_race = "elf";
+//            break;
+//        case "elf":
+//            char_race = "elf";
 
-            break;
-        case "gnome":
-            char_race = "gnome";
+//            break;
+//        case "gnome":
+//            char_race = "gnome";
 
-            break;
-        case "half-elf":
-            char_race = "half-elf";
+//            break;
+//        case "half-elf":
+//            char_race = "half-elf";
 
-            break;
-        case "halfling":
-            char_race = "halfling";
+//            break;
+//        case "halfling":
+//            char_race = "halfling";
 
-            break;
-        case "half-orc":
-            char_race = "half-orc";
+//            break;
+//        case "half-orc":
+//            char_race = "half-orc";
 
-            break;
-        case "human":
-            char_race = "human";
+//            break;
+//        case "human":
+//            char_race = "human";
 
-        case "random":
-            char_race = random_race;
-            break;
-        default:
-            char_race = "tortle";
-    }
-    return char_race;
-}
+//        case "random":
+//            char_race = random_race;
+//            break;
+//        default:
+//            char_race = "tortle";
+//    }
+//    return char_race;
+//}
 
 function leveler() {
     var level = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -911,167 +917,286 @@ function leveler() {
     return char_level;
 }
 
-function speed(race) {
+//function speed(race) {
 
-    var speed;
-    switch (race) {
+//    var speed;
+//    switch (race) {
+
+//        case "dragonborn":
+//            speed = 30;
+//            break;
+
+//        case "dwarf":
+//            speed = 25;
+
+//            break;
+//        case "elf":
+//            speed = 30;
+
+//            break;
+//        case "gnome":
+//            speed = 25;
+
+//            break;
+//        case "half-elf":
+//            speed = 30;
+
+//            break;
+//        case "halfling":
+//            speed = 25;
+
+//            break;
+//        case "half-orc":
+//            speed = 30;
+
+//            break;
+//        case "human":
+//            speed = 30;
+//            break;
+//    }
+//    return speed;
+//}
+
+//function dark_vision(race) {
+
+//    var darkvision;
+
+//    switch (race) {
+
+//        case "dragonborn":
+//            darkvision = false;
+//            break;
+
+//        case "dwarf":
+//            darkvision = true;
+
+//            break;
+//        case "elf":
+//            darkvision = true;
+
+//            break;
+//        case "gnome":
+//            darkvision = true;
+
+//            break;
+//        case "half-elf":
+//            darkvision = true;
+
+//            break;
+//        case "halfling":
+//            darkvision = false;
+
+//            break;
+//        case "half-orc":
+//            darkvision = true;
+
+//            break;
+//        case "human":
+//            darkvision = false;
+//            break;
+//    }
+
+//    return darkvision;
+//}
+
+//function race_stats(char_race) {
+
+//    var stat_array = [];
+
+//    switch (char_race) {
+//        case "dragonborn":
+//            stat_array = [2, 0, 0, 0, 0, 1];
+//            break;
+//        case "dwarf":
+//            stat_array = [0, 0, 3, 0, 0, 0];
+//            break;
+//        case "elf":
+//            stat_array = [0, 2, 0, 0, 0, 0];
+//            break;
+//        case "gnome":
+//            stat_array = [0, 0, 0, 2, 0, 0];
+//            break;
+//        case "half-elf":
+//            stat_array = [0, 0, 0, 0, 0, 2];
+//            break;
+//        case "halfling":
+//            stat_array = [0, 2, 0, 0, 0, 0];
+//            break;
+//        case "half-orc":
+//            stat_array = [2, 0, 1, 0, 0, 0];
+//            break;
+//        case "human":
+//            stat_array = [1, 1, 1, 1, 1, 1];
+//            break;
+//        default:
+//            stat_array = [2, 0, 0, 0, 1, 0];
+
+//    }
+//    return stat_array;
+//}
+
+
+/*contains all of the key features of each core race. Left out race variants and a coupld race specific things I couldn't figure out how to implement in a reasonable timeframe. Will flesh out later.*/
+function race_array() {
+    var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
+    var random_race = races[randomize(races)];
+    var race_input = document.getElementById("race").value;
+
+    //array key: race, ability score increases, speed, languages, darkvision, features, skill proficiencies
+
+    switch (race_input) {
 
         case "dragonborn":
-            speed = 30;
+            features = [["Dragonborn"], [2, 0, 0, 0, 0, 1], [30], ["Common", "Draconic"], [false], ["Draconic Ancestry", "Breath Weapon"], ["none", "none"]];
             break;
-
         case "dwarf":
-            speed = 25;
-
+            features = [["Dwarf"], [0, 0, 3, 0, 0, 0], [25], ["Common", "Dwarvish"], [true], ["Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"], ["none", "none"]];
             break;
         case "elf":
-            speed = 30;
-
+            features = [["Elf"], [0, 2, 0, 0, 0, 0], [30], ["Common", "Elven"], [true], ["Fey Ancestry", "Trance", "Keen Senses"], ["none", "none"]];
             break;
         case "gnome":
-            speed = 25;
-
+            features = [["Gnome"], [0, 0, 0, 2, 0, 0], [25], ["Common", "Gnomish"], [true], ["Gnome Cunning"], ["none", "none"]];
             break;
         case "half-elf":
-            speed = 30;
-
+            function half_elf_ability_score() {
+                var half_elf_base_abil = [0, 0, 0, 0, 0, 2];
+                var random_abil_choice = [1, 1, 0, 0, 0, 0];
+                function shuffle(a) {
+                    var j, x, i;
+                    for (i = a.length - 1; i > 0; i--) {
+                        j = Math.floor(Math.random() * (i + 1));
+                        x = a[i];
+                        a[i] = a[j];
+                        a[j] = x;
+                    }
+                    return a;
+                }
+                var shuffled_random_abil_choice = shuffle(random_abil_choice);
+                var half_elf_abil = shuffled_random_abil_choice.map((a, i) => a + half_elf_base_abil[i]);
+                return half_elf_abil;
+            }            
+            features = [["Half-Elf"], half_elf_ability_score(), [30], ["Common", "Elven", "random"], [true], ["Fey Ancestry", "Skill Versatility"], ["random", "random"]];
             break;
         case "halfling":
-            speed = 25;
-
+            features = [["Halfling"], [0, 2, 0, 0, 0, 0], [25], ["Common", "Halfling"], [false], ["Lucky", "Brave", "Nimble"], ["none", "none"]];
             break;
         case "half-orc":
-            speed = 30;
-
+            features = [["Half-Orc"], [2, 0, 1, 0, 0, 0], [30], ["Common"], [true], ["Menacing"], ["intimidation", "none"]];
             break;
         case "human":
-            speed = 30;
+            features = [["Human"], [1, 1, 1, 1, 1, 1], [30], ["Common"], [false], ["none", "none"]];
             break;
-    }
-    return speed;
-}
+        case "random":
+            switch (random_race) {
 
-function dark_vision(race) {
-
-    var darkvision;
-
-    switch (race) {
-
-        case "dragonborn":
-            darkvision = false;
-            break;
-
-        case "dwarf":
-            darkvision = true;
-
-            break;
-        case "elf":
-            darkvision = true;
-
-            break;
-        case "gnome":
-            darkvision = true;
-
-            break;
-        case "half-elf":
-            darkvision = true;
-
-            break;
-        case "halfling":
-            darkvision = false;
-
-            break;
-        case "half-orc":
-            darkvision = true;
-
-            break;
-        case "human":
-            darkvision = false;
-            break;
+                case "dragonborn":
+                    features = [["Dragonborn"], [2, 0, 0, 0, 0, 1], [30], ["Common", "Draconic"], [false], ["Draconic Ancestry", "Breath Weapon"], ["none", "none"]];
+                    break;
+                case "dwarf":
+                    features = [["Dwarf"], [0, 0, 3, 0, 0, 0], [25], ["Common", "Dwarvish"], [true], ["Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"], ["none", "none"]];
+                    break;
+                case "elf":
+                    features = [["Elf"], [0, 2, 0, 0, 0, 0], [30], ["Common", "Elven"], [true], ["Fey Ancestry", "Trance", "Keen Senses"], ["none", "none"]];
+                    break;
+                case "gnome":
+                    features = [["Gnome"], [0, 0, 0, 2, 0, 0], [25], ["Common", "Gnomish"], [true], ["Gnome Cunning"], ["none", "none"]];
+                    break;
+                case "half-elf":
+                    features = [["Half-Elf"], [0, 0, 0, 0, 0, 2], [30], ["Common", "Elven", "random"], [true], ["Fey Ancestry", "Skill Versatility"], ["random", "random"]];
+                    break;
+                case "halfling":
+                    features = [["Halfling"], [0, 2, 0, 0, 0, 0], [25], ["Common", "Halfling"], [false], ["Lucky", "Brave", "Nimble"], ["none", "none"]];
+                    break;
+                case "half-orc":
+                    features = [["Half-Orc"], [2, 0, 1, 0, 0, 0], [30], ["Common"], [true], ["Menacing"], ["intimidation", "none"]];
+                    break;
+                case "human":
+                    features = [["Human"], [1, 1, 1, 1, 1, 1], [30], ["Common"], [false], ["none", "none"]];
+                    break;
+            }
     }
 
-    return darkvision;
+    return features;
 }
 
-
-function race_stat_array(char_race) {
-
-
-}
-
+/*contains all of the key features of each core background. Traits, ideals, bonds, and flaws are left out for a later function. */
 function background_array() {
+    var backgrounds = ["acolyte", "charlatan", "criminal", "entertainer", "folk hero", "gladiator", "guild artisan", "guild merchant", "hermit", "knight", "noble", "outlander", "pirate", "sage", "sailor", "soldier", "spy", "urchin"];
+    var back_input = document.getElementById("background").value;
+    var random_background = backgrounds[randomize(backgrounds)];
 
-    function background_picker() {
+    //function background_picker() {
 
-        var back_roll = Math.ceil(Math.random() * 18)
+    //    var back_roll = Math.ceil(Math.random() * 18)
 
-        switch (back_roll) {
+    //    switch (back_roll) {
 
-            case 1:
-                background = "acolyte";
-                break;
-            case 2:
-                background = "charlatan";
-                break;
-            case 3:
-                background = "criminal";
-                break;
-            case 4:
-                background = "entertainer";
-                break;
-            case 5:
-                background = "folk hero";
-                break;
-            case 6:
-                background = "gladiator";
-                break;
-            case 7:
-                background = "guild artisan";
-                break;
-            case 8:
-                background = "guild merchant";
-                break;
-            case 9:
-                background = "hermit";
-                break;
-            case 10:
-                background = "knight";
-                break;
-            case 11:
-                background = "noble";
-                break;
-            case 12:
-                background = "outlander";
-                break;
-            case 13:
-                background = "pirate";
-                break;
-            case 14:
-                background = "sage";
-                break;
-            case 15:
-                background = "sailor";
-                break;
-            case 16:
-                background = "soldier";
-                break;
-            case 17:
-                background = "spy";
-                break;
-            case 18:
-                background = "urchin";
-                break;
-        }
-        return background;
-    }
+    //        case 1:
+    //            background = "acolyte";
+    //            break;
+    //        case 2:
+    //            background = "charlatan";
+    //            break;
+    //        case 3:
+    //            background = "criminal";
+    //            break;
+    //        case 4:
+    //            background = "entertainer";
+    //            break;
+    //        case 5:
+    //            background = "folk hero";
+    //            break;
+    //        case 6:
+    //            background = "gladiator";
+    //            break;
+    //        case 7:
+    //            background = "guild artisan";
+    //            break;
+    //        case 8:
+    //            background = "guild merchant";
+    //            break;
+    //        case 9:
+    //            background = "hermit";
+    //            break;
+    //        case 10:
+    //            background = "knight";
+    //            break;
+    //        case 11:
+    //            background = "noble";
+    //            break;
+    //        case 12:
+    //            background = "outlander";
+    //            break;
+    //        case 13:
+    //            background = "pirate";
+    //            break;
+    //        case 14:
+    //            background = "sage";
+    //            break;
+    //        case 15:
+    //            background = "sailor";
+    //            break;
+    //        case 16:
+    //            background = "soldier";
+    //            break;
+    //        case 17:
+    //            background = "spy";
+    //            break;
+    //        case 18:
+    //            background = "urchin";
+    //            break;
+    //    }
+    //    return background;
+    //}
 
-    var rand_background = background_picker();
+/*    var rand_background = background_picker();*/
 
     var features;
 
-    //array key: background, skill proficiencies, languages, equipment, feature
+    //array key: background, skill proficiencies, languages, equipment, money, feature
 
-    switch (rand_background) {
+    switch (back_input) {
 
         case "acolyte":
             features = [["Acolyte"], ["Insight", "Religion"], ["random", "random"], ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"], [15], ["Shelter Of The Faithful"]];
@@ -1127,7 +1252,65 @@ function background_array() {
         case "urchin":
             features = [["Urchin"], ["Sleight Of Hand", "Stealth"], ["none", "none"], ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"], [10], ["City Secrets"]];
             break;
+        case "random":
+            switch (random_background) {
 
+                case "acolyte":
+                    features = [["Acolyte"], ["Insight", "Religion"], ["random", "random"], ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"], [15], ["Shelter Of The Faithful"]];
+                    break;
+                case "charlatan":
+                    features = [["Charlatan"], ["Deception", "Sleight of Hand"], ["none", "none"], ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"], [15], ["False Identity"]];
+                    break;
+                case "criminal":
+                    features = [["Criminal"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+                    break;
+                case "entertainer":
+                    features = [["Entertainer"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "A Musical Instrument", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+                    break;
+                case "folk hero":
+                    features = [["Folk Hero"], ["none", "none"], ["Animal Handling", "Survival"], ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"], [10], ["Rustic Hospitality"]];
+                    break;
+                case "gladiator":
+                    features = [["Gladiator"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+                    break;
+                case "guild artisan":
+                    features = [["Guild Artisan"], ["Insight", "Persuasion"], ["random", "none"], ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+                    break;
+                case "guild merchant":
+                    features = [["Guild Merchant"], ["Insight", "Persuasion"], ["random", "random"], ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+                    break;
+                case "hermit":
+                    features = [["Hermit"], ["Medicine", "Religion"], ["random", "none"], ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"], [5], ["Discovery"]];
+                    break;
+                case "knight":
+                    features = [["Knight"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Retainers"]];
+                    break;
+                case "noble":
+                    features = [["Noble"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Position of Privilege"]];
+                    break;
+                case "outlander":
+                    features = [["Outlander"], ["Athletics", "Survival"], ["random", "none"], ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"], [10], ["Wanderer"]];
+                    break;
+                case "pirate":
+                    features = [["Pirate"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Bad Reputation"]];
+                    break;
+                case "sage":
+                    features = [["Sage"], ["Arcana", "History"], ["random", "random"], ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"], [10], ["Researcher"]];
+                    break;
+                case "sailor":
+                    features = [["Sailor"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Ship's Passage"]];
+                    break;
+                case "soldier":
+                    features = [["Soldier"], ["Athletics", "Intimidation"], ["none", "none"], ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"], [10], ["Military Rank"]];
+                    break;
+                case "spy":
+                    features = [["Spy"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+                    break;
+                case "urchin":
+                    features = [["Urchin"], ["Sleight Of Hand", "Stealth"], ["none", "none"], ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"], [10], ["City Secrets"]];
+                    break;
+            }
+            break;
     }
     return features;
 }
@@ -1297,9 +1480,16 @@ function background_array() {
 function character() {
 
     var char_gender = gender();
+
     var char_level = leveler();
+
     var char_class = classer();
-    var char_race = racer();
+
+    var char_race_array = race_array();
+
+    var char_race = char_race_array[[0],[0]].toString().toLowerCase();
+
+
     var char_align = aligner();
     var char_name = namer(char_gender, char_race);
     var char_atts = char_attributes(char_race);
@@ -1311,7 +1501,7 @@ function character() {
     var wis_modifier = modifiers(char_atts[4]);
     var cha_modifier = modifiers(char_atts[5]);
     var char_hitpoints = hitpoints(con_modifier, char_level, char_class);
-    var move_speed = speed(char_race);
+    var move_speed = char_race_array[[0], [2]];
     var initiative = dex_modifier;
 
 
