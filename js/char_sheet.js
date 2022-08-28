@@ -456,9 +456,6 @@ function char_attributes(char_race) {
     return stats;
 }
 
-
-
-
 function modifiers(ability_score){
   var score_mod;
     switch(ability_score){
@@ -1047,16 +1044,44 @@ function race_array() {
     switch (race_input) {
 
         case "dragonborn":
-            features = [["Dragonborn"], [2, 0, 0, 0, 0, 1], [30], ["Common", "Draconic"], [false], ["Draconic Ancestry", "Breath Weapon"], ["none", "none"]];
+            features = [
+                ["Dragonborn"],
+                [2, 0, 0, 0, 0, 1],
+                [30],
+                ["Common", "Draconic", "none"],
+                [false],
+                ["Draconic Ancestry", "Breath Weapon"],
+                ["none", "none"]];
             break;
         case "dwarf":
-            features = [["Dwarf"], [0, 0, 3, 0, 0, 0], [25], ["Common", "Dwarvish"], [true], ["Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"], ["none", "none"]];
+            features = [
+                ["Dwarf"],
+                [0, 0, 3, 0, 0, 0],
+                [25],
+                ["Common", "Dwarvish", "none"],
+                [true],
+                ["Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"],
+                ["none", "none"]];
             break;
         case "elf":
-            features = [["Elf"], [0, 2, 0, 0, 0, 0], [30], ["Common", "Elven"], [true], ["Fey Ancestry", "Trance", "Keen Senses"], ["none", "none"]];
+            features = [
+                ["Elf"],
+                [0, 2, 0, 0, 0, 0],
+                [30],
+                ["Common", "Elven", "none"],
+                [true],
+                ["Fey Ancestry", "Trance", "Keen Senses"],
+                ["none", "none"]];
             break;
         case "gnome":
-            features = [["Gnome"], [0, 0, 0, 2, 0, 0], [25], ["Common", "Gnomish"], [true], ["Gnome Cunning"], ["none", "none"]];
+            features = [
+                ["Gnome"],
+                [0, 0, 0, 2, 0, 0],
+                [25],
+                ["Common", "Gnomish", "none"],
+                [true],
+                ["Gnome Cunning"],
+                ["none", "none"]];
             break;
         case "half-elf":
             function half_elf_ability_score() {
@@ -1076,45 +1101,145 @@ function race_array() {
                 var half_elf_abil = shuffled_random_abil_choice.map((a, i) => a + half_elf_base_abil[i]);
                 return half_elf_abil;
             }            
-            features = [["Half-Elf"], half_elf_ability_score(), [30], ["Common", "Elven", "random"], [true], ["Fey Ancestry", "Skill Versatility"], ["random", "random"]];
+            features = [
+                ["Half-Elf"],
+                half_elf_ability_score(),
+                [30],
+                ["Common", "Elven", "random"],
+                [true],
+                ["Fey Ancestry", "Skill Versatility"],
+                ["random", "random"]];
             break;
         case "halfling":
-            features = [["Halfling"], [0, 2, 0, 0, 0, 0], [25], ["Common", "Halfling"], [false], ["Lucky", "Brave", "Nimble"], ["none", "none"]];
+            features = [
+                ["Halfling"],
+                [0, 2, 0, 0, 0, 0],
+                [25],
+                ["Common", "Halfling", "none"],
+                [false],
+                ["Lucky", "Brave", "Nimble"],
+                ["none", "none"]];
             break;
         case "half-orc":
-            features = [["Half-Orc"], [2, 0, 1, 0, 0, 0], [30], ["Common"], [true], ["Menacing"], ["intimidation", "none"]];
+            features = [
+                ["Half-Orc"],
+                [2, 0, 1, 0, 0, 0],
+                [30],
+                ["Common", "Orc", "none"],
+                [true],
+                ["Menacing"],
+                ["intimidation", "none"]];
             break;
         case "human":
-            features = [["Human"], [1, 1, 1, 1, 1, 1], [30], ["Common"], [false], ["none", "none"]];
+            features = [
+                ["Human"],
+                [1, 1, 1, 1, 1, 1],
+                [30],
+                ["Common", "random", "none"],
+                [false],
+                ["none", "none"]];
             break;
         case "random":
             switch (random_race) {
 
                 case "dragonborn":
-                    features = [["Dragonborn"], [2, 0, 0, 0, 0, 1], [30], ["Common", "Draconic"], [false], ["Draconic Ancestry", "Breath Weapon"], ["none", "none"]];
+                    features = [
+                        ["Dragonborn"],
+                        [2, 0, 0, 0, 0, 1],
+                        [30],
+                        ["Common", "Draconic", "none"],
+                        [false],
+                        ["Draconic Ancestry", "Breath Weapon"],
+                        ["none", "none"]];
                     break;
                 case "dwarf":
-                    features = [["Dwarf"], [0, 0, 3, 0, 0, 0], [25], ["Common", "Dwarvish"], [true], ["Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"], ["none", "none"]];
+                    features = [
+                        ["Dwarf"],
+                        [0, 0, 3, 0, 0, 0],
+                        [25],
+                        ["Common", "Dwarvish", "none"],
+                        [true],
+                        ["Dwarven Resilience", "Dwarven Combat Training", "Stonecunning"],
+                        ["none", "none"]];
                     break;
                 case "elf":
-                    features = [["Elf"], [0, 2, 0, 0, 0, 0], [30], ["Common", "Elven"], [true], ["Fey Ancestry", "Trance", "Keen Senses"], ["none", "none"]];
+                    features = [
+                        ["Elf"],
+                        [0, 2, 0, 0, 0, 0],
+                        [30],
+                        ["Common", "Elven", "none"],
+                        [true],
+                        ["Fey Ancestry", "Trance", "Keen Senses"],
+                        ["none", "none"]];
                     break;
                 case "gnome":
-                    features = [["Gnome"], [0, 0, 0, 2, 0, 0], [25], ["Common", "Gnomish"], [true], ["Gnome Cunning"], ["none", "none"]];
+                    features = [
+                        ["Gnome"],
+                        [0, 0, 0, 2, 0, 0],
+                        [25],
+                        ["Common", "Gnomish", "none"],
+                        [true],
+                        ["Gnome Cunning"],
+                        ["none", "none"]];
                     break;
                 case "half-elf":
-                    features = [["Half-Elf"], [0, 0, 0, 0, 0, 2], [30], ["Common", "Elven", "random"], [true], ["Fey Ancestry", "Skill Versatility"], ["random", "random"]];
+                    function half_elf_ability_score() {
+                        var half_elf_base_abil = [0, 0, 0, 0, 0, 2];
+                        var random_abil_choice = [1, 1, 0, 0, 0, 0];
+                        function shuffle(a) {
+                            var j, x, i;
+                            for (i = a.length - 1; i > 0; i--) {
+                                j = Math.floor(Math.random() * (i + 1));
+                                x = a[i];
+                                a[i] = a[j];
+                                a[j] = x;
+                            }
+                            return a;
+                        }
+                        var shuffled_random_abil_choice = shuffle(random_abil_choice);
+                        var half_elf_abil = shuffled_random_abil_choice.map((a, i) => a + half_elf_base_abil[i]);
+                        return half_elf_abil;
+                    }
+                    features = [
+                        ["Half-Elf"],
+                        half_elf_ability_score(),
+                        [30],
+                        ["Common", "Elven", "random"],
+                        [true],
+                        ["Fey Ancestry", "Skill Versatility"],
+                        ["random", "random"]];
                     break;
                 case "halfling":
-                    features = [["Halfling"], [0, 2, 0, 0, 0, 0], [25], ["Common", "Halfling"], [false], ["Lucky", "Brave", "Nimble"], ["none", "none"]];
+                    features = [
+                        ["Halfling"],
+                        [0, 2, 0, 0, 0, 0],
+                        [25],
+                        ["Common", "Halfling", "none"],
+                        [false],
+                        ["Lucky", "Brave", "Nimble"],
+                        ["none", "none"]];
                     break;
                 case "half-orc":
-                    features = [["Half-Orc"], [2, 0, 1, 0, 0, 0], [30], ["Common"], [true], ["Menacing"], ["intimidation", "none"]];
+                    features = [
+                        ["Half-Orc"],
+                        [2, 0, 1, 0, 0, 0],
+                        [30],
+                        ["Common", "Orc", "none"],
+                        [true],
+                        ["Menacing"],
+                        ["intimidation", "none"]];
                     break;
                 case "human":
-                    features = [["Human"], [1, 1, 1, 1, 1, 1], [30], ["Common"], [false], ["none", "none"]];
+                    features = [
+                        ["Human"],
+                        [1, 1, 1, 1, 1, 1],
+                        [30],
+                        ["Common", "random", "none"],
+                        [false],
+                        ["none", "none"]];
                     break;
             }
+            break;
     }
 
     return features;
@@ -1123,7 +1248,9 @@ function race_array() {
 /*contains all of the key features of each core background. Traits, ideals, bonds, and flaws are left out for a later function. */
 function background_array() {
     var backgrounds = ["acolyte", "charlatan", "criminal", "entertainer", "folk hero", "gladiator", "guild artisan", "guild merchant", "hermit", "knight", "noble", "outlander", "pirate", "sage", "sailor", "soldier", "spy", "urchin"];
-    var back_input = document.getElementById("background").value;
+    //var back_input = document.getElementById("background").value;
+    var back_input = backgrounds[randomize(backgrounds)];
+
     var random_background = backgrounds[randomize(backgrounds)];
 
     //function background_picker() {
@@ -1199,115 +1326,331 @@ function background_array() {
     switch (back_input) {
 
         case "acolyte":
-            features = [["Acolyte"], ["Insight", "Religion"], ["random", "random"], ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"], [15], ["Shelter Of The Faithful"]];
+            features = [
+                ["Acolyte"],
+                ["Insight", "Religion"],
+                ["random", "random"],
+                ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"],
+                [15],
+                ["Shelter Of The Faithful"]];
             break;
         case "charlatan":
-            features = [["Charlatan"], ["Deception", "Sleight of Hand"], ["none", "none"], ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"], [15], ["False Identity"]];
+            features = [
+                ["Charlatan"],
+                ["Deception", "Sleight of Hand"],
+                ["none", "none"],
+                ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"],
+                [15],
+                ["False Identity"]];
             break;
         case "criminal":
-            features = [["Criminal"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+            features = [
+                ["Criminal"],
+                ["Deception", "Stealth"],
+                ["none", "none"],
+                ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
+                [15],
+                ["Criminal Contact"]];
             break;
         case "entertainer":
-            features = [["Entertainer"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "A Musical Instrument", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+            features = [
+                ["Entertainer"],
+                ["Acrobatics", "Performance"],
+                ["none", "none"],
+                ["A Costume", "A Musical Instrument", "An Admirer's Favor"],
+                [15],
+                ["By Popular Demand"]];
             break;
         case "folk hero":
-            features = [["Folk Hero"], ["none", "none"], ["Animal Handling", "Survival"], ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"], [10], ["Rustic Hospitality"]];
+            features = [
+                ["Folk Hero"],
+                ["Animal Handling", "Survival"],
+                ["none", "none"],
+                ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"],
+                [10],
+                ["Rustic Hospitality"]];
             break;
         case "gladiator":
-            features = [["Gladiator"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+            features = [
+                ["Gladiator"],
+                ["Acrobatics", "Performance"],
+                ["none", "none"],
+                ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"],
+                [15],
+                ["By Popular Demand"]];
             break;
         case "guild artisan":
-            features = [["Guild Artisan"], ["Insight", "Persuasion"], ["random", "none"], ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+            features = [
+                ["Guild Artisan"],
+                ["Insight", "Persuasion"],
+                ["random", "none"],
+                ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
+                [15],
+                ["Guild Membership"]];
             break;
         case "guild merchant":
-            features = [["Guild Merchant"], ["Insight", "Persuasion"], ["random", "random"], ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+            features = [
+                ["Guild Merchant"],
+                ["Insight", "Persuasion"],
+                ["random", "random"],
+                ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
+                [15],
+                ["Guild Membership"]];
             break;
         case "hermit":
-            features = [["Hermit"], ["Medicine", "Religion"], ["random", "none"], ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"], [5], ["Discovery"]];
+            features = [
+                ["Hermit"],
+                ["Medicine", "Religion"],
+                ["random", "none"],
+                ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"],
+                [5],
+                ["Discovery"]];
             break;
         case "knight":
-            features = [["Knight"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Retainers"]];
+            features = [
+                ["Knight"],
+                ["History", "Persuasion"],
+                ["random", "none"],
+                ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
+                [25],
+                ["Retainers"]];
             break;
         case "noble":
-            features = [["Noble"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Position of Privilege"]];
+            features = [
+                ["Noble"],
+                ["History", "Persuasion"],
+                ["random", "none"],
+                ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
+                [25],
+                ["Position of Privilege"]];
             break;
         case "outlander":
-            features = [["Outlander"], ["Athletics", "Survival"], ["random", "none"], ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"], [10], ["Wanderer"]];
+            features = [
+                ["Outlander"],
+                ["Athletics", "Survival"],
+                ["random", "none"],
+                ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"],
+                [10],
+                ["Wanderer"]];
             break;
         case "pirate":
-            features = [["Pirate"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Bad Reputation"]];
+            features = [
+                ["Pirate"],
+                ["Athletics", "Perception"],
+                ["none", "none"],
+                ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
+                [10],
+                ["Bad Reputation"]];
             break;
         case "sage":
-            features = [["Sage"], ["Arcana", "History"], ["random", "random"], ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"], [10], ["Researcher"]];
+            features = [
+                ["Sage"],
+                ["Arcana", "History"],
+                ["random", "random"],
+                ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"],
+                [10],
+                ["Researcher"]];
             break;
         case "sailor":
-            features = [["Sailor"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Ship's Passage"]];
+            features = [
+                ["Sailor"],
+                ["Athletics", "Perception"],
+                ["none", "none"],
+                ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
+                [10],
+                ["Ship's Passage"]];
             break;
         case "soldier":
-            features = [["Soldier"], ["Athletics", "Intimidation"], ["none", "none"], ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"], [10], ["Military Rank"]];
+            features = [
+                ["Soldier"],
+                ["Athletics", "Intimidation"],
+                ["none", "none"],
+                ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"],
+                [10],
+                ["Military Rank"]];
             break;
         case "spy":
-            features = [["Spy"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+            features = [
+                ["Spy"],
+                ["Deception", "Stealth"],
+                ["none", "none"],
+                ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
+                [15],
+                ["Criminal Contact"]];
             break;
         case "urchin":
-            features = [["Urchin"], ["Sleight Of Hand", "Stealth"], ["none", "none"], ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"], [10], ["City Secrets"]];
+            features = [
+                ["Urchin"],
+                ["Sleight Of Hand", "Stealth"],
+                ["none", "none"],
+                ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"],
+                [10],
+                ["City Secrets"]];
             break;
         case "random":
             switch (random_background) {
 
                 case "acolyte":
-                    features = [["Acolyte"], ["Insight", "Religion"], ["random", "random"], ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"], [15], ["Shelter Of The Faithful"]];
+                    features = [
+                        ["Acolyte"],
+                        ["Insight", "Religion"],
+                        ["random", "random"],
+                        ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"],
+                        [15],
+                        ["Shelter Of The Faithful"]];
                     break;
                 case "charlatan":
-                    features = [["Charlatan"], ["Deception", "Sleight of Hand"], ["none", "none"], ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"], [15], ["False Identity"]];
+                    features = [
+                        ["Charlatan"],
+                        ["Deception", "Sleight of Hand"],
+                        ["none", "none"],
+                        ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"],
+                        [15],
+                        ["False Identity"]];
                     break;
                 case "criminal":
-                    features = [["Criminal"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+                    features = [
+                        ["Criminal"],
+                        ["Deception", "Stealth"],
+                        ["none", "none"],
+                        ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
+                        [15],
+                        ["Criminal Contact"]];
                     break;
                 case "entertainer":
-                    features = [["Entertainer"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "A Musical Instrument", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+                    features = [
+                        ["Entertainer"],
+                        ["Acrobatics", "Performance"],
+                        ["none", "none"],
+                        ["A Costume", "A Musical Instrument", "An Admirer's Favor"],
+                        [15],
+                        ["By Popular Demand"]];
                     break;
                 case "folk hero":
-                    features = [["Folk Hero"], ["none", "none"], ["Animal Handling", "Survival"], ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"], [10], ["Rustic Hospitality"]];
+                    features = [
+                        ["Folk Hero"],
+                        ["none", "none"],
+                        ["Animal Handling", "Survival"],
+                        ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"],
+                        [10],
+                        ["Rustic Hospitality"]];
                     break;
                 case "gladiator":
-                    features = [["Gladiator"], ["Acrobatics", "Performance"], ["none", "none"], ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"], [15], ["By Popular Demand"]];
+                    features = [
+                        ["Gladiator"],
+                        ["Acrobatics", "Performance"],
+                        ["none", "none"],
+                        ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"],
+                        [15],
+                        ["By Popular Demand"]];
                     break;
                 case "guild artisan":
-                    features = [["Guild Artisan"], ["Insight", "Persuasion"], ["random", "none"], ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+                    features = [
+                        ["Guild Artisan"],
+                        ["Insight", "Persuasion"],
+                        ["random", "none"],
+                        ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
+                        [15],
+                        ["Guild Membership"]];
                     break;
                 case "guild merchant":
-                    features = [["Guild Merchant"], ["Insight", "Persuasion"], ["random", "random"], ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"], [15], ["Guild Membership"]];
+                    features = [
+                        ["Guild Merchant"],
+                        ["Insight", "Persuasion"],
+                        ["random", "random"],
+                        ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
+                        [15],
+                        ["Guild Membership"]];
                     break;
                 case "hermit":
-                    features = [["Hermit"], ["Medicine", "Religion"], ["random", "none"], ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"], [5], ["Discovery"]];
+                    features = [
+                        ["Hermit"],
+                        ["Medicine", "Religion"],
+                        ["random", "none"],
+                        ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"],
+                        [5],
+                        ["Discovery"]];
                     break;
                 case "knight":
-                    features = [["Knight"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Retainers"]];
+                    features = [
+                        ["Knight"],
+                        ["History", "Persuasion"],
+                        ["random", "none"],
+                        ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
+                        [25],
+                        ["Retainers"]];
                     break;
                 case "noble":
-                    features = [["Noble"], ["History", "Persuasion"], ["random", "none"], ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"], [25], ["Position of Privilege"]];
+                    features = [
+                        ["Noble"],
+                        ["History", "Persuasion"],
+                        ["random", "none"],
+                        ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
+                        [25],
+                        ["Position of Privilege"]];
                     break;
                 case "outlander":
-                    features = [["Outlander"], ["Athletics", "Survival"], ["random", "none"], ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"], [10], ["Wanderer"]];
+                    features = [
+                        ["Outlander"],
+                        ["Athletics", "Survival"],
+                        ["random", "none"],
+                        ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"],
+                        [10],
+                        ["Wanderer"]];
                     break;
                 case "pirate":
-                    features = [["Pirate"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Bad Reputation"]];
+                    features = [
+                        ["Pirate"],
+                        ["Athletics", "Perception"],
+                        ["none", "none"],
+                        ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
+                        [10],
+                        ["Bad Reputation"]];
                     break;
                 case "sage":
-                    features = [["Sage"], ["Arcana", "History"], ["random", "random"], ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"], [10], ["Researcher"]];
+                    features = [
+                        ["Sage"],
+                        ["Arcana", "History"],
+                        ["random", "random"],
+                        ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"],
+                        [10],
+                        ["Researcher"]];
                     break;
                 case "sailor":
-                    features = [["Sailor"], ["Athletics", "Perception"], ["none", "none"], ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"], [10], ["Ship's Passage"]];
+                    features = [
+                        ["Sailor"],
+                        ["Athletics", "Perception"],
+                        ["none", "none"],
+                        ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
+                        [10],
+                        ["Ship's Passage"]];
                     break;
                 case "soldier":
-                    features = [["Soldier"], ["Athletics", "Intimidation"], ["none", "none"], ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"], [10], ["Military Rank"]];
+                    features = [
+                        ["Soldier"],
+                        ["Athletics", "Intimidation"],
+                        ["none", "none"],
+                        ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"],
+                        [10],
+                        ["Military Rank"]];
                     break;
                 case "spy":
-                    features = [["Spy"], ["Deception", "Stealth"], ["none", "none"], ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"], [15], ["Criminal Contact"]];
+                    features = [
+                        ["Spy"],
+                        ["Deception", "Stealth"],
+                        ["none", "none"],
+                        ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
+                        [15],
+                        ["Criminal Contact"]];
                     break;
                 case "urchin":
-                    features = [["Urchin"], ["Sleight Of Hand", "Stealth"], ["none", "none"], ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"], [10], ["City Secrets"]];
+                    features = [
+                        ["Urchin"],
+                        ["Sleight Of Hand", "Stealth"],
+                        ["none", "none"],
+                        ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"],
+                        [10],
+                        ["City Secrets"]];
                     break;
             }
             break;
@@ -1316,165 +1659,34 @@ function background_array() {
 }
 
 
-//function languages(race, background) {
+function languages(char_race, char_background) {
 
-//    function random_language() {
+    var languages_known = [char_race[0], char_race[1], char_race[2], char_background[0], char_background[1]];
 
-//        var rand_lang;
+    function none_lang(lang) {
+        return lang != "none";
+    }
 
-//        switch (rand_lang) {
+    var clean_languages_known = languages_known.filter(none_lang);
 
-//            case 1:
-//                rand_lang = "Common";
-//                break;
-//            case 2:
-//                rand_lang = "Dwarvish";
-//                break;
-//            case 3:
-//                rand_lang = "Elvish";
-//                break;
-//            case 4:
-//                rand_lang = "Giant";
-//                break;
-//            case 5:
-//                rand_lang = "Gnomish";
-//                break;
-//            case 6:
-//                rand_lang = "Goblin";
-//                break;
-//            case 7:
-//                rand_lang = "Halfling";
-//                break;
-//            case 8:
-//                rand_lang = "Orc";
-//                break;
-//            case 9:
-//                rand_lang = "Abyssal";
-//                break;
-//            case 10:
-//                rand_lang = "Celestial";
-//                break;
-//            case 11:
-//                rand_lang = "Deep Speech";
-//                break;
-//            case 12:
-//                rand_lang = "Draconic";
-//                break;
-//            case 13:
-//                rand_lang = "Infernal";
-//                break;
-//            case 14:
-//                rand_lang = "Primordial";
-//                break;
-//            case 15:
-//                rand_lang = "Sylvan";
-//                break;
-//            case 16:
-//                rand_lang = "Undercommon";
-//                break;
+    function random_language(lang) {
 
-//        } 
+        var lang_list = ["Common", "Dwarvish", "Elven", "Giant", "Gnomish", "Goblin", "Halfling", "Orc", "Abyssal", "Celestial", "Deep Speech", "Draconic", "Infernal", "Primordial", "Sylvan", "Undercommon"];
 
-//    }
+        for (let i = 0; i < lang.length; i++) {
+            if (lang[i] == "random") {
+                lang[i] = lang_list[randomize(lang_list)];
+            }
+            lang_list = lang_list.filter(item => !lang.includes(item));
+        }
 
-//    var race_lang;
+        return lang;
+    }
+    languages_known = random_language(clean_languages_known);
+    return languages_known;
+}
 
-//        switch (race) {
-
-//            case 1:
-//                race_lang = [];
-//                break;
-//            case 2:
-//                race_lang = [];
-//                break;
-//            case 3:
-//                race_lang = [];
-//                break;
-//            case 4:
-//                race_lang = [];
-//                break;
-//            case 5:
-//                race_lang = [];
-//                break;
-//            case 6:
-//                race_lang = [];
-//                break;
-//            case 7:
-//                race_lang = [];
-//                break;
-//            case 8:
-//                race_lang = [];
-//                break;
-
-//        } 
-
-
-//    var back_lang;
-
-//        switch (background) {
-
-//            case "acolyte":
-//                back_lang = [];
-//                break;
-//            case "charlatan":
-//                back_lang = [];
-//                break;
-//            case "criminal":
-//                back_lang = [];
-//                break;
-//            case "entertainer":
-//                back_lang = [];
-//                break;
-//            case "folk hero":
-//                back_lang = [];
-//                break;
-//            case "gladiator":
-//                back_lang = [];
-//                break;
-//            case "guild artisan":
-//                back_lang = [];
-//                break;
-//            case "guild merchant":
-//                back_lang = [];
-//                break;
-//            case "hermit":
-//                back_lang = [];
-//                break;
-//            case "knight":
-//                back_lang = [];
-//                break;
-//            case "noble":
-//                back_lang = [];
-//                break;
-//            case "outlander":
-//                back_lang = [];
-//                break;
-//            case "pirate":
-//                back_lang = [];
-//                break;
-//            case "sage":
-//                back_lang = [];
-//                break;
-//            case "sailor":
-//                back_lang = [];
-//                break;
-//            case "soldier":
-//                back_lang = [];
-//                break;
-//            case "spy":
-//                back_lang = [];
-//                break;
-//            case "urchin":
-//                back_lang = [];
-//                break;
-
-//        }
-
-//    Common, Dwarvish, Elvish, Giant, Gnomish, Goblin, Halfling, Orc, Abyssal, Celestial, Deep Speech, Draconic, Infernal, Primordial, Sylvan, and Undercommon
-
-//}
-
-//Output
+/*Output*/
 
 
 function character() {
@@ -1483,12 +1695,19 @@ function character() {
 
     var char_level = leveler();
 
-    var char_class = classer();
+    var char_class_array = classer();
+
+    var char_class = char_class_array;
 
     var char_race_array = race_array();
 
-    var char_race = char_race_array[[0],[0]].toString().toLowerCase();
+    var char_race = char_race_array[0][0].toLowerCase();
 
+    var char_background_array = background_array();
+
+    var char_background = char_background_array[0][0];
+
+    var char_languages = languages(char_race_array[3], char_background_array[2]);
 
     var char_align = aligner();
     var char_name = namer(char_gender, char_race);
@@ -1501,7 +1720,7 @@ function character() {
     var wis_modifier = modifiers(char_atts[4]);
     var cha_modifier = modifiers(char_atts[5]);
     var char_hitpoints = hitpoints(con_modifier, char_level, char_class);
-    var move_speed = char_race_array[[0], [2]];
+    var move_speed = char_race_array[2][0];
     var initiative = dex_modifier;
 
 
@@ -1519,7 +1738,10 @@ function character() {
     <br> ${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency)}${char_proficiency}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
     <br> Speed: ${move_speed}
-    <br> Initiative: ${initiative}`;
+    <br> Initiative: ${plus_minus(initiative)}${initiative}
+    <br> Languages: ${char_languages}
+    <br> Background: ${char_background}`;
+
 
     document.getElementById("charSheet").innerHTML = char_sheet;
   
