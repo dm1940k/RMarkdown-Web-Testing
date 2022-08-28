@@ -1248,76 +1248,10 @@ function race_array() {
 /*contains all of the key features of each core background. Traits, ideals, bonds, and flaws are left out for a later function. */
 function background_array() {
     var backgrounds = ["acolyte", "charlatan", "criminal", "entertainer", "folk hero", "gladiator", "guild artisan", "guild merchant", "hermit", "knight", "noble", "outlander", "pirate", "sage", "sailor", "soldier", "spy", "urchin"];
-    //var back_input = document.getElementById("background").value;
-    var back_input = backgrounds[randomize(backgrounds)];
+    var back_input = document.getElementById("background").value;
+
 
     var random_background = backgrounds[randomize(backgrounds)];
-
-    //function background_picker() {
-
-    //    var back_roll = Math.ceil(Math.random() * 18)
-
-    //    switch (back_roll) {
-
-    //        case 1:
-    //            background = "acolyte";
-    //            break;
-    //        case 2:
-    //            background = "charlatan";
-    //            break;
-    //        case 3:
-    //            background = "criminal";
-    //            break;
-    //        case 4:
-    //            background = "entertainer";
-    //            break;
-    //        case 5:
-    //            background = "folk hero";
-    //            break;
-    //        case 6:
-    //            background = "gladiator";
-    //            break;
-    //        case 7:
-    //            background = "guild artisan";
-    //            break;
-    //        case 8:
-    //            background = "guild merchant";
-    //            break;
-    //        case 9:
-    //            background = "hermit";
-    //            break;
-    //        case 10:
-    //            background = "knight";
-    //            break;
-    //        case 11:
-    //            background = "noble";
-    //            break;
-    //        case 12:
-    //            background = "outlander";
-    //            break;
-    //        case 13:
-    //            background = "pirate";
-    //            break;
-    //        case 14:
-    //            background = "sage";
-    //            break;
-    //        case 15:
-    //            background = "sailor";
-    //            break;
-    //        case 16:
-    //            background = "soldier";
-    //            break;
-    //        case 17:
-    //            background = "spy";
-    //            break;
-    //        case 18:
-    //            background = "urchin";
-    //            break;
-    //    }
-    //    return background;
-    //}
-
-/*    var rand_background = background_picker();*/
 
     var features;
 
@@ -1529,8 +1463,8 @@ function background_array() {
                 case "folk hero":
                     features = [
                         ["Folk Hero"],
-                        ["none", "none"],
                         ["Animal Handling", "Survival"],
+                        ["none", "none"],
                         ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"],
                         [10],
                         ["Rustic Hospitality"]];
@@ -1661,7 +1595,7 @@ function background_array() {
 
 function languages(char_race, char_background) {
 
-    var languages_known = [char_race[0], char_race[1], char_race[2], char_background[0], char_background[1]];
+    var languages_known = char_race.concat(char_background);;
 
     function none_lang(lang) {
         return lang != "none";
@@ -1685,6 +1619,20 @@ function languages(char_race, char_background) {
     languages_known = random_language(clean_languages_known);
     return languages_known;
 }
+
+function language_string(char_languages) {
+    console.log(char_languages)
+    var lang_string =""; 
+
+    for (let i = 0; i < char_languages.length-1; i++) {
+        lang_string += char_languages[i];
+        lang_string += ", ";
+    }
+    lang_string += "and ";
+    console.log(typeof char_languages[char_languages.length-1]);
+    return lang_string;
+}
+
 
 /*Output*/
 
@@ -1739,7 +1687,7 @@ function character() {
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
     <br> Speed: ${move_speed}
     <br> Initiative: ${plus_minus(initiative)}${initiative}
-    <br> Languages: ${char_languages}
+    <br> Languages: ${language_string(char_languages)}
     <br> Background: ${char_background}`;
 
 
