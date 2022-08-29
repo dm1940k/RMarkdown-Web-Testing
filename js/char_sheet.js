@@ -40,7 +40,7 @@ Once that is produced, it should be a simple matter to expand to include the abo
 
 Completed so far (8/16/22): name (based on gender), race, level, class, alignment. Need to go deeper to get attributes and hitpoints.
 
-
+8/28/22: Name, race, level, class, alignment, background, speed, ability scores, racial modifiers, initiative, health.
 
 A list of core inclusions.
 
@@ -739,12 +739,6 @@ function classer() {
     return char_class;
 }
 
-//function class_stats(char_class) {
-
-    
-
-//}
-
 function aligner() {
     var alignment_array = ["Lawful Good", "Lawful Nuetral", "Lawful Evil", "Nuetral Good", "True Nuetral", "Nuetral Evil", "Chaotic Good", "Chaotic Nuetral", "Chaotic Evil"];
     var random_alignment = alignment_array[randomize(alignment_array)];
@@ -789,52 +783,6 @@ function aligner() {
 
     //Don't know if I want to make alignment truly random 
 }
-
-//function racer() {
-//    var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
-//    var random_race = races[randomize(races)];
-//    var race_input = document.getElementById("race").value;
-//    var char_race;
-//    switch (race_input) {
-//        case "dragonborn":
-//            char_race = "dragonborn";
-//            break;
-
-//        case "dwarf":
-//            char_race = "dwarf";
-
-//            break;
-//        case "elf":
-//            char_race = "elf";
-
-//            break;
-//        case "gnome":
-//            char_race = "gnome";
-
-//            break;
-//        case "half-elf":
-//            char_race = "half-elf";
-
-//            break;
-//        case "halfling":
-//            char_race = "halfling";
-
-//            break;
-//        case "half-orc":
-//            char_race = "half-orc";
-
-//            break;
-//        case "human":
-//            char_race = "human";
-
-//        case "random":
-//            char_race = random_race;
-//            break;
-//        default:
-//            char_race = "tortle";
-//    }
-//    return char_race;
-//}
 
 function leveler() {
     var level = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -1942,7 +1890,9 @@ function character() {
     <br> Speed: ${move_speed}
     <br> Initiative: ${plus_minus(initiative)}${initiative}
     <br> Languages: ${language_string(char_languages)}
-    <br> Background: ${char_background}`;
+    <br> Background: ${char_background}
+    <br>
+    <br>`;
 
 
     document.getElementById("charSheet").innerHTML = char_sheet;
