@@ -661,17 +661,27 @@ function hitdie(char_class) {
 }
 
 function hitpoints(con_mod, char_level, char_class) {
-  var first_level = hitdie(char_class) + con_mod;
+  var first_level = hitdie(char_class);
   var subsequent_rolls = (roll_dice(hitdie(char_class), char_level));
   
-  var sub_roll_total = 0;
-  for (var i in subsequent_rolls) {
-      sub_roll_total += subsequent_rolls[i];
-  }
-  
-  
-  var hp = first_level + sub_roll_total + (con_mod * char_level);
-  return hp;
+    var sub_roll_total = 0;
+    console.log(first_level);
+    console.log(subsequent_rolls);
+    if (char_level > 1) {
+        for (var i in subsequent_rolls) {
+            sub_roll_total += subsequent_rolls[i];
+        }
+    }
+    var con_mod_bonus = con_mod * char_level;
+    console.log(sub_roll_total);
+    if (con_mod < 1) {
+        con_mod_bonus = 1 * char_level;
+    }
+    console.log(con_mod_bonus);
+  var hp = first_level + sub_roll_total + con_mod_bonus;
+    return hp;
+
+    //lowest a con mod bonus can go is 1, as asserted by D&D co-creator for 5E Mike Mearls here: https://twitter.com/mikemearls/status/582601826031132673
 }
 
 function classer() {
