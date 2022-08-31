@@ -97,7 +97,7 @@ Intelligence
     Religion
 Wisdom
     Animal Handling
-    Insight
+    insight
     Medicine
     Perception
     Survival
@@ -665,19 +665,17 @@ function hitpoints(con_mod, char_level, char_class) {
   var subsequent_rolls = (roll_dice(hitdie(char_class), char_level));
   
     var sub_roll_total = 0;
-    console.log(first_level);
-    console.log(subsequent_rolls);
     if (char_level > 1) {
         for (var i in subsequent_rolls) {
             sub_roll_total += subsequent_rolls[i];
         }
     }
     var con_mod_bonus = con_mod * char_level;
-    console.log(sub_roll_total);
+
     if (con_mod < 1) {
         con_mod_bonus = 1 * char_level;
     }
-    console.log(con_mod_bonus);
+
   var hp = first_level + sub_roll_total + con_mod_bonus;
     return hp;
 
@@ -872,12 +870,873 @@ function leveler() {
     return char_level;
 }
 
+function proficiencies(char_class_array, char_background_array, char_race_array) {
+
+    var profs = [];
+    var skills_array = ["athletics", "acrobatics", "sleight of hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal handling", "insight", "medicine", "perception", "survival", "deception", "intimidation", "performance", "persuasion"];
+
+
+
+    switch (char_background_array[1][0]) {
+
+
+        case "athletics":
+            profs.push("athletics");
+            break;
+
+        case "acrobatics":
+            profs.push("acrobatics");
+            break;
+
+        case "sleight of hand":
+            profs.push("sleight of hand");
+            break;
+
+        case "stealth":
+            profs.push("stealth");
+            break;
+
+        case "arcana":
+            profs.push("arcana");
+            break;
+
+        case "history":
+            profs.push("history");
+            break;
+
+        case "investigation":
+            profs.push("investigation");
+            break;
+
+        case "nature":
+            profs.push("nature");
+            break;
+
+        case "religion":
+            profs.push("religion");
+            break;
+
+        case "animal handling":
+            profs.push("animal handling");
+            break;
+
+        case "insight":
+            profs.push("insight");
+            break;
+
+        case "medicine":
+            profs.push("medicine");
+            break;
+
+        case "perception":
+            profs.push("perception");
+            break;
+
+        case "survival":
+            profs.push("survival");
+            break;
+
+        case "deception":
+            profs.push("deception");
+            break;
+
+        case "intimidation":
+            profs.push("intimidation");
+            break;
+
+        case "performance":
+            profs.push("performance");
+            break;
+
+        case "persuasion":
+            profs.push("persuasion");
+            break;
+        case "none":
+            break;
+
+        case "random":
+            switch (skills_array[randomize(skills_array)]) {
+
+
+                case "athletics":
+                    profs.push("athletics");
+                    break;
+
+                case "acrobatics":
+                    profs.push("acrobatics");
+                    break;
+
+                case "sleight of hand":
+                    profs.push("sleight of hand");
+                    break;
+
+                case "stealth":
+                    profs.push("stealth");
+                    break;
+
+                case "arcana":
+                    profs.push("arcana");
+                    break;
+
+                case "history":
+                    profs.push("history");
+                    break;
+
+                case "investigation":
+                    profs.push("investigation");
+                    break;
+
+                case "nature":
+                    profs.push("nature");
+                    break;
+
+                case "religion":
+                    profs.push("religion");
+                    break;
+
+                case "animal handling":
+                    profs.push("animal handling");
+                    break;
+
+                case "insight":
+                    profs.push("insight");
+                    break;
+
+                case "medicine":
+                    profs.push("medicine");
+                    break;
+
+                case "perception":
+                    profs.push("perception");
+                    break;
+
+                case "survival":
+                    profs.push("survival");
+                    break;
+
+                case "deception":
+                    profs.push("deception");
+                    break;
+
+                case "intimidation":
+                    profs.push("intimidation");
+                    break;
+
+                case "performance":
+                    profs.push("performance");
+                    break;
+
+                case "persuasion":
+                    profs.push("persuasion");
+                    break;
+            }
+            break;
+
+
+    }
+    switch (char_background_array[1][1]) {
+
+
+        case "athletics":
+            profs.push("athletics");
+            break;
+
+        case "acrobatics":
+            profs.push("acrobatics");
+            break;
+
+        case "sleight of hand":
+            profs.push("sleight of hand");
+            break;
+
+        case "stealth":
+            profs.push("stealth");
+            break;
+
+        case "arcana":
+            profs.push("arcana");
+            break;
+
+        case "history":
+            profs.push("history");
+            break;
+
+        case "investigation":
+            profs.push("investigation");
+            break;
+
+        case "nature":
+            profs.push("nature");
+            break;
+
+        case "religion":
+            profs.push("religion");
+            break;
+
+        case "animal handling":
+            profs.push("animal handling");
+            break;
+
+        case "insight":
+            profs.push("insight");
+            break;
+
+        case "medicine":
+            profs.push("medicine");
+            break;
+
+        case "perception":
+            profs.push("perception");
+            break;
+
+        case "survival":
+            profs.push("survival");
+            break;
+
+        case "deception":
+            profs.push("deception");
+            break;
+
+        case "intimidation":
+            profs.push("intimidation");
+            break;
+
+        case "performance":
+            profs.push("performance");
+            break;
+
+        case "persuasion":
+            profs.push("persuasion");
+            break;
+        case "none":
+            break;
+
+        case "random":
+            switch (skills_array[randomize(skills_array)]) {
+                case "athletics":
+                    profs.push("athletics");
+                    break;
+
+                case "acrobatics":
+                    profs.push("acrobatics");
+                    break;
+
+                case "sleight of hand":
+                    profs.push("sleight of hand");
+                    break;
+
+                case "stealth":
+                    profs.push("stealth");
+                    break;
+
+                case "arcana":
+                    profs.push("arcana");
+                    break;
+
+                case "history":
+                    profs.push("history");
+                    break;
+
+                case "investigation":
+                    profs.push("investigation");
+                    break;
+
+                case "nature":
+                    profs.push("nature");
+                    break;
+
+                case "religion":
+                    profs.push("religion");
+                    break;
+
+                case "animal handling":
+                    profs.push("animal handling");
+                    break;
+
+                case "insight":
+                    profs.push("insight");
+                    break;
+
+                case "medicine":
+                    profs.push("medicine");
+                    break;
+
+                case "perception":
+                    profs.push("perception");
+                    break;
+
+                case "survival":
+                    profs.push("survival");
+                    break;
+
+                case "deception":
+                    profs.push("deception");
+                    break;
+
+                case "intimidation":
+                    profs.push("intimidation");
+                    break;
+
+                case "performance":
+                    profs.push("performance");
+                    break;
+
+                case "persuasion":
+                    profs.push("persuasion");
+                    break;
+            }
+            break;
+
+
+    }
+
+
+    switch (char_race_array[6][0]) {
+
+
+        case "athletics":
+            profs.push("athletics");
+            break;
+
+        case "acrobatics":
+            profs.push("acrobatics");
+            break;
+
+        case "sleight of hand":
+            profs.push("sleight of hand");
+            break;
+
+        case "stealth":
+            profs.push("stealth");
+            break;
+
+        case "arcana":
+            profs.push("arcana");
+            break;
+
+        case "history":
+            profs.push("history");
+            break;
+
+        case "investigation":
+            profs.push("investigation");
+            break;
+
+        case "nature":
+            profs.push("nature");
+            break;
+
+        case "religion":
+            profs.push("religion");
+            break;
+
+        case "animal handling":
+            profs.push("animal handling");
+            break;
+
+        case "insight":
+            profs.push("insight");
+            break;
+
+        case "medicine":
+            profs.push("medicine");
+            break;
+
+        case "perception":
+            profs.push("perception");
+            break;
+
+        case "survival":
+            profs.push("survival");
+            break;
+
+        case "deception":
+            profs.push("deception");
+            break;
+
+        case "intimidation":
+            profs.push("intimidation");
+            break;
+
+        case "performance":
+            profs.push("performance");
+            break;
+
+        case "persuasion":
+            profs.push("persuasion");
+            break;
+        case "none":
+            break;
+
+        case "random":
+            switch (skills_array[randomize(skills_array)]) {
+
+
+                case "athletics":
+                    profs.push("athletics");
+                    break;
+
+                case "acrobatics":
+                    profs.push("acrobatics");
+                    break;
+
+                case "sleight of hand":
+                    profs.push("sleight of hand");
+                    break;
+
+                case "stealth":
+                    profs.push("stealth");
+                    break;
+
+                case "arcana":
+                    profs.push("arcana");
+                    break;
+
+                case "history":
+                    profs.push("history");
+                    break;
+
+                case "investigation":
+                    profs.push("investigation");
+                    break;
+
+                case "nature":
+                    profs.push("nature");
+                    break;
+
+                case "religion":
+                    profs.push("religion");
+                    break;
+
+                case "animal handling":
+                    profs.push("animal handling");
+                    break;
+
+                case "insight":
+                    profs.push("insight");
+                    break;
+
+                case "medicine":
+                    profs.push("medicine");
+                    break;
+
+                case "perception":
+                    profs.push("perception");
+                    break;
+
+                case "survival":
+                    profs.push("survival");
+                    break;
+
+                case "deception":
+                    profs.push("deception");
+                    break;
+
+                case "intimidation":
+                    profs.push("intimidation");
+                    break;
+
+                case "performance":
+                    profs.push("performance");
+                    break;
+
+                case "persuasion":
+                    profs.push("persuasion");
+                    break;
+            }
+            break;
+
+
+    }
+    switch (char_race_array[6][1]) {
+
+
+        case "athletics":
+            profs.push("athletics");
+            break;
+
+        case "acrobatics":
+            profs.push("acrobatics");
+            break;
+
+        case "sleight of hand":
+            profs.push("sleight of hand");
+            break;
+
+        case "stealth":
+            profs.push("stealth");
+            break;
+
+        case "arcana":
+            profs.push("arcana");
+            break;
+
+        case "history":
+            profs.push("history");
+            break;
+
+        case "investigation":
+            profs.push("investigation");
+            break;
+
+        case "nature":
+            profs.push("nature");
+            break;
+
+        case "religion":
+            profs.push("religion");
+            break;
+
+        case "animal handling":
+            profs.push("animal handling");
+            break;
+
+        case "insight":
+            profs.push("insight");
+            break;
+
+        case "medicine":
+            profs.push("medicine");
+            break;
+
+        case "perception":
+            profs.push("perception");
+            break;
+
+        case "survival":
+            profs.push("survival");
+            break;
+
+        case "deception":
+            profs.push("deception");
+            break;
+
+        case "intimidation":
+            profs.push("intimidation");
+            break;
+
+        case "performance":
+            profs.push("performance");
+            break;
+
+        case "persuasion":
+            profs.push("persuasion");
+            break;
+        case "none":
+            break;
+
+        case "random":
+            switch (skills_array[randomize(skills_array)]) {
+
+
+                case "athletics":
+                    profs.push("athletics");
+                    break;
+
+                case "acrobatics":
+                    profs.push("acrobatics");
+                    break;
+
+                case "sleight of hand":
+                    profs.push("sleight of hand");
+                    break;
+
+                case "stealth":
+                    profs.push("stealth");
+                    break;
+
+                case "arcana":
+                    profs.push("arcana");
+                    break;
+
+                case "history":
+                    profs.push("history");
+                    break;
+
+                case "investigation":
+                    profs.push("investigation");
+                    break;
+
+                case "nature":
+                    profs.push("nature");
+                    break;
+
+                case "religion":
+                    profs.push("religion");
+                    break;
+
+                case "animal handling":
+                    profs.push("animal handling");
+                    break;
+
+                case "insight":
+                    profs.push("insight");
+                    break;
+
+                case "medicine":
+                    profs.push("medicine");
+                    break;
+
+                case "perception":
+                    profs.push("perception");
+                    break;
+
+                case "survival":
+                    profs.push("survival");
+                    break;
+
+                case "deception":
+                    profs.push("deception");
+                    break;
+
+                case "intimidation":
+                    profs.push("intimidation");
+                    break;
+
+                case "performance":
+                    profs.push("performance");
+                    break;
+
+                case "persuasion":
+                    profs.push("persuasion");
+                    break;
+            }
+            break;
+
+
+    }
+
+    console.log(profs);
+    return profs;
+}
+
+function skiller(char_atts, char_proficiencies, char_proficiency_bonus) {
+
+    // Array key: athletics, acrobatics, sleight of hand, stealth, arcana, history, investigation, nature, religion, animal_handling, insight, medicine, perception, survival, deception, intimidation, performance, persuasion
+
+
+    var str_modifier = modifiers(char_atts[0]);
+    var dex_modifier = modifiers(char_atts[1]);
+    var int_modifier = modifiers(char_atts[3]);
+    var wis_modifier = modifiers(char_atts[4]);
+    var cha_modifier = modifiers(char_atts[5]);
+
+    //Strength
+    var athletics = str_modifier;
+    //Dexterity
+    var acrobatics = dex_modifier;
+    var sleight_of_hand = dex_modifier;
+    var stealth = dex_modifier;
+    //Intelligence
+    var arcana = int_modifier;
+    var history = int_modifier;
+    var investigation = int_modifier;
+    var nature = int_modifier;
+    var religion = int_modifier;
+    //Wisdom
+    var animal_handling = wis_modifier;
+    var insight = wis_modifier;
+    var medicine = wis_modifier;
+    var perception = wis_modifier;
+    var survival = wis_modifier;
+    //Charisma
+    var deception = cha_modifier;
+    var intimidation = cha_modifier;
+    var performance = cha_modifier;
+    var persuasion = cha_modifier;
+    
+
+    for (var i = 0; i < char_proficiencies; i++) {
+        switch (char_proficiencies[i]) {
+
+            case "athletics":
+                athletics += char_proficiency_bonus;
+                break;
+
+            case "acrobatics":
+                acrobatics += char_proficiency_bonus;
+                break;
+
+            case "sleight of hand":
+                sleight_of_hand += char_proficiency_bonus;
+                break;
+
+            case "stealth":
+                stealth += char_proficiency_bonus;
+                break;
+
+            case "arcana":
+                arcana += char_proficiency_bonus;
+                break;
+
+            case "history":
+                history += char_proficiency_bonus;
+                break;
+
+            case "investigation":
+                investigation += char_proficiency_bonus;
+                break;
+
+            case "nature":
+                nature += char_proficiency_bonus;
+                break;
+
+            case "religion":
+                religion += char_proficiency_bonus;
+                break;
+
+            case "animal handling":
+                animal_handling += char_proficiency_bonus;
+                break;
+
+            case "insight":
+                insight += char_proficiency_bonus;
+                break;
+
+            case "medicine":
+                medicine += char_proficiency_bonus;
+                break;
+
+            case "perception":
+                perception += char_proficiency_bonus;
+                break;
+
+            case "survival":
+                survival += char_proficiency_bonus;
+                break;
+
+            case "deception":
+                deception += char_proficiency_bonus;
+                break;
+
+            case "intimidation":
+                intimidation += char_proficiency_bonus;
+                break;
+
+            case "performance":
+                performance += char_proficiency_bonus;
+                break;
+
+            case "persuasion":
+                persuasion += char_proficiency_bonus;
+                break;
+        }
+
+    }
+
+
+    //Dupe a switch for char_profiencies 4 and 5 once char_race_array system is implemented.
+
+    var modded_skills = [athletics, acrobatics, sleight_of_hand, stealth, arcana, history, investigation, nature, religion, animal_handling, insight, medicine, perception, survival, deception, intimidation, performance, persuasion];
+    return modded_skills;
+}
+
+
+
+
+function proficiency_marker(char_proficiencies) {
+
+    var proficient = false;
+
+
+    // Array key: athletics, acrobatics, sleight of hand, stealth, arcana, history, investigation, nature, religion, animal_handling, insight, medicine, perception, survival, deception, intimidation, performance, persuasion
+
+    switch (char_proficiencies[0]) {
+
+
+        case "athletics":
+            proficient = true;
+            break;
+
+        case "acrobatics":
+            proficient = true;
+            break;
+
+        case "sleight of hand":
+            proficient = true;
+
+            break;
+
+        case "stealth":
+            proficient = true;
+            break;
+
+        case "arcana":
+            proficient = true;
+            break;
+
+        case "history":
+            proficient = true;
+            break;
+
+        case "investigation":
+            proficient = true;
+            break;
+
+        case "nature":
+            proficient = true;
+            break;
+
+        case "religion":
+            proficient = true;
+            break;
+
+        case "animal handling":
+            proficient = true;
+            break;
+
+        case "insight":
+            proficient = true;
+            break;
+
+        case "medicine":
+            proficient = true;
+            break;
+
+        case "perception":
+            proficient = true;
+            break;
+
+        case "survival":
+            proficient = true;
+            break;
+
+        case "deception":
+            proficient = true;
+            break;
+
+        case "intimidation":
+            proficient = true;
+            break;
+
+        case "performance":
+            proficient = true;
+            break;
+
+        case "persuasion":
+            proficient = true;
+            break;
+
+        case "random":
+            profs.push("random");
+            break;
+
+        case "none":
+            break;
+    }
+
+
+    //Add class array switches when applicable
+
+    return proficient;
+}
+
 function spell_slots(char_class, level) {
 
     var slots;
 
     switch (char_class) {
-        //array key: first layer is levels from 1 - 20, second level is cantrips known, spells known, then spell slots from 1 to 9.
+        //array key: first dimension is levels from 1 - 20, second dimension is cantrips known, spells known, then spell slots from 1 to 9.
         case "bard":
             var slots = [
                 [2, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -1088,7 +1947,7 @@ function spell_slots(char_class, level) {
     }
 
     var spell_slots_by_level = slots[level-1];
-    console.log(spell_slots_by_level);
+
     return spell_slots_by_level;
 
 }
@@ -1347,6 +2206,7 @@ function race_array() {
                 [30],
                 ["Common", "random", "none"],
                 [false],
+                ["none"],
                 ["none", "none"]];
             break;
         case "random":
@@ -1446,6 +2306,7 @@ function race_array() {
                         [30],
                         ["Common", "random", "none"],
                         [false],
+                        ["none"],
                         ["none", "none"]];
                     break;
             }
@@ -1472,7 +2333,7 @@ function background_array() {
         case "acolyte":
             features = [
                 ["Acolyte"],
-                ["Insight", "Religion"],
+                ["insight", "religion"],
                 ["random", "random"],
                 ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"],
                 [15],
@@ -1481,7 +2342,7 @@ function background_array() {
         case "charlatan":
             features = [
                 ["Charlatan"],
-                ["Deception", "Sleight of Hand"],
+                ["deception", "sleight of hand"],
                 ["none", "none"],
                 ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"],
                 [15],
@@ -1490,7 +2351,7 @@ function background_array() {
         case "criminal":
             features = [
                 ["Criminal"],
-                ["Deception", "Stealth"],
+                ["deception", "stealth"],
                 ["none", "none"],
                 ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
                 [15],
@@ -1499,7 +2360,7 @@ function background_array() {
         case "entertainer":
             features = [
                 ["Entertainer"],
-                ["Acrobatics", "Performance"],
+                ["acrobatics", "performance"],
                 ["none", "none"],
                 ["A Costume", "A Musical Instrument", "An Admirer's Favor"],
                 [15],
@@ -1508,7 +2369,7 @@ function background_array() {
         case "folk hero":
             features = [
                 ["Folk Hero"],
-                ["Animal Handling", "Survival"],
+                ["animal handling", "survival"],
                 ["none", "none"],
                 ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"],
                 [10],
@@ -1517,7 +2378,7 @@ function background_array() {
         case "gladiator":
             features = [
                 ["Gladiator"],
-                ["Acrobatics", "Performance"],
+                ["scrobatics", "performance"],
                 ["none", "none"],
                 ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"],
                 [15],
@@ -1526,7 +2387,7 @@ function background_array() {
         case "guild artisan":
             features = [
                 ["Guild Artisan"],
-                ["Insight", "Persuasion"],
+                ["insight", "persuasion"],
                 ["random", "none"],
                 ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
                 [15],
@@ -1535,7 +2396,7 @@ function background_array() {
         case "guild merchant":
             features = [
                 ["Guild Merchant"],
-                ["Insight", "Persuasion"],
+                ["insight", "persuasion"],
                 ["random", "random"],
                 ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
                 [15],
@@ -1544,7 +2405,7 @@ function background_array() {
         case "hermit":
             features = [
                 ["Hermit"],
-                ["Medicine", "Religion"],
+                ["medicine", "religion"],
                 ["random", "none"],
                 ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"],
                 [5],
@@ -1553,7 +2414,7 @@ function background_array() {
         case "knight":
             features = [
                 ["Knight"],
-                ["History", "Persuasion"],
+                ["history", "persuasion"],
                 ["random", "none"],
                 ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
                 [25],
@@ -1562,7 +2423,7 @@ function background_array() {
         case "noble":
             features = [
                 ["Noble"],
-                ["History", "Persuasion"],
+                ["history", "persuasion"],
                 ["random", "none"],
                 ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
                 [25],
@@ -1571,7 +2432,7 @@ function background_array() {
         case "outlander":
             features = [
                 ["Outlander"],
-                ["Athletics", "Survival"],
+                ["athletics", "survival"],
                 ["random", "none"],
                 ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"],
                 [10],
@@ -1580,7 +2441,7 @@ function background_array() {
         case "pirate":
             features = [
                 ["Pirate"],
-                ["Athletics", "Perception"],
+                ["athletics", "perception"],
                 ["none", "none"],
                 ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
                 [10],
@@ -1589,7 +2450,7 @@ function background_array() {
         case "sage":
             features = [
                 ["Sage"],
-                ["Arcana", "History"],
+                ["arcana", "history"],
                 ["random", "random"],
                 ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"],
                 [10],
@@ -1598,7 +2459,7 @@ function background_array() {
         case "sailor":
             features = [
                 ["Sailor"],
-                ["Athletics", "Perception"],
+                ["athletics", "perception"],
                 ["none", "none"],
                 ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
                 [10],
@@ -1607,7 +2468,7 @@ function background_array() {
         case "soldier":
             features = [
                 ["Soldier"],
-                ["Athletics", "Intimidation"],
+                ["athletics", "intimidation"],
                 ["none", "none"],
                 ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"],
                 [10],
@@ -1616,7 +2477,7 @@ function background_array() {
         case "spy":
             features = [
                 ["Spy"],
-                ["Deception", "Stealth"],
+                ["deception", "stealth"],
                 ["none", "none"],
                 ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
                 [15],
@@ -1625,7 +2486,7 @@ function background_array() {
         case "urchin":
             features = [
                 ["Urchin"],
-                ["Sleight Of Hand", "Stealth"],
+                ["sleight of hand", "stealth"],
                 ["none", "none"],
                 ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"],
                 [10],
@@ -1637,7 +2498,7 @@ function background_array() {
                 case "acolyte":
                     features = [
                         ["Acolyte"],
-                        ["Insight", "Religion"],
+                        ["insight", "religion"],
                         ["random", "random"],
                         ["A Holy Symbol", "A Prayer Book", "Vestments", "A Set Of Common Clothes"],
                         [15],
@@ -1646,7 +2507,7 @@ function background_array() {
                 case "charlatan":
                     features = [
                         ["Charlatan"],
-                        ["Deception", "Sleight of Hand"],
+                        ["deception", "sleight of hand"],
                         ["none", "none"],
                         ["A Set Of Fine Clothes", "A Disguise Kit", "Con Tools"],
                         [15],
@@ -1655,7 +2516,7 @@ function background_array() {
                 case "criminal":
                     features = [
                         ["Criminal"],
-                        ["Deception", "Stealth"],
+                        ["deception", "stealth"],
                         ["none", "none"],
                         ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
                         [15],
@@ -1664,7 +2525,7 @@ function background_array() {
                 case "entertainer":
                     features = [
                         ["Entertainer"],
-                        ["Acrobatics", "Performance"],
+                        ["acrobatics", "performance"],
                         ["none", "none"],
                         ["A Costume", "A Musical Instrument", "An Admirer's Favor"],
                         [15],
@@ -1673,7 +2534,7 @@ function background_array() {
                 case "folk hero":
                     features = [
                         ["Folk Hero"],
-                        ["Animal Handling", "Survival"],
+                        ["animal handling", "survival"],
                         ["none", "none"],
                         ["A Set of Artisan's Tools", "A Shovel", "An Iron Pot", "A Set Of Common Clothes"],
                         [10],
@@ -1682,7 +2543,7 @@ function background_array() {
                 case "gladiator":
                     features = [
                         ["Gladiator"],
-                        ["Acrobatics", "Performance"],
+                        ["acrobatics", "performance"],
                         ["none", "none"],
                         ["A Costume", "An Unusual But Inexpensive Weapon", "An Admirer's Favor"],
                         [15],
@@ -1691,7 +2552,7 @@ function background_array() {
                 case "guild artisan":
                     features = [
                         ["Guild Artisan"],
-                        ["Insight", "Persuasion"],
+                        ["insight", "persuasion"],
                         ["random", "none"],
                         ["A Set Of Artisan Tools", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
                         [15],
@@ -1700,7 +2561,7 @@ function background_array() {
                 case "guild merchant":
                     features = [
                         ["Guild Merchant"],
-                        ["Insight", "Persuasion"],
+                        ["insight", "persuasion"],
                         ["random", "random"],
                         ["A Cart With Mule", "A Guild Letter Of Introduction", "A Set Of Traveler's Clothes"],
                         [15],
@@ -1709,7 +2570,7 @@ function background_array() {
                 case "hermit":
                     features = [
                         ["Hermit"],
-                        ["Medicine", "Religion"],
+                        ["medicine", "religion"],
                         ["random", "none"],
                         ["A Scroll Stuffed Full Of Research Notes", "A Winter Blanket", "A Set Of Common Clothes", "An Herbalism Kit"],
                         [5],
@@ -1718,7 +2579,7 @@ function background_array() {
                 case "knight":
                     features = [
                         ["Knight"],
-                        ["History", "Persuasion"],
+                        ["history", "persuasion"],
                         ["random", "none"],
                         ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
                         [25],
@@ -1727,7 +2588,7 @@ function background_array() {
                 case "noble":
                     features = [
                         ["Noble"],
-                        ["History", "Persuasion"],
+                        ["history", "persuasion"],
                         ["random", "none"],
                         ["A Set Of Fine Clothes", "A Signet Ring", "A Scroll Of Pedigree"],
                         [25],
@@ -1736,7 +2597,7 @@ function background_array() {
                 case "outlander":
                     features = [
                         ["Outlander"],
-                        ["Athletics", "Survival"],
+                        ["athletics", "survival"],
                         ["random", "none"],
                         ["A Staff", "A Hunting Trap", "A Hunt Trophy", "A Set Of Traveler's Clothes"],
                         [10],
@@ -1745,7 +2606,7 @@ function background_array() {
                 case "pirate":
                     features = [
                         ["Pirate"],
-                        ["Athletics", "Perception"],
+                        ["athletics", "perception"],
                         ["none", "none"],
                         ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
                         [10],
@@ -1754,7 +2615,7 @@ function background_array() {
                 case "sage":
                     features = [
                         ["Sage"],
-                        ["Arcana", "History"],
+                        ["arcana", "history"],
                         ["random", "random"],
                         ["A Bottle Of Ink", "A Quill", "A Small Knife", "A Letter From A Dead Colleague Posing A Question You Have Not Yet Been Able To Answer", "A Set Of Common Clothes"],
                         [10],
@@ -1763,7 +2624,7 @@ function background_array() {
                 case "sailor":
                     features = [
                         ["Sailor"],
-                        ["Athletics", "Perception"],
+                        ["athletics", "perception"],
                         ["none", "none"],
                         ["A Belaying Pin", "50 Feet Of Silk Rope", "A Lucky Charm", "A Set Of Common Clothes"],
                         [10],
@@ -1772,7 +2633,7 @@ function background_array() {
                 case "soldier":
                     features = [
                         ["Soldier"],
-                        ["Athletics", "Intimidation"],
+                        ["athletics", "intimidation"],
                         ["none", "none"],
                         ["An Insignia Of Rank", "A War Trophy", "A Set Of Bone Dice", "A Set Of Common Clothes"],
                         [10],
@@ -1781,7 +2642,7 @@ function background_array() {
                 case "spy":
                     features = [
                         ["Spy"],
-                        ["Deception", "Stealth"],
+                        ["deception", "stealth"],
                         ["none", "none"],
                         ["A Gaming Set", "Thieves' Tools", "A Crowbar", "A Set Of Dark Common Clothes Including A Hood"],
                         [15],
@@ -1790,7 +2651,7 @@ function background_array() {
                 case "urchin":
                     features = [
                         ["Urchin"],
-                        ["Sleight Of Hand", "Stealth"],
+                        ["sleight of hand", "stealth"],
                         ["none", "none"],
                         ["A Small Knife", "A Map Of Your Home City", "A Pet Mouse", "A Token From Your Parents", "A Set Of Common Clothes"],
                         [10],
@@ -1831,16 +2692,43 @@ function languages(char_race, char_background) {
 }
 
 function language_string(char_languages) {
-    console.log(char_languages)
     var lang_string =""; 
 
-    for (let i = 0; i < char_languages.length-1; i++) {
-        lang_string += char_languages[i];
-        lang_string += ", ";
+    if (char_languages.length == 1) {
+        lang_string += char_languages[0];
+    } else if (char_languages.length == 2) {
+        lang_string += char_languages[0];
+        lang_string += " and ";
+        lang_string += char_languages[1];
+    } else {
+        for (let i = 0; i < char_languages.length - 1; i++) {
+            lang_string += char_languages[i];
+            lang_string += ", ";
+        }
+        lang_string += "and ";
+        lang_string += char_languages[char_languages.length - 1];
     }
-    lang_string += "and ";
-    lang_string += char_languages[char_languages.length-1];
     return lang_string;
+}
+
+function proficiency_string(char_proficiencies) {
+    var prof_string = "";
+
+    if (char_proficiencies.length == 1) {
+        prof_string += capitalizeFirstLetter(char_proficiencies[0]);
+    } else if (char_proficiencies.length == 2) {
+        prof_string += capitalizeFirstLetter(char_proficiencies[0]);
+        prof_string += " and ";
+        prof_string += capitalizeFirstLetter(char_proficiencies[1]);
+    } else {
+        for (let i = 0; i < char_proficiencies.length - 1; i++) {
+            prof_string += capitalizeFirstLetter(char_proficiencies[i]);
+            prof_string += ", ";
+        }
+        prof_string += "and ";
+        prof_string += capitalizeFirstLetter(char_proficiencies[char_proficiencies.length - 1]);
+    }
+    return prof_string;
 }
 
 
@@ -1870,7 +2758,7 @@ function character() {
     var char_align = aligner();
     var char_name = namer(char_gender, char_race);
     var char_atts = char_attributes(char_race);
-    var char_proficiency = proficiency_bonus(char_level);
+    var char_proficiency_bonus = proficiency_bonus(char_level);
     var str_modifier = modifiers(char_atts[0]);
     var dex_modifier = modifiers(char_atts[1]);
     var con_modifier = modifiers(char_atts[2]);
@@ -1882,8 +2770,9 @@ function character() {
     var initiative = dex_modifier;
 
     var class_spell_slots = spell_slots(char_class, char_level);
-    console.log(class_spell_slots);
-    console.log(char_class);
+
+    var char_skills = skiller(char_atts, char_proficiencies, char_proficiency_bonus);
+    var char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
 
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
@@ -1895,16 +2784,37 @@ function character() {
     <br> Int: ${char_atts[3]} (${plus_minus(int_modifier)}${int_modifier})
     <br> Wis: ${char_atts[4]} (${plus_minus(wis_modifier)}${wis_modifier})
     <br> Cha: ${char_atts[5]} (${plus_minus(cha_modifier)}${cha_modifier})
-    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency)}${char_proficiency}. 
+    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency_bonus)}${char_proficiency_bonus}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
     <br> Speed: ${move_speed}
     <br> Initiative: ${plus_minus(initiative)}${initiative}
-    <br> Languages: ${language_string(char_languages)}
+    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} can speak ${language_string(char_languages)}
     <br> Background: ${char_background}
     <br>
-    <br>`;
+    <br>
+    Skills
+    <br>Athletics: ${plus_minus(char_skills[0])}${char_skills[0]}
+    <br>Acrobatics: ${plus_minus(char_skills[1])}${char_skills[1]}
+    <br>Sleight Of Hand: ${plus_minus(char_skills[2])}${char_skills[2]}
+    <br>Stealth: ${plus_minus(char_skills[3])}${char_skills[3]}
+    <br>Arcana: ${plus_minus(char_skills[4])}${char_skills[4]}
+    <br>History: ${plus_minus(char_skills[5])}${char_skills[5]}
+    <br>Investigation: ${plus_minus(char_skills[6])}${char_skills[6]}
+    <br>Nature: ${plus_minus(char_skills[7])}${char_skills[7]}
+    <br>Religion: ${plus_minus(char_skills[8])}${char_skills[8]}
+    <br>Animal Handling: ${plus_minus(char_skills[9])}${char_skills[9]}
+    <br>Insight: ${plus_minus(char_skills[10])}${char_skills[10]}
+    <br>Medicine: ${plus_minus(char_skills[11])}${char_skills[11]}
+    <br>Perception: ${plus_minus(char_skills[12])}${char_skills[12]}
+    <br>Survival: ${plus_minus(char_skills[13])}${char_skills[13]}
+    <br>Deception: ${plus_minus(char_skills[14])}${char_skills[14]}
+    <br>Intimidation: ${plus_minus(char_skills[15])}${char_skills[15]}
+    <br>Performance: ${plus_minus(char_skills[16])}${char_skills[16]}
+    <br>Persuasion: ${plus_minus(char_skills[17])}${char_skills[17]}
 
-
+    <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}`;
+    
+    console.log(char_skills);
     document.getElementById("charSheet").innerHTML = char_sheet;
   
 }
