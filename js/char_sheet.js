@@ -874,6 +874,7 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
     var profs = [];
     var skills_array = ["athletics", "acrobatics", "sleight of hand", "stealth", "arcana", "history", "investigation", "nature", "religion", "animal handling", "insight", "medicine", "perception", "survival", "deception", "intimidation", "performance", "persuasion"];
+     
 
 
 
@@ -882,76 +883,102 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
         case "athletics":
             profs.push("athletics");
+             
             break;
 
         case "acrobatics":
             profs.push("acrobatics");
+             
+
             break;
 
         case "sleight of hand":
             profs.push("sleight of hand");
+             
+
             break;
 
         case "stealth":
             profs.push("stealth");
+             
+
             break;
 
         case "arcana":
             profs.push("arcana");
+             
+
             break;
 
         case "history":
             profs.push("history");
+             
+
             break;
 
         case "investigation":
             profs.push("investigation");
+             
+
             break;
 
         case "nature":
             profs.push("nature");
+             
+
             break;
 
         case "religion":
             profs.push("religion");
+             
             break;
 
         case "animal handling":
             profs.push("animal handling");
+             
             break;
 
         case "insight":
             profs.push("insight");
+             
             break;
 
         case "medicine":
             profs.push("medicine");
+             
             break;
 
         case "perception":
             profs.push("perception");
+             
             break;
 
         case "survival":
             profs.push("survival");
+             
             break;
 
         case "deception":
             profs.push("deception");
+             
             break;
 
         case "intimidation":
             profs.push("intimidation");
+             
             break;
 
         case "performance":
             profs.push("performance");
+             
             break;
 
         case "persuasion":
             profs.push("persuasion");
+             
             break;
         case "none":
+            console.log("none");
             break;
 
         case "random":
@@ -960,74 +987,99 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
                 case "athletics":
                     profs.push("athletics");
+                     
                     break;
 
                 case "acrobatics":
                     profs.push("acrobatics");
+                     
+
                     break;
 
                 case "sleight of hand":
                     profs.push("sleight of hand");
+                     
+
                     break;
 
                 case "stealth":
                     profs.push("stealth");
+                     
+
                     break;
 
                 case "arcana":
                     profs.push("arcana");
+                     
+
                     break;
 
                 case "history":
                     profs.push("history");
+                     
+
                     break;
 
                 case "investigation":
                     profs.push("investigation");
+                     
+
                     break;
 
                 case "nature":
                     profs.push("nature");
+                     
+
                     break;
 
                 case "religion":
                     profs.push("religion");
+                     
                     break;
 
                 case "animal handling":
                     profs.push("animal handling");
+                     
                     break;
 
                 case "insight":
                     profs.push("insight");
+                     
                     break;
 
                 case "medicine":
                     profs.push("medicine");
+                     
                     break;
 
                 case "perception":
                     profs.push("perception");
+                     
                     break;
 
                 case "survival":
                     profs.push("survival");
+                     
                     break;
 
                 case "deception":
                     profs.push("deception");
+                     
                     break;
 
                 case "intimidation":
                     profs.push("intimidation");
+                     
                     break;
 
                 case "performance":
                     profs.push("performance");
+                     
                     break;
 
                 case "persuasion":
                     profs.push("persuasion");
+                     
                     break;
             }
             break;
@@ -1039,150 +1091,203 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
         case "athletics":
             profs.push("athletics");
+             
             break;
 
         case "acrobatics":
             profs.push("acrobatics");
+             
+
             break;
 
         case "sleight of hand":
             profs.push("sleight of hand");
+             
+
             break;
 
         case "stealth":
             profs.push("stealth");
+             
+
             break;
 
         case "arcana":
             profs.push("arcana");
+             
+
             break;
 
         case "history":
             profs.push("history");
+             
+
             break;
 
         case "investigation":
             profs.push("investigation");
+             
+
             break;
 
         case "nature":
             profs.push("nature");
+             
+
             break;
 
         case "religion":
             profs.push("religion");
+             
             break;
 
         case "animal handling":
             profs.push("animal handling");
+             
             break;
 
         case "insight":
             profs.push("insight");
+             
             break;
 
         case "medicine":
             profs.push("medicine");
+             
             break;
 
         case "perception":
             profs.push("perception");
+             
             break;
 
         case "survival":
             profs.push("survival");
+             
             break;
 
         case "deception":
             profs.push("deception");
+             
             break;
 
         case "intimidation":
             profs.push("intimidation");
+             
             break;
 
         case "performance":
             profs.push("performance");
+             
             break;
 
         case "persuasion":
             profs.push("persuasion");
+             
             break;
         case "none":
+            console.log("none");
             break;
 
         case "random":
             switch (skills_array[randomize(skills_array)]) {
+
+
                 case "athletics":
                     profs.push("athletics");
+                     
                     break;
 
                 case "acrobatics":
                     profs.push("acrobatics");
+                     
+
                     break;
 
                 case "sleight of hand":
                     profs.push("sleight of hand");
+                     
+
                     break;
 
                 case "stealth":
                     profs.push("stealth");
+                     
+
                     break;
 
                 case "arcana":
                     profs.push("arcana");
+                     
+
                     break;
 
                 case "history":
                     profs.push("history");
+                     
+
                     break;
 
                 case "investigation":
                     profs.push("investigation");
+                     
+
                     break;
 
                 case "nature":
                     profs.push("nature");
+                     
+
                     break;
 
                 case "religion":
                     profs.push("religion");
+                     
                     break;
 
                 case "animal handling":
                     profs.push("animal handling");
+                     
                     break;
 
                 case "insight":
                     profs.push("insight");
+                     
                     break;
 
                 case "medicine":
                     profs.push("medicine");
+                     
                     break;
 
                 case "perception":
                     profs.push("perception");
+                     
                     break;
 
                 case "survival":
                     profs.push("survival");
+                     
                     break;
 
                 case "deception":
                     profs.push("deception");
+                     
                     break;
 
                 case "intimidation":
                     profs.push("intimidation");
+                     
                     break;
 
                 case "performance":
                     profs.push("performance");
+                     
                     break;
 
                 case "persuasion":
                     profs.push("persuasion");
+                     
                     break;
             }
             break;
@@ -1196,76 +1301,102 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
         case "athletics":
             profs.push("athletics");
+             
             break;
 
         case "acrobatics":
             profs.push("acrobatics");
+             
+
             break;
 
         case "sleight of hand":
             profs.push("sleight of hand");
+             
+
             break;
 
         case "stealth":
             profs.push("stealth");
+             
+
             break;
 
         case "arcana":
             profs.push("arcana");
+             
+
             break;
 
         case "history":
             profs.push("history");
+             
+
             break;
 
         case "investigation":
             profs.push("investigation");
+             
+
             break;
 
         case "nature":
             profs.push("nature");
+             
+
             break;
 
         case "religion":
             profs.push("religion");
+             
             break;
 
         case "animal handling":
             profs.push("animal handling");
+             
             break;
 
         case "insight":
             profs.push("insight");
+             
             break;
 
         case "medicine":
             profs.push("medicine");
+             
             break;
 
         case "perception":
             profs.push("perception");
+             
             break;
 
         case "survival":
             profs.push("survival");
+             
             break;
 
         case "deception":
             profs.push("deception");
+             
             break;
 
         case "intimidation":
             profs.push("intimidation");
+             
             break;
 
         case "performance":
             profs.push("performance");
+             
             break;
 
         case "persuasion":
             profs.push("persuasion");
+             
             break;
         case "none":
+            console.log("none");
             break;
 
         case "random":
@@ -1274,74 +1405,99 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
                 case "athletics":
                     profs.push("athletics");
+                     
                     break;
 
                 case "acrobatics":
                     profs.push("acrobatics");
+                     
+
                     break;
 
                 case "sleight of hand":
                     profs.push("sleight of hand");
+                     
+
                     break;
 
                 case "stealth":
                     profs.push("stealth");
+                     
+
                     break;
 
                 case "arcana":
                     profs.push("arcana");
+                     
+
                     break;
 
                 case "history":
                     profs.push("history");
+                     
+
                     break;
 
                 case "investigation":
                     profs.push("investigation");
+                     
+
                     break;
 
                 case "nature":
                     profs.push("nature");
+                     
+
                     break;
 
                 case "religion":
                     profs.push("religion");
+                     
                     break;
 
                 case "animal handling":
                     profs.push("animal handling");
+                     
                     break;
 
                 case "insight":
                     profs.push("insight");
+                     
                     break;
 
                 case "medicine":
                     profs.push("medicine");
+                     
                     break;
 
                 case "perception":
                     profs.push("perception");
+                     
                     break;
 
                 case "survival":
                     profs.push("survival");
+                     
                     break;
 
                 case "deception":
                     profs.push("deception");
+                     
                     break;
 
                 case "intimidation":
                     profs.push("intimidation");
+                     
                     break;
 
                 case "performance":
                     profs.push("performance");
+                     
                     break;
 
                 case "persuasion":
                     profs.push("persuasion");
+                     
                     break;
             }
             break;
@@ -1353,76 +1509,102 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
         case "athletics":
             profs.push("athletics");
+             
             break;
 
         case "acrobatics":
             profs.push("acrobatics");
+             
+
             break;
 
         case "sleight of hand":
             profs.push("sleight of hand");
+             
+
             break;
 
         case "stealth":
             profs.push("stealth");
+             
+
             break;
 
         case "arcana":
             profs.push("arcana");
+             
+
             break;
 
         case "history":
             profs.push("history");
+             
+
             break;
 
         case "investigation":
             profs.push("investigation");
+             
+
             break;
 
         case "nature":
             profs.push("nature");
+             
+
             break;
 
         case "religion":
             profs.push("religion");
+             
             break;
 
         case "animal handling":
             profs.push("animal handling");
+             
             break;
 
         case "insight":
             profs.push("insight");
+             
             break;
 
         case "medicine":
             profs.push("medicine");
+             
             break;
 
         case "perception":
             profs.push("perception");
+             
             break;
 
         case "survival":
             profs.push("survival");
+             
             break;
 
         case "deception":
             profs.push("deception");
+             
             break;
 
         case "intimidation":
             profs.push("intimidation");
+             
             break;
 
         case "performance":
             profs.push("performance");
+             
             break;
 
         case "persuasion":
             profs.push("persuasion");
+             
             break;
         case "none":
+            console.log("none");
             break;
 
         case "random":
@@ -1431,86 +1613,117 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
 
                 case "athletics":
                     profs.push("athletics");
+                     
                     break;
 
                 case "acrobatics":
                     profs.push("acrobatics");
+                     
+
                     break;
 
                 case "sleight of hand":
                     profs.push("sleight of hand");
+                     
+
                     break;
 
                 case "stealth":
                     profs.push("stealth");
+                     
+
                     break;
 
                 case "arcana":
                     profs.push("arcana");
+                     
+
                     break;
 
                 case "history":
                     profs.push("history");
+                     
+
                     break;
 
                 case "investigation":
                     profs.push("investigation");
+                     
+
                     break;
 
                 case "nature":
                     profs.push("nature");
+                     
+
                     break;
 
                 case "religion":
                     profs.push("religion");
+                     
                     break;
 
                 case "animal handling":
                     profs.push("animal handling");
+                     
                     break;
 
                 case "insight":
                     profs.push("insight");
+                     
                     break;
 
                 case "medicine":
                     profs.push("medicine");
+                     
                     break;
 
                 case "perception":
                     profs.push("perception");
+                     
                     break;
 
                 case "survival":
                     profs.push("survival");
+                     
                     break;
 
                 case "deception":
                     profs.push("deception");
+                     
                     break;
 
                 case "intimidation":
                     profs.push("intimidation");
+                     
                     break;
 
                 case "performance":
                     profs.push("performance");
+                     
                     break;
 
                 case "persuasion":
                     profs.push("persuasion");
+                     
                     break;
             }
             break;
 
 
     }
-
-    console.log(profs);
+     
     return profs;
 }
 
-function skiller(char_atts, char_proficiencies, char_proficiency_bonus) {
+function test(x) {
+    console.log(x);
+    console.log("test");
+
+
+}
+
+function skiller(char_proficiency_bonus, char_atts, char_proficiencies) {
 
     // Array key: athletics, acrobatics, sleight of hand, stealth, arcana, history, investigation, nature, religion, animal_handling, insight, medicine, perception, survival, deception, intimidation, performance, persuasion
 
@@ -1544,9 +1757,9 @@ function skiller(char_atts, char_proficiencies, char_proficiency_bonus) {
     var intimidation = cha_modifier;
     var performance = cha_modifier;
     var persuasion = cha_modifier;
-    
 
-    for (var i = 0; i < char_proficiencies; i++) {
+
+    for (let i = 0; i < char_proficiencies.length; i++) {
         switch (char_proficiencies[i]) {
 
             case "athletics":
@@ -2769,11 +2982,13 @@ function character() {
     var move_speed = char_race_array[2][0];
     var initiative = dex_modifier;
 
+
+
     var class_spell_slots = spell_slots(char_class, char_level);
+    let char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
+    var char_skills = skiller(char_proficiency_bonus, char_atts, char_proficiencies);
 
-    var char_skills = skiller(char_atts, char_proficiencies, char_proficiency_bonus);
-    var char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
-
+    test(char_proficiencies);
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
@@ -2814,7 +3029,7 @@ function character() {
 
     <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}`;
     
-    console.log(char_skills);
+
     document.getElementById("charSheet").innerHTML = char_sheet;
   
 }
