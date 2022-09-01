@@ -978,7 +978,7 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
              
             break;
         case "none":
-            console.log("none");
+             
             break;
 
         case "random":
@@ -1186,7 +1186,7 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
              
             break;
         case "none":
-            console.log("none");
+             
             break;
 
         case "random":
@@ -1396,7 +1396,7 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
              
             break;
         case "none":
-            console.log("none");
+             
             break;
 
         case "random":
@@ -1604,7 +1604,7 @@ function proficiencies(char_class_array, char_background_array, char_race_array)
              
             break;
         case "none":
-            console.log("none");
+             
             break;
 
         case "random":
@@ -2944,6 +2944,38 @@ function proficiency_string(char_proficiencies) {
     return prof_string;
 }
 
+function spell_slot_string(char_class, spell_slots, level) {
+
+    var spell_slot_string = "";
+
+
+    //This one is going to be dense, as it'll have to address different casters in different ways depending on how spells work for them. Can still use the spell_slots array no problem, it's just going to come down to finessing the language of each string.
+
+    switch (char_class) {
+        case "bard":
+        case "cleric":
+        case "druid":
+        case "paladin":
+        case "ranger":
+        case "sorcerer":
+        case "warlock":
+        case "wizard":
+
+
+
+
+
+            break;
+
+        case "barbarian":
+        case "fighter":
+        case "monk":
+        case "rogue":
+            break;
+    }
+
+
+}
 
 /*Output*/
 
@@ -2985,14 +3017,14 @@ function character() {
 
 
     var class_spell_slots = spell_slots(char_class, char_level);
-    let char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
+    var char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
     var char_skills = skiller(char_proficiency_bonus, char_atts, char_proficiencies);
-
+    var passive_perception = wis_modifier + char_skills[12];
     test(char_proficiencies);
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
-    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} attributes are: 
+    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} Ability Scores are: 
     <br> Str: ${char_atts[0]} (${plus_minus(str_modifier)}${str_modifier})
     <br> Dex: ${char_atts[1]} (${plus_minus(dex_modifier)}${dex_modifier})
     <br> Con: ${char_atts[2]} (${plus_minus(con_modifier)}${con_modifier})
@@ -3003,11 +3035,11 @@ function character() {
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
     <br> Speed: ${move_speed}
     <br> Initiative: ${plus_minus(initiative)}${initiative}
-    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} can speak ${language_string(char_languages)}
+    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} can speak ${language_string(char_languages)}.
     <br> Background: ${char_background}
     <br>
     <br>
-    Skills
+    ${capitalizeFirstLetter(pronoun3(char_gender))} Skills are:
     <br>Athletics: ${plus_minus(char_skills[0])}${char_skills[0]}
     <br>Acrobatics: ${plus_minus(char_skills[1])}${char_skills[1]}
     <br>Sleight Of Hand: ${plus_minus(char_skills[2])}${char_skills[2]}
@@ -3026,8 +3058,9 @@ function character() {
     <br>Intimidation: ${plus_minus(char_skills[15])}${char_skills[15]}
     <br>Performance: ${plus_minus(char_skills[16])}${char_skills[16]}
     <br>Persuasion: ${plus_minus(char_skills[17])}${char_skills[17]}
-
-    <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}`;
+    <br>
+    <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}
+    <br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}`;
     
 
     document.getElementById("charSheet").innerHTML = char_sheet;
