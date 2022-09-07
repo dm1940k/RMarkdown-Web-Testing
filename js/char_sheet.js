@@ -2159,9 +2159,16 @@ function spell_slots(char_class, level) {
 
     }
 
-    var spell_slots_by_level = slots[level-1];
+    var slots = slots[level-1];
 
-    return spell_slots_by_level;
+    return slots;
+
+}
+
+function slotter() {
+
+
+
 
 }
 
@@ -2948,21 +2955,218 @@ function spell_slot_string(char_class, spell_slots, level) {
 
     var spell_slot_string = "";
 
-
-    //This one is going to be dense, as it'll have to address different casters in different ways depending on how spells work for them. Can still use the spell_slots array no problem, it's just going to come down to finessing the language of each string.
-
     switch (char_class) {
-        case "bard":
         case "cleric":
         case "druid":
-        case "paladin":
-        case "ranger":
-        case "sorcerer":
-        case "warlock":
         case "wizard":
 
+            switch (level) {
+                case 1:
+                case 2:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2];
+                    break;
+                case 3:
+                case 4:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: "+ spell_slots[2] + "<br>Second: " + spell_slots[3];
+                    break;
+                case 5:
+                case 6:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>First: "+ spell_slots[2]+"<br>Second: "+spell_slots[3]+"<br>Third: "+spell_slots[4];
+                    break;
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: " + spell_slots[0]+"<br>First: " + spell_slots[2]+"<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5];
+                    test(spell_slots[0])
+                    break;
+
+                case 9:
+                case 10:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>First: "+ spell_slots[2]+"<br>Second: " +spell_slots[3]+"<br>Third: "+spell_slots[4]+"<br>Fourth: "+spell_slots[5]+"<br>Fifth: "+spell_slots[6];
+                    break;
+                case 11:
+                case 12:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>First: "+ spell_slots[2]+"<br>Second: " +spell_slots[3]+"<br>Third: "+spell_slots[4]+"<br>Fourth: "+spell_slots[5]+"<br>Fifth: "+spell_slots[6]+"<br>Sixth: "+spell_slots[7];
+                    break;
+                case 13:
+                case 14:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>First: "+ spell_slots[2]+"<br>Second: " +spell_slots[3]+"<br>Third: "+spell_slots[4]+"<br>Fourth: "+spell_slots[5]+"<br>Fifth: "+spell_slots[6]+"<br>Sixth: "+spell_slots[7]+"<br>Seventh: "+spell_slots[8];
+                    break;
+                case 15:
+                case 16:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: "+spell_slots[5]+"<br>Fifth: "+spell_slots[6]+"<br>Sixth: "+spell_slots[7]+"<br>Seventh: "+spell_slots[8]+"<br>Eigth: "+spell_slots[9];
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                    spell_slot_string = "<br>Spell Slots:<br>Cantrips: " + spell_slots[0]+"<br>First: " + spell_slots[2]+"<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5] + "<br>Fifth: " + spell_slots[6] + "<br>Sixth: " + spell_slots[7] + "<br>Seventh: " + spell_slots[8] + "<br>Eigth: " + spell_slots[9] + "<br>Ninth: " + spell_slots[10];
+                    break;
+            }
+            break;
+
+        case "warlock":
+
+            switch (level) {
+                case 1:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>First Level Spells: "+spell_slots[2]
+                    break;
+                case 2:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>First Level Spells: "+spell_slots[2]+" Invocations Known: 2"
+                    break;
+                case 3:
+                case 4:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Second Level Spells: "+spell_slots[3]+" Invocations Known: 2"
+                    break;
+                case 5:
+                case 6:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Third Level Spells: "+spell_slots[4]+" Invocations Known: 3"
+                    break;
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Third Level Spells: "+spell_slots[5]+" Invocations Known: 4"
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Third Level Spells: "+spell_slots[6]+" Invocations Known: 5"
+                    break;
+                case 12:
+                case 13:
+                case 14:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Third Level Spells: "+spell_slots[6]+" Invocations Known: 6"
+                    break;
+                case 15:
+                case 16:
+                case 17:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Third Level Spells: "+spell_slots[6]+" Invocations Known: 7"
+                    break;
+                case 18:
+                case 19:
+                case 20:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: "+spell_slots[0]+"<br>Cantrips: "+spell_slots[0]+"<br>Third Level Spells: "+spell_slots[6]+" Invocations Known: 8"
+                    break;
+            }
+            break;
+
+        case "bard":
+        case "sorcerer":
+            switch (level) {
+                case 1:
+                case 2:
+                    spell_slot_string = "<br>Spells Known: "+spell_slots[2]+"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2];
+                    break;
+                case 3:
+                case 4:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3];
+                    break;
+                case 5:
+                case 6:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4];
+                    break;
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5];
+                    break;
+
+                case 9:
+                case 10:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5] + "<br>Fifth: " + spell_slots[6];
+                    break;
+                case 11:
+                case 12:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5] + "<br>Fifth: " + spell_slots[6] + "<br>Sixth: " + spell_slots[7];
+                    break;
+                case 13:
+                case 14:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5] + "<br>Fifth: " + spell_slots[6] + "<br>Sixth: " + spell_slots[7] + "<br>Seventh: " + spell_slots[8];
+                    break;
+                case 15:
+                case 16:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5] + "<br>Fifth: " + spell_slots[6] + "<br>Sixth: " + spell_slots[7] + "<br>Seventh: " + spell_slots[8] + "<br>Eigth: " + spell_slots[9];
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>Cantrips: " + spell_slots[0] + "<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5] + "<br>Fifth: " + spell_slots[6] + "<br>Sixth: " + spell_slots[7] + "<br>Seventh: " + spell_slots[8] + "<br>Eigth: " + spell_slots[9] + "<br>Ninth: " + spell_slots[10];
+                    break;
+            }
+            break;
 
 
+        case "ranger":
+
+            switch (level) {
+                case 1:
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>First: "+spell_slots[2];
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] +"<br>Spell Slots:<br>First: "+spell_slots[2]+"<br>Second: "+spell_slots[3];
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] + "<br>Spell Slots:<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] +"<br>Third: "+spell_slots[4];
+                    break;
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] + "<br>Spell Slots:<br>First: " + spell_slots[2] + "<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] +"<br>Fourth: "+spell_slots[5];
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                    spell_slot_string = "<br>Spells Known: " + spell_slots[2] + "<br>Spell Slots:<br>First: " + spell_slots[2] + "<br>Second: "+spell_slots[3]+" <br> Third: "+spell_slots[4]+"<br>Fourth: " + spell_slots[5] +"<br>Fifth: "+spell_slots[6];
+
+                    break;
+            }
+            break;
+
+        case "paladin":
+
+            switch (level) {
+                case 1:
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    spell_slot_string = "<br>Spell Slots:<br>First: "+spell_slots[2];
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Spell Slots:<br>First: "+spell_slots[2]+"<br>Second: "+spell_slots[3];
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                    spell_slot_string = "<br>Spell Slots:<br>First: "+spell_slots[2]+"<br>Second: "+spell_slots[3]+"<br>Third: "+spell_slots[4];
+                    break;
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                    spell_slot_string = "Spell Slots:<br>First: "+spell_slots[2]+"<br>Second: "+spell_slots[3]+"<br>Third: "+spell_slots[4]+"<br>Fourth: "+spell_slots[5];
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                    spell_slot_string = "<br>Spell Slots:<br>First: "+spell_slots[2]+"<br>Second: "+spell_slots[3]+"<br>Third: "+spell_slots[4]+"<br>Fourth: "+spell_slots[5]+"<br>Fifth: "+spell_slots[6];
+                    break;
+            }
 
 
             break;
@@ -2971,10 +3175,12 @@ function spell_slot_string(char_class, spell_slots, level) {
         case "fighter":
         case "monk":
         case "rogue":
+
+
             break;
     }
 
-
+    return spell_slot_string;
 }
 
 /*Output*/
@@ -3016,11 +3222,13 @@ function character() {
 
 
 
-    var class_spell_slots = spell_slots(char_class, char_level);
     var char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
     var char_skills = skiller(char_proficiency_bonus, char_atts, char_proficiencies);
     var passive_perception = wis_modifier + char_skills[12];
-    test(char_proficiencies);
+
+    
+    let char_spell_slots = spell_slots(char_class, char_level);
+    test(char_spell_slots);
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
@@ -3060,7 +3268,8 @@ function character() {
     <br>Persuasion: ${plus_minus(char_skills[17])}${char_skills[17]}
     <br>
     <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}
-    <br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}`;
+    <br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}
+    <br>${spell_slot_string(char_class, char_spell_slots, char_level)}`;
     
 
     document.getElementById("charSheet").innerHTML = char_sheet;
