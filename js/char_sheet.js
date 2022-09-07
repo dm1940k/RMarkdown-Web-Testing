@@ -2165,12 +2165,6 @@ function spell_slots(char_class, level) {
 
 }
 
-function slotter() {
-
-
-
-
-}
 
 //function class_array() {
 //    var classes = ["barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "warlock", "wizard"];
@@ -3172,6 +3166,46 @@ function spell_slot_string(char_class, spell_slots, level) {
             break;
 
         case "barbarian":
+            switch (level) {
+                case 1:
+                case 2:
+                    spell_slot_string = "<br>Rages: 2<br>Rage Damage: +2";
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    spell_slot_string = "<br>Rages: 3<br>Rage Damage: +2";
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Rages: 4<br>Rage Damage: +2";
+                    break;
+                case 9:
+                case 10:
+                case 11:
+                    spell_slot_string = "<br>Rages: 4<br>Rage Damage: +3";
+                    break;
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                    spell_slot_string = "<br>Rages: 5<br>Rage Damage: +3";
+                    break;
+                case 16:
+                    spell_slot_string = "<br>Rages: 5<br>Rage Damage: +4";
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                    spell_slot_string = "<br>Rages: 6<br>Rage Damage: +4";
+                    break;
+                case 20:
+                    spell_slot_string = "<br>Rages: Unlimited<br>Rage Damage: +4";
+                    break;
+            }
+            break;
+
         case "fighter":
         case "monk":
         case "rogue":
