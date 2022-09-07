@@ -3206,11 +3206,116 @@ function spell_slot_string(char_class, spell_slots, level) {
             }
             break;
 
-        case "fighter":
         case "monk":
+            switch (level) {
+                case 1:
+                    break;
+                case 2:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 3:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 4:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 5:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 6:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 7:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 8:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 9:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 10:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 11:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 12:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 13:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 14:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 15:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 16:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 17:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 18:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 19:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+                case 20:
+                    spell_slot_string = "<br>Ki Points: " + level;
+                    break;
+            }
+            break;
+
         case "rogue":
+            switch (level) {
+                case 1:
+                case 2:
+                    spell_slot_string = "<br>Sneak Attack: 1d6";
+                    break;
+                case 3:
+                case 4:
+                    spell_slot_string = "<br>Sneak Attack: 2d6";
+                    break;
+                case 5:
+                case 6:
+                    spell_slot_string = "<br>Sneak Attack: 3d6";
+                    break;
+                case 7:
+                case 8:
+                    spell_slot_string = "<br>Sneak Attack: 4d6";
+                    break;
+                case 9:
+                case 10:
+                    spell_slot_string = "<br>Sneak Attack: 5d6";
+                    break;
+                case 11:
+                case 12:
+                    spell_slot_string = "<br>Sneak Attack: 6d6";
+                    break;
+                case 13:
+                case 14:
+                    spell_slot_string = "<br>Sneak Attack: 7d6";
+                    break;
+                case 15:
+                case 16:
+                    spell_slot_string = "<br>Sneak Attack: 8d6";
+                    break;
+                case 17:
+                case 18:
+                    spell_slot_string = "<br>Sneak Attack: 9d6";
+                    break;
+                case 19:
+                case 20:
+                    spell_slot_string = "<br>Sneak Attack: 10d6";
+                    break;
+            }
+            break;
 
-
+        case "fighter":
             break;
     }
 
