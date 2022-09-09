@@ -116,9 +116,9 @@ Alignment x
 Attributes x
 Racial Modifiers x
 Class Modifiers
-Skills
-Spells
-Flavor
+Skills x
+Spells x
+Flavor 
 
 */
 
@@ -446,14 +446,156 @@ function rolled_stats() {
     return rolled_stats;
 }
 
-function char_attributes(char_race) {
+function char_attributes(char_race, char_class, char_level) {
 
     var rolled = rolled_stats();
     var race_stats = race_array(char_race);
     var race = race_stats[1];
     var stats = rolled.map((a, i) => a + race[i])
 
-    return stats;
+    let final_stats = ability_score_improver(stats, char_class, char_level);
+
+    function ability_score_improver(stats, char_class, char_level) {
+
+        let improvements = 0;
+
+        switch (char_class) {
+            case "fighter":
+                switch (char_level) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        break;
+                    case 4:
+                    case 5:
+                        improvements = 1;
+                        break;
+                    case 6:
+                    case 7:
+                        improvements = 2;
+                        break;
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                        improvements = 3;
+                        break;
+                    case 12:
+                    case 13:
+                        improvements = 4;
+                        break;
+                    case 14:
+                    case 15:
+                        improvements = 5;
+                        break;
+                    case 16:
+                    case 17:
+                    case 18:
+                        improvements = 6;
+                        break;
+                    case 19:
+                    case 20:
+                        improvements = 7;
+                        break;
+
+
+
+
+
+                }
+                break;
+            case "rogue":
+                switch (char_level) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        break;
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                        improvements = 1;
+                        break;
+                    case 8:
+                    case 9:
+                        improvements = 2;
+                        break;
+                    case 10:
+                    case 11:
+                        improvements = 3;
+                        break;
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                        improvements = 4;
+                        break;
+                    case 16:
+                    case 17:
+                    case 18:
+                        improvements = 5;
+                        break;
+                    case 19:
+                    case 20:
+                        improvements = 6;
+                        break;
+                }
+                break;
+            case "barbarian":
+            case "bard":
+            case "cleric":
+            case "druid":
+            case "monk":
+            case "paladin":
+            case "ranger":
+            case "sorcerer":
+            case "warlock":
+            case "wizard":
+                switch (char_level) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        break;
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                        improvements = 1;
+                        break;
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                        improvements = 2;
+                        break;
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                        improvements = 3;
+                        break;
+                    case 16:
+                    case 17:
+                    case 18:
+                        improvements = 4;
+                        break;
+                    case 19:
+                    case 20:
+                        improvements = 5;
+                        break;
+                }
+                break;
+
+        }
+
+        let positioner;
+        for (let i = 0; i < (improvements * 2); i++) {
+            positioner = Math.floor(Math.random() * 6);
+            stats[positioner] = stats[positioner] + 1;
+        }
+        return stats;
+    }
+    return final_stats;
 }
 
 function modifiers(ability_score){
@@ -1843,6 +1985,9 @@ function skiller(char_proficiency_bonus, char_atts, char_proficiencies) {
     var modded_skills = [athletics, acrobatics, sleight_of_hand, stealth, arcana, history, investigation, nature, religion, animal_handling, insight, medicine, perception, survival, deception, intimidation, performance, persuasion];
     return modded_skills;
 }
+
+
+
 
 
 
@@ -3347,7 +3492,7 @@ function character() {
 
     var char_align = aligner();
     var char_name = namer(char_gender, char_race);
-    var char_atts = char_attributes(char_race);
+    var char_atts = char_attributes(char_race, char_class, char_level);
     var char_proficiency_bonus = proficiency_bonus(char_level);
     var str_modifier = modifiers(char_atts[0]);
     var dex_modifier = modifiers(char_atts[1]);
@@ -3367,7 +3512,7 @@ function character() {
 
     
     let char_spell_slots = spell_slots(char_class, char_level);
-    test(char_spell_slots);
+
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
