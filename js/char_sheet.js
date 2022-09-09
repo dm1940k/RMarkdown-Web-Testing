@@ -3516,7 +3516,7 @@ function character() {
 
     var char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
     var char_skills = skiller(char_proficiency_bonus, char_atts, char_proficiencies);
-    var passive_perception = wis_modifier + char_skills[12];
+    var passive_perception = 10 + char_skills[12];
 
     
     let char_spell_slots = spell_slots(char_class, char_level);
