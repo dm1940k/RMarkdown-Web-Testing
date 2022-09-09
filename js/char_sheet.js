@@ -446,6 +446,8 @@ function rolled_stats() {
     return rolled_stats;
 }
 
+
+
 function char_attributes(char_race, char_class, char_level) {
 
     var rolled = rolled_stats();
@@ -588,10 +590,17 @@ function char_attributes(char_race, char_class, char_level) {
 
         }
 
+        improvements = improvements * 2;
         let positioner;
-        for (let i = 0; i < (improvements * 2); i++) {
+        for (let i = 0; i < (improvements); i++) {
+
             positioner = Math.floor(Math.random() * 6);
-            stats[positioner] = stats[positioner] + 1;
+
+            if (stats[positioner] < 20) {
+                stats[positioner] = stats[positioner] + 1;
+            } else {
+                i--;
+            }
         }
         return stats;
     }
@@ -3115,7 +3124,6 @@ function spell_slot_string(char_class, spell_slots, level) {
                 case 7:
                 case 8:
                     spell_slot_string = "<br>Spell Slots:<br>Cantrips: " + spell_slots[0]+"<br>First: " + spell_slots[2]+"<br>Second: " + spell_slots[3] + "<br>Third: " + spell_slots[4] + "<br>Fourth: " + spell_slots[5];
-                    test(spell_slots[0])
                     break;
 
                 case 9:
