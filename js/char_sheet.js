@@ -2061,50 +2061,50 @@ function featurer(char_class, char_level) {
         case "bard":
             switch (char_level) {
                 case 1:
-                    features = ["Spellcasting", "Bardic Inspiration(d6)"];
+                    features = ["Bardic Inspiration(d6)"];
                     break;
                 case 2:
-                    features = ["Spellcasting", "Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)"];
+                    features = ["Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)"];
                     break;
                 case 3:
                 case 4:
-                    features = ["Spellcasting", "Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise"];
+                    features = ["Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise"];
                     break;
                 case 5:
-                    features = ["Spellcasting", "Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration"];
+                    features = ["Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration"];
                     break;
                 case 6:
                 case 7:
                 case 8:
-                    features = ["Spellcasting", "Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
+                    features = ["Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
                     break;
                 case 9:
-                    features = ["Spellcasting", "Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
+                    features = ["Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
                     break;
                 case 10:
                 case 11:
                 case 12:
-                    features = ["Spellcasting", "Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
+                    features = ["Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
                     break;
                 case 13:
-                    features = ["Spellcasting", "Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
+                    features = ["Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
                     break;
                 case 14:
-                    features = ["Spellcasting", "Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                    features = ["Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
                     break;
                 case 15:
                 case 16:
-                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                    features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
                     break;
                 case 17:
-                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                    features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
                     break;
                 case 18:
                 case 19:
-                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3"];
+                    features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3"];
                     break;
                 case 20:
-                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3", "Superior Inspiration"];
+                    features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3", "Superior Inspiration"];
                     break;
             }
             break;
@@ -4086,11 +4086,16 @@ function feature_string(char_features) {
 
     var feature_string = "";
 
+    if (char_features.length > 1) {
 
+        feature_string = "<br>Features:<br>"
         for (let i = 0; i < char_features.length - 1; i++) {
             feature_string += char_features[i];
             feature_string += "<br>";
+        }
     }
+
+
 
     return feature_string;
 
@@ -4185,8 +4190,6 @@ function character() {
     <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}
     <br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}
     <br>${spell_slot_string(char_class, char_spell_slots, char_level)}
-    <br>
-    <br>Features:
     <br>${feature_string(char_features_array)}`;
     
 
