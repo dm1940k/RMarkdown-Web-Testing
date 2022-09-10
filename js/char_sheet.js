@@ -67,7 +67,7 @@ Humans x
 Levels: 
 1-20 x
 
-Classes:
+Classes: x
 Barbarian 
 Bard
 Cleric
@@ -115,7 +115,7 @@ Class x
 Alignment x
 Attributes x
 Racial Modifiers x
-Class Modifiers
+Class Modifiers x
 Skills x
 Spells x
 Flavor 
@@ -1021,6 +1021,9 @@ function leveler() {
     return char_level;
 }
 
+//Occasional duplicates, likely due to the "random" option. Need something that will prevent it, similar to the loop in the ability_score_modifier function. Possibly the filter function?
+
+
 function proficiencies(char_class_array, char_background_array, char_race_array) {
 
     var profs = [];
@@ -1872,7 +1875,7 @@ function test(x) {
     console.log("test");
 
 
-}
+} 
 
 function skiller(char_proficiency_bonus, char_atts, char_proficiencies) {
 
@@ -1997,7 +2000,604 @@ function skiller(char_proficiency_bonus, char_atts, char_proficiencies) {
 
 
 
+function featurer(char_class, char_level) {
+    let features = [];
 
+    switch (char_class) {
+        case "barbarian":
+            switch (char_level) {
+                case 1:
+                    features = ["Rage", "Unarmored Defense"];
+                    break;
+                case 2:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense"];
+                    break;
+                case 3:
+                case 4:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path"];
+                    break;
+                case 5:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement"];
+                    break;
+                case 6:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature"];
+                    break;
+                case 7:
+                case 8:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature", "Feral Instinct"];
+                    break;
+                case 9:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature", "Feral Instinct", "Brutal Critical (1 die)"];
+                    break;
+                case 10:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 2", "Feral Instinct", "Brutal Critical (1 die)"];
+                    break;
+                case 11:
+                case 12:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 2", "Feral Instinct", "Brutal Critical (1 die)", "Relentless Rage"];
+                    break;
+                case 13:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 2", "Feral Instinct", "Brutal Critical (2 dice)", "Relentless Rage"];
+                    break;
+                case 14:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (2 dice)", "Relentless Rage"];
+                    break;
+                case 15:
+                case 16:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (2 dice)", "Relentless Rage", "Persistent Rage"];
+                    break;
+                case 17:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (3 dice)", "Relentless Rage", "Persistent Rage"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (3 dice)", "Relentless Rage", "Persistent Rage", "Indomitable Might"];
+                    break;
+                case 20:
+                    features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (3 dice)", "Relentless Rage", "Persistent Rage", "Indomitable Might", "Primal Champion"];
+                    break;
+            }
+            break;
+        case "bard":
+            switch (char_level) {
+                case 1:
+                    features = ["Spellcasting", "Bardic Inspiration(d6)"];
+                    break;
+                case 2:
+                    features = ["Spellcasting", "Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)"];
+                    break;
+                case 3:
+                case 4:
+                    features = ["Spellcasting", "Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise"];
+                    break;
+                case 5:
+                    features = ["Spellcasting", "Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration"];
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    features = ["Spellcasting", "Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
+                    break;
+                case 9:
+                    features = ["Spellcasting", "Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                    features = ["Spellcasting", "Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
+                    break;
+                case 13:
+                    features = ["Spellcasting", "Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
+                    break;
+                case 14:
+                    features = ["Spellcasting", "Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                    break;
+                case 15:
+                case 16:
+                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                    break;
+                case 17:
+                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3"];
+                    break;
+                case 20:
+                    features = ["Spellcasting", "Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3", "Superior Inspiration"];
+                    break;
+            }
+            break;
+        case "cleric":
+            switch (char_level) {
+                case 1:
+                    features = ["Spellcasting", "Divine Domain"];
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x1)", "Divine Domain feature"];
+                    break;
+                case 5:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x1)", "Divine Domain feature", "Destroy Undead(CR 1/2)"];
+                    break;
+                case 6:
+                case 7:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 1/2)"];
+                    break;
+                case 8:
+                case 9:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 1)"];
+                    break;
+                case 10:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 1)", "Divine Intervention"];
+                    break;
+                case 11:
+                case 12:
+                case 13:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 2)", "Divine Intervention"];
+                    break;
+                case 14:
+                case 15:
+                case 16:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 3)", "Divine Intervention"];
+                    break;
+                case 17:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 3", "Destroy Undead(CR 4)", "Divine Intervention"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x3)", "Divine Domain feature x 3", "Destroy Undead(CR 4)", "Divine Intervention"];
+                    break;
+                case 20:
+                    features = ["Spellcasting", "Divine Domain", "Channel Divinity(x3)", "Divine Domain feature x 3", "Destroy Undead(CR 4)", "Divine Intervention", "Divine Intervention improvement"];
+                    break;
+            }
+            break;
+        case "druid":
+            switch (char_level) {
+                case 1:
+                    features = ["Druidic", ];
+                    break;
+                case 2:
+                case 3:
+                    features = ["Druidic", "Wild Shape", "Druid Circle"];
+                    break;
+                case 4:
+                case 5:
+                    features = ["Druidic", "Wild Shape", "Druid Circle","Wild Shape improvement"];
+                    break;
+                    break;
+                case 6:
+                case 7:
+                    features = ["Druidic", "Wild Shape", "Druid Circle", "Wild Shape improvement","Druid Circle feature"];
+                    break;
+                case 8:
+                case 9:
+                    features = ["Druidic", "Wild Shape", "Druid Circle", "Wild Shape improvement", "Druid Circle feature"];
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    features = ["Druidic", "Wild Shape", "Druid Circle x 2", "Wild Shape improvement", "Druid Circle feature"];
+                    break;
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                    features = ["Druidic", "Wild Shape", "Druid Circle x 3", "Wild Shape improvement", "Druid Circle feature"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Druidic", "Wild Shape", "Druid Circle x 3", "Wild Shape improvement", "Druid Circle feature", "Timeless Body", "Beast Spells"];
+                    break;
+                case 20:
+                    features = ["Druidic", "Wild Shape", "Druid Circle x 3", "Wild Shape improvement", "Druid Circle feature", "Timeless Body", "Beast Spells", "Archdruid"];
+                    break;
+            }
+            break;
+        case "fighter":
+            switch (char_level) {
+                case 1:
+                    features = [];
+                    break;
+                case 2:
+                    features = ["Action Surge(x1)"];
+                    break;
+                case 3:
+                case 4:
+                    features = ["Action Surge(x1)","Martial Archetype"];
+                    break;
+                    break;
+                case 5:
+                case 6:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)"];
+                    break;
+                    break;
+                case 7:
+                case 8:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)", "Martial Archetype feature"];
+                    break;
+                case 9:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)", "Martial Archetype feature", "Indomitable (x1)"];
+                    break;
+                case 10:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)", "Martial Archetype feature x 2", "Indomitable (x1)"];
+                    break;
+                case 11:
+                case 12:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 2", "Indomitable (x1)"];
+                    break;
+                case 13:
+                case 14:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 2", "Indomitable (x2)"];
+                    break;
+                    break;
+                case 15:
+                case 16:
+                    features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 3", "Indomitable (x2)"];
+                    break;
+                    break;
+                case 17:
+                    features = ["Action Surge(x2)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 2", "Indomitable (x3)"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Action Surge(x2)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 3", "Indomitable (x3)"];
+                    break;
+                    break;
+                case 20:
+                    features = ["Action Surge(x2)", "Martial Archetype", "Extra Attack (x3)", "Martial Archetype feature x 3", "Indomitable (x3)"];
+                    break;
+            }
+            break;
+        case "monk":
+            switch (char_level) {
+                case 1:
+                    features = ["Unarmored Defense", "Martial Arts"];
+                    break;
+                case 2:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement"];
+                    break;
+                case 3:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles"];
+                    break;
+                case 4:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall"];
+                    break;
+                case 5:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike"];
+                    break;
+                case 6:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature"];
+                    break;
+                case 7:
+                case 8:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature", "Evasion", "Stillness of Mind"];
+                    break;
+                case 9:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature", "Evasion", "Stillness of Mind","Unarmored Movement improvement"];
+                    break;
+                case 10:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body"];
+                    break;
+                case 11:
+                case 12:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body"];
+                    break;
+                case 13:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon"];
+                    break;
+                case 14:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul"];
+                    break;
+                case 15:
+                case 16:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body"];
+                    break;
+                case 17:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 3", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 3", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body", "Empty Body"];
+                    break;
+                case 20:
+                    features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 3", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body", "Empty Body", "Perfect Self"];
+                    break;
+            }
+            break;
+        case "paladin":
+            switch (char_level) {
+                case 1:
+                    features = ["Divine Sense", "Lay on Hands"];
+                    break;
+                case 2:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite"];                    
+                    break;
+                case 3:
+                case 4:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath"];
+                    break;
+                case 5:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack"];
+                    break;
+                case 6:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection"];
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature"];
+                    break;
+                case 10:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage"];
+                    break;
+                case 11:
+                case 12:
+                case 13:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite"];
+                    break;
+                case 14:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch"];
+                    break;
+                case 15:
+                case 16:
+                case 17:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Sacred Oath feature"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Sacred Oath feature", "Aura improvements"];
+                    break;
+                case 20:
+                    features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Sacred Oath feature", "Aura improvements", "Sacred Oath feature"];
+                    break;
+            }
+            break;
+        case "ranger":
+            switch (char_level) {
+                case 1:
+                    features = ["Favored Enemy", "Natural Explorer"];
+                    break;
+                case 2:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style"];
+                    break;
+                case 3:
+                case 4:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave"];
+                    break;
+                case 5:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack"];
+                    break;
+                case 6:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement"];
+                    break;
+                case 7:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement", "Ranger Conclave feature"];
+                    break;
+                case 8:
+                case 9:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement", "Ranger Conclave feature","Land's Stride"];
+                    break;
+                case 10:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement x 2", "Ranger Conclave feature", "Land's Stride", "Hide in Plain Sight"];
+                    break;
+                case 11:
+                case 12:
+                case 13:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement x 2", "Ranger Conclave feature", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature"];
+                    break;
+                case 14:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish"];
+                    break;
+                case 15:
+                case 16:
+                case 17:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature x 2", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature x 2", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish", "Feral Senses"];
+                    break;
+                case 20:
+                    features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature x 2", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish", "Feral Senses", "Foe Slayer"];
+                    break;
+            }
+            break;
+        case "rogue":
+            switch (char_level) {
+                case 1:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant"];                    
+                    break;
+                case 2:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action"];
+                    break;
+                case 3:
+                case 4:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype"];
+                    break;
+                case 5:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype","Uncanny Dodge"];
+                    break;
+                case 6:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge","Expertise"];
+                    break;
+                case 7:
+                case 8:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise","Evasion"];
+                    break;
+                case 9:
+                case 10:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion","Roguish Archetype feature"];
+                    break;
+                case 11:
+                case 12:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature","Reliable Talent"];
+                    break;
+                case 13:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 2", "Reliable Talent"];
+                    break;
+                case 14:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 2", "Reliable Talent", "Blindsense"];
+                    break;
+                case 15:
+                case 16:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 2", "Reliable Talent", "Blindsense", "Slippery Mind"];
+                    break;
+                case 17:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 3", "Reliable Talent", "Blindsense", "Slippery Mind"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 3", "Reliable Talent", "Blindsense", "Slippery Mind", "Elusive"];
+                    break;
+                case 20:
+                    features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 3", "Reliable Talent", "Blindsense", "Slippery Mind", "Elusive","Stroke of Luck"];
+                    break;
+            }
+            break;
+        case "sorcerer":
+            switch (char_level) {
+                case 1:
+                    features = ["Sorcerous Origin"];
+                    break;
+                case 2:
+                    features = ["Sorcerous Origin","Font of Magic"];
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    features = ["Sorcerous Origin", "Font of Magic","Metamagic"];
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    features = ["Sorcerous Origin", "Font of Magic", "Metamagic","Sorcerous Origin feature"];
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature"];
+                    break;
+                case 14:
+                case 15:
+                case 16:
+                    features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 2"];
+                    break;
+                case 17:
+                    features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 2"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 3"];
+                    break;
+                case 20:
+                    features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 3", "Sorcerous Restoration"];
+                    break;
+            }
+            break;
+        case "warlock":
+            switch (char_level) {
+                case 1:
+                    features = ["Otherworldly Patron", "Pact Magic"];
+                    break;
+                case 2:
+                    features = ["Otherworldly Patron", "Pact Magic","Eldritch Invocations"];
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations","Pact Boon"];
+                    break;
+                    break;
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature"];
+                    break;
+                    break;
+                    break;
+                    break;
+                case 10:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 2"];
+                    break;
+                case 11:
+                case 12:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 2", "Mystic Arcanum (6th level)"];
+                    break;
+                    break;
+                case 13:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 2", "Mystic Arcanum (7th level)"];
+                    break;
+                case 14:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (7th level)"];
+                    break;
+                case 15:
+                case 16:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (8th level)"];
+                    break;
+                    break;
+                case 17:
+                case 18:
+                case 19:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (9th level)"];
+                    break;
+                    break;
+                    break;
+                case 20:
+                    features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (9th level)", "Eldritch Master"];
+                    break;
+            }
+            break;
+        case "wizard":
+            switch (char_level) {
+                case 1:
+                    features = ["Arcane Recovery"];
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    features = ["Arcane Recovery","Arcane Tradition"];
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    features = ["Arcane Recovery", "Arcane Tradition","Arcane Tradition feature"];
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                    features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 2"];
+                    break;
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                    features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 3"];
+                    break;
+                case 18:
+                case 19:
+                    features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 3", "Spell Mastery"];
+                    break;
+                case 20:
+                    features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 3", "Spell Mastery", "Signature Spells"];
+                    break;
+            }
+            break;
+    }
+
+
+    return features;
+}
 
 
 
@@ -3475,6 +4075,21 @@ function spell_slot_string(char_class, spell_slots, level) {
     return spell_slot_string;
 }
 
+function feature_string(char_features) {
+
+    var feature_string = "";
+
+
+        for (let i = 0; i < char_features.length - 1; i++) {
+            feature_string += char_features[i];
+            feature_string += "<br>";
+    }
+
+    return feature_string;
+
+
+}
+
 /*Output*/
 
 
@@ -3518,6 +4133,7 @@ function character() {
     var char_skills = skiller(char_proficiency_bonus, char_atts, char_proficiencies);
     var passive_perception = 10 + char_skills[12];
 
+    let char_features_array = featurer(char_class, char_level);
     
     let char_spell_slots = spell_slots(char_class, char_level);
 
@@ -3561,7 +4177,10 @@ function character() {
     <br>
     <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}
     <br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}
-    <br>${spell_slot_string(char_class, char_spell_slots, char_level)}`;
+    <br>${spell_slot_string(char_class, char_spell_slots, char_level)}
+    <br>
+    <br>Features:
+    <br>${feature_string(char_features_array)}`;
     
 
     document.getElementById("charSheet").innerHTML = char_sheet;
