@@ -2600,6 +2600,13 @@ function featurer(char_class, char_level) {
 }
 
 
+//Class function structure
+
+//Take in level, output hp, hit die, armor, weapons, tools, saving throws, and skills.
+
+//Use the hitpoints and hit die functions already in place, plus attributes. Can intake attributes and modify them, like the ability score improver. Look at racial and background functions too, to include gear.
+
+
 
 function proficiency_marker(char_proficiencies) {
 
