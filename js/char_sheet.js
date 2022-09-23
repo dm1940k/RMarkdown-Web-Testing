@@ -123,12 +123,34 @@ Flavor
 */
 
 
+
+
+
+//9/22/22 - Things left to do:
+
+/*
+Finish the char sheet output
+
+Compile the class function
+
+Add saving throw proficiencies to class, race, anywhere else
+
+Create a checked/unchecked function for throw and skill proficiencies (Done, 9/22/22)
+
+Add flaws, bonds, personality, and bonds (low priority)
+
+Add weapons, armor, and equipment (low priority)
+
+Add names from previous campaigns
+
+Do a pass to see if anything else is missing
+
+Clean up generator page, making the character summary more concise and narrative, removing data that isn't very valuable like hit die, proficiency, and passive wisdom.
+
+*/
+
 //Makes the whole thing run when the button is clicked.
 document.getElementById("btn2").addEventListener("click", character);
-
-//Constants
-
-const btn = document.getElementById("btn2");
 
 
 //-Names
@@ -899,7 +921,7 @@ function classer() {
 }
 
 function aligner() {
-    var alignment_array = ["Lawful Good", "Lawful Nuetral", "Lawful Evil", "Nuetral Good", "True Nuetral", "Nuetral Evil", "Chaotic Good", "Chaotic Nuetral", "Chaotic Evil"];
+    var alignment_array = ["Lawful Good", "Lawful Neutral", "Lawful Evil", "Neutral Good", "True Neutral", "Neutral Evil", "Chaotic Good", "Chaotic Neutral", "Chaotic Evil"];
     var random_alignment = alignment_array[randomize(alignment_array)];
     var alignment_input = document.getElementById("alignment").value;
     var char_alignment;
@@ -908,26 +930,26 @@ function aligner() {
         case "lawful good":
             char_alignment = "Lawful Good";
             break;
-        case "lawful nuetral":
-            char_alignment = "Lawful Nuetral";
+        case "lawful neutral":
+            char_alignment = "Lawful Neutral";
             break;
         case "lawful evil":
             char_alignment = "Lawful Evil";
             break;
-        case "nuetral good":
-            char_alignment = "Nuetral Good";
+        case "neutral good":
+            char_alignment = "Neutral Good";
             break;
-        case "true nuetral":
-            char_alignment = "True Nuetral";
+        case "true neutral":
+            char_alignment = "True Neutral";
             break;
-        case "nuetral evil":
-            char_alignment = "Nuetral Evil";
+        case "neutral evil":
+            char_alignment = "Neutral Evil";
             break;
         case "chaotic good":
             char_alignment = "Chaotic Good";
             break;
-        case "chaotic nuetral":
-            char_alignment = "Chaotic Nuetral";
+        case "chaotic neutral":
+            char_alignment = "Chaotic Neutral";
             break;    
         case "chaotic evil":
             char_alignment = "Chaotic Evil";
@@ -4126,28 +4148,89 @@ function character() {
     var char_languages = languages(char_race_array[3], char_background_array[2]);
 
     var char_align = aligner();
+
     var char_name = namer(char_gender, char_race);
+
     var char_atts = char_attributes(char_race, char_class, char_level);
+
     var char_proficiency_bonus = proficiency_bonus(char_level);
+
     var str_modifier = modifiers(char_atts[0]);
+
     var dex_modifier = modifiers(char_atts[1]);
+
     var con_modifier = modifiers(char_atts[2]);
+
     var int_modifier = modifiers(char_atts[3]);
+
     var wis_modifier = modifiers(char_atts[4]);
+
     var cha_modifier = modifiers(char_atts[5]);
+
+    let str_save = str_modifier;
+
+    let dex_save = dex_modifier;
+
+    let con_save = con_modifier;
+
+    let int_save = int_modifier;
+
+    let wis_save = wis_modifier;
+
+    let cha_save = cha_modifier;
+
+
     var char_hitpoints = hitpoints(con_modifier, char_level, char_class);
+
     var move_speed = char_race_array[2][0];
+
     var initiative = dex_modifier;
 
-
-
     var char_proficiencies = proficiencies(char_class_array, char_background_array, char_race_array);
+
     var char_skills = skiller(char_proficiency_bonus, char_atts, char_proficiencies);
+
     var passive_perception = 10 + char_skills[12];
 
     let char_features_array = featurer(char_class, char_level);
-    
+
     let char_spell_slots = spell_slots(char_class, char_level);
+
+    let athletics = plus_minus(char_skills[0]) + char_skills[0];
+
+    let acrobatics = plus_minus(char_skills[1]) + char_skills[1];
+
+    let sleight_of_hand = plus_minus(char_skills[2]) + char_skills[2];
+
+    let stealth = plus_minus(char_skills[3]) + char_skills[3];
+
+    let arcana = plus_minus(char_skills[4]) + char_skills[4];
+
+    let history = plus_minus(char_skills[5]) + char_skills[5];
+
+    let investigation = plus_minus(char_skills[6]) + char_skills[6];
+
+    let nature = plus_minus(char_skills[7]) + char_skills[7];
+
+    let religion = plus_minus(char_skills[8]) + char_skills[8];
+
+    let animal_handling = plus_minus(char_skills[9]) + char_skills[9];
+
+    let insight = plus_minus(char_skills[10]) + char_skills[10];
+
+    let medicine = plus_minus(char_skills[11]) + char_skills[11];
+
+    let perception = plus_minus(char_skills[12]) + char_skills[12];
+
+    let survival = plus_minus(char_skills[13]) + char_skills[13];
+
+    let deception = plus_minus(char_skills[14]) + char_skills[14];
+
+    let intimidation = plus_minus(char_skills[15]) + char_skills[15];
+
+    let performance = plus_minus(char_skills[16]) + char_skills[16];
+
+    let persuasion = plus_minus(char_skills[17]) + char_skills[17];
 
     var char_sheet = `Your character's name is ${char_name}. 
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
@@ -4159,42 +4242,105 @@ function character() {
     <br> Int: ${char_atts[3]} (${plus_minus(int_modifier)}${int_modifier})
     <br> Wis: ${char_atts[4]} (${plus_minus(wis_modifier)}${wis_modifier})
     <br> Cha: ${char_atts[5]} (${plus_minus(cha_modifier)}${cha_modifier})
-    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency_bonus)}${char_proficiency_bonus}. 
-    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
-    <br> Speed: ${move_speed}
-    <br> Initiative: ${plus_minus(initiative)}${initiative}
+    <br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints.
     <br> ${capitalizeFirstLetter(pronoun1(char_gender))} can speak ${language_string(char_languages)}.
-    <br> Background: ${char_background}
-    <br>
-    <br>
-    ${capitalizeFirstLetter(pronoun3(char_gender))} Skills are:
-    <br>Athletics: ${plus_minus(char_skills[0])}${char_skills[0]}
-    <br>Acrobatics: ${plus_minus(char_skills[1])}${char_skills[1]}
-    <br>Sleight Of Hand: ${plus_minus(char_skills[2])}${char_skills[2]}
-    <br>Stealth: ${plus_minus(char_skills[3])}${char_skills[3]}
-    <br>Arcana: ${plus_minus(char_skills[4])}${char_skills[4]}
-    <br>History: ${plus_minus(char_skills[5])}${char_skills[5]}
-    <br>Investigation: ${plus_minus(char_skills[6])}${char_skills[6]}
-    <br>Nature: ${plus_minus(char_skills[7])}${char_skills[7]}
-    <br>Religion: ${plus_minus(char_skills[8])}${char_skills[8]}
-    <br>Animal Handling: ${plus_minus(char_skills[9])}${char_skills[9]}
-    <br>Insight: ${plus_minus(char_skills[10])}${char_skills[10]}
-    <br>Medicine: ${plus_minus(char_skills[11])}${char_skills[11]}
-    <br>Perception: ${plus_minus(char_skills[12])}${char_skills[12]}
-    <br>Survival: ${plus_minus(char_skills[13])}${char_skills[13]}
-    <br>Deception: ${plus_minus(char_skills[14])}${char_skills[14]}
-    <br>Intimidation: ${plus_minus(char_skills[15])}${char_skills[15]}
-    <br>Performance: ${plus_minus(char_skills[16])}${char_skills[16]}
-    <br>Persuasion: ${plus_minus(char_skills[17])}${char_skills[17]}
+    <br> ${capitalizeFirstLetter(pronoun3(char_gender))} background is as a ${char_background}.
     <br>
     <br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}
-    <br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}
     <br>${spell_slot_string(char_class, char_spell_slots, char_level)}
-    <br>${feature_string(char_features_array)}`;
-    
+    <br>${feature_string(char_features_array)}
+    <br>
+    <button type="button" id="btn3" class="button">Create a Character Sheet</button>`;
+
+
+
+    //var char_sheet = `Your character's name is ${char_name}. 
+    //<br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} a level ${char_level} ${capitalizeFirstLetter(char_race)} ${capitalizeFirstLetter(char_class)}.
+    //<br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} ${char_align}. 
+    //<br> ${capitalizeFirstLetter(pronoun3(char_gender))} Ability Scores are: 
+    //<br> Str: ${char_atts[0]} (${plus_minus(str_modifier)}${str_modifier})
+    //<br> Dex: ${char_atts[1]} (${plus_minus(dex_modifier)}${dex_modifier})
+    //<br> Con: ${char_atts[2]} (${plus_minus(con_modifier)}${con_modifier})
+    //<br> Int: ${char_atts[3]} (${plus_minus(int_modifier)}${int_modifier})
+    //<br> Wis: ${char_atts[4]} (${plus_minus(wis_modifier)}${wis_modifier})
+    //<br> Cha: ${char_atts[5]} (${plus_minus(cha_modifier)}${cha_modifier})
+    //<br> ${capitalizeFirstLetter(pronoun3(char_gender))} proficiency bonus is ${plus_minus(char_proficiency_bonus)}${char_proficiency_bonus}. 
+    //<br> ${capitalizeFirstLetter(pronoun1(char_gender))} ${haveHas(char_gender)} ${char_hitpoints} hitpoints and ${char_level}d${hitdie(char_class)} hit dice.
+    //<br> Speed: ${move_speed}
+    //<br> Initiative: ${plus_minus(initiative)}${initiative}
+    //<br> ${capitalizeFirstLetter(pronoun1(char_gender))} can speak ${language_string(char_languages)}.
+    //<br> Background: ${char_background}
+    //<br>
+    //<br>
+    //${capitalizeFirstLetter(pronoun3(char_gender))} Skills are:
+    //<br>Athletics: ${plus_minus(char_skills[0])}${char_skills[0]}
+    //<br>Acrobatics: ${plus_minus(char_skills[1])}${char_skills[1]}
+    //<br>Sleight Of Hand: ${plus_minus(char_skills[2])}${char_skills[2]}
+    //<br>Stealth: ${plus_minus(char_skills[3])}${char_skills[3]}
+    //<br>Arcana: ${plus_minus(char_skills[4])}${char_skills[4]}
+    //<br>History: ${plus_minus(char_skills[5])}${char_skills[5]}
+    //<br>Investigation: ${plus_minus(char_skills[6])}${char_skills[6]}
+    //<br>Nature: ${plus_minus(char_skills[7])}${char_skills[7]}
+    //<br>Religion: ${plus_minus(char_skills[8])}${char_skills[8]}
+    //<br>Animal Handling: ${plus_minus(char_skills[9])}${char_skills[9]}
+    //<br>Insight: ${plus_minus(char_skills[10])}${char_skills[10]}
+    //<br>Medicine: ${plus_minus(char_skills[11])}${char_skills[11]}
+    //<br>Perception: ${plus_minus(char_skills[12])}${char_skills[12]}
+    //<br>Survival: ${plus_minus(char_skills[13])}${char_skills[13]}
+    //<br>Deception: ${plus_minus(char_skills[14])}${char_skills[14]}
+    //<br>Intimidation: ${plus_minus(char_skills[15])}${char_skills[15]}
+    //<br>Performance: ${plus_minus(char_skills[16])}${char_skills[16]}
+    //<br>Persuasion: ${plus_minus(char_skills[17])}${char_skills[17]}
+    //<br>
+    //<br>${capitalizeFirstLetter(pronoun1(char_gender))} ${isAre(char_gender)} proficient in ${proficiency_string(char_proficiencies)}
+    //<br>${capitalizeFirstLetter(pronoun3(char_gender))} Passive Perception is ${passive_perception}
+    //<br>${spell_slot_string(char_class, char_spell_slots, char_level)}
+    //<br>${feature_string(char_features_array)}
+    //<br>
+    //<button type="button" id="btn3" class="button">Create a Character Sheet</button>`;
 
     document.getElementById("charSheet").innerHTML = char_sheet;
-  
+
+    document.getElementById("btn3").addEventListener("click", sheet_changer);
+
+    let prof_check = "";
+
+
+        function sheet_changer() {
+
+            var newWin = open('', '_blank');
+
+            const filled_char_sheet = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta charset="utf-8" /><title>Character Sheet</title><link rel="stylesheet" href="charactersheetstyle.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" /></head><body><form class="charsheet"><header><section class="charname"><label for="charname">Character Name</label><input name="charname" placeholder="' + char_name + '"/></section><section class="misc"><ul><li><label for="classlevel">Class & Level</label><input id="classlevel" name="classlevel" placeholder="' + capitalizeFirstLetter(char_class) + ' ' + char_level + '"/></li><li><label for="background">Background</label><input id="background" name="background" placeholder="' + char_background + '"/></li><li><label for="playername">Player Name</label><input id="playername" name="playername" ></li><li><label for="race">Race</label><input id="race" name="race" placeholder="' + capitalizeFirstLetter(char_race) + '"/></li><li><label for="alignment">Alignment</label><input id="alignment" name="alignment" placeholder="' + char_align + '"/></li><li><label for="xp">Experience Points</label><input id="xp" name="xp" /></li></ul></section></header><main><section><section class="attributes"><div class="scores"><ul><li><div class="score"><label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="' + plus_minus(str_modifier) + str_modifier + '"/></div><div class="modifier"><input name="Strengthmod" placeholder="' + char_atts[0] + '" /></div></li><li><div class="score"><label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="' + plus_minus(dex_modifier) + dex_modifier + '"/></div><div class="modifier"><input name="Dexteritymod" placeholder="' + char_atts[1] + '"/></div></li><li><div class="score"><label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="' + plus_minus(con_modifier) + con_modifier + '"/></div><div class="modifier"><input name="Constitutionmod" placeholder="' + char_atts[2] + '"/></div></li><li><div class="score"><label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="' + plus_minus(wis_modifier) + wis_modifier + '"/></div><div class="modifier"><input name="Wisdommod" placeholder="' + char_atts[3] + '"/></div></li><li><div class="score"><label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="' + plus_minus(int_modifier) + int_modifier + '"/></div><div class="modifier"><input name="Intelligencemod" placeholder="' + char_atts[4] + '"/></div></li><li><div class="score"><label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="' + plus_minus(cha_modifier) + cha_modifier + '"/></div><div class="modifier"><input name="Charismamod" placeholder="' + char_atts[5] + '"/></div></li></ul></div><div class="attr-applications"><div class="inspiration box"><div class="label-container" style="margin-top: 11px;background-color: #eee;  border-radius: 5px; border:0;"><label for="inspiration">Inspiration</label></div><input style="border-radius:17px;" name="inspiration" type="checkbox" /></div><div class="proficiencybonus box"><div style="border-radius:2px;" class="label-container"><label for="proficiencybonus">Proficiency Bonus</label></div><input name="proficiencybonus" placeholder="' + plus_minus(char_proficiency_bonus) + char_proficiency_bonus + '"/></div><div class="saves list-section box"><ul><li><label for="Strength-save">Strength</label><input name="Strength-save" type="text" placeholder="' + plus_minus(str_save) + str_save + '"/><input name="Strength-save-prof" type="checkbox" /></li><li><label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" type="text" placeholder="' + plus_minus(dex_save) + dex_save + '"/><input name="Dexterity-save-prof" type="checkbox" /></li><li><label for="Constitution-save">Constitution</label><input name="Constitution-save" type="text" placeholder="' + plus_minus(con_save) + con_save + '"/><input name="Constitution-save-prof" type="checkbox" /></li><li><label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" type="text" placeholder="' + plus_minus(wis_save) + wis_save + '"/><input name="Wisdom-save-prof" type="checkbox" /></li><li><label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" type="text" placeholder="' + plus_minus(int_save) + int_save + '"/><input name="Intelligence-save-prof" type="checkbox" /></li><li><label for="Charisma-save">Charisma</label><input name="Charisma-save" type="text" placeholder="' + plus_minus(cha_save) + cha_save + '"/><input name="Charisma-save-prof" type="checkbox" /></li></ul><div class="label">Saving Throws</div></div><div class="skills list-section box"><ul><li><label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" type="text" placeholder="' + acrobatics + '" /><input name="Acrobatics-prof" type="checkbox" ' + checker("acrobatics", char_proficiencies) + ' /></li><li><label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" type="text" placeholder="' + animal_handling + '"/><input name="Animal Handling-prof" type="checkbox" ' + checker("animal handling", char_proficiencies) + '/></li><li><label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" type="text" placeholder="' + arcana + '"/><input name="Arcana-prof" type="checkbox" ' + checker("arcana", char_proficiencies) + '/></li><li><label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" type="text" placeholder="' + athletics + '"/><input name="Athletics-prof" type="checkbox" ' + checker("athletics", char_proficiencies) + '/></li><li><label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" type="text" placeholder="' + deception + '"/><input name="Deception-prof" type="checkbox" ' + checker("deception", char_proficiencies) + '/></li><li><label for="History">History <span class="skill">(Int)</span></label><input name="History" type="text" placeholder="' + history + '"/><input name="History-prof" type="checkbox" ' + checker("history", char_proficiencies) + '/></li><li><label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" type="text" placeholder="' + insight + '"/><input name="Insight-prof" type="checkbox" ' + checker("insight", char_proficiencies) + '/></li><li><label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" type="text" placeholder="' + intimidation + '"/><input name="Intimidation-prof" type="checkbox" ' + checker("intimidation", char_proficiencies) + '/></li><li><label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" type="text" placeholder="' + investigation + '"/><input name="Investigation-prof" type="checkbox" ' + checker("investigation", char_proficiencies) + '/></li><li><label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" type="text" placeholder="' + medicine + '"/><input name="Medicine-prof" type="checkbox" ' + checker("medicine", char_proficiencies) + '/></li><li><label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" type="text" placeholder="' + nature + '"/><input name="Nature-prof" type="checkbox" ' + checker("nature", char_proficiencies) + ' /></li><li><label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" type="text" placeholder="' + perception + '"/><input name="Perception-prof" type="checkbox" ' + checker("perception", char_proficiencies) + '/></li><li><label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" type="text" placeholder="' + performance + '"/><input name="Performance-prof" type="checkbox" ' + checker("performance", char_proficiencies) + '/></li><li><label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" type="text" placeholder="' + persuasion + '"/><input name="Persuasion-prof" type="checkbox" ' + checker("persuasion", char_proficiencies) + '/></li><li><label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" type="text" placeholder="' + religion + '"/><input name="Religion-prof" type="checkbox" ' + checker("religion", char_proficiencies) + ' /></li><li><label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" type="text" placeholder="' + sleight_of_hand + '"/><input name="Sleight of Hand-prof" type="checkbox" ' + checker("sleight of hand", char_proficiencies) + ' /></li><li><label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" type="text" placeholder="' + stealth + '"/><input name="Stealth-prof" type="checkbox" ' + checker("stealth", char_proficiencies) + ' /></li><li><label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" type="text" placeholder="' + survival + '"/><input name="Survival-prof" type="checkbox" ' + checker("survival", char_proficiencies) + '/></li></ul><div class="label">Skills</div></div></div></section><div class="passive-perception box"><div style="margin-top: 6px; border-radius: 2px; " class="label-container"><label for="passiveperception">Passive Wisdom (Perception)</label></div><input name="passiveperception" placeholder="' + plus_minus(passive_perception) + passive_perception + '"/></div><div style="margin-top: 5px; padding: 5px; border: 1px solid black; border-radius: 2px; display: flex; flex-direction: column-reverse;" class="otherprofs"><label for="otherprofs" style="text-align:center; padding: 5px;">Other Proficiencies and Languages</label><textarea style="border:0; height: 14.8em;" name="otherprofs">' + char_languages + '</textarea></div></section><section><section class="combat"><div class="armorclass"><div><label for="ac">Armor Class</label><input name="ac" type="text" /></div></div><div class="initiative"><div><label for="initiative">Initiative</label><input name="initiative" type="text" placeholder="' + plus_minus(initiative) + initiative + '"/></div></div><div class="speed"><div><label for="speed">Speed</label><input name="speed" type="text" placeholder="' + move_speed + '"/></div></div><div class="hp"><div class="regular"><div class="max"><label for="maxhp">Hit Point Maximum</label><input name="maxhp" type="text" placeholder="' + char_hitpoints + '"/></div><div class="current"><label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" placeholder="' + char_hitpoints + '"/></div></div><div class="temporary"><label for="temphp">Temporary Hit Points</label><input name="temphp" type="text" /></div></div><div class="hitdice"><div><div class="total"><label for="totalhd">Total</label><input name="totalhd" type="text" placeholder="' + char_level + 'd' + hitdie(char_class) + '"/></div><div class="remaining"><label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" /></div></div></div><div class="deathsaves"><div><div class="label"><label>Death Saves</label></div><div class="marks"><div class="deathsuccesses"><label>Successes</label><div class="bubbles"><input name="deathsuccess1" type="checkbox" /><input name="deathsuccess2" type="checkbox" /><input name="deathsuccess3" type="checkbox" /></div></div><div class="deathfails"><label>Failures</label><div class="bubbles"><input name="deathfail1" type="checkbox" /><input name="deathfail2" type="checkbox" /><input name="deathfail3" type="checkbox" /></div></div></div></div></div></section><section class="attacksandspellcasting"><div><label>Attacks & Spellcasting</label><table><thead><tr><th>Name</th><th>Atk Bonus</th><th>Damage/Type</th></tr></thead><tbody><tr><td><input name="atkname1" type="text" /></td><td><input name="atkbonus1" type="text" /></td><td><input name="atkdamage1" type="text" /></td></tr><tr><td><input name="atkname2" type="text" /></td><td><input name="atkbonus2" type="text" /></td><td><input name="atkdamage2" type="text" /></td></tr><tr><td><input name="atkname3" type="text" /></td><td><input name="atkbonus3" type="text" /></td><td><input name="atkdamage3" type="text" /></td></tr></tbody></table><textarea style="height:4.7em;" id="attacks_and_spellcasting"></textarea></div></section><section class="equipment"><div><label>Equipment</label><div class="money"><ul><li><label for="cp">cp</label><input name="cp" /></li><li><label for="sp">sp</label><input name="sp" /></li><li><label for="ep">ep</label><input name="ep" /></li><li><label for="gp">gp</label><input name="gp" /></li><li><label for="pp">pp</label><input name="pp" /></li></ul></div><textarea id="equipment"></textarea></div></section></section><section><section class="flavor"><div class="personality"><label for="personality">Personality</label><textarea name="personality"></textarea></div><div class="ideals"><label for="ideals">Ideals</label><textarea name="ideals"></textarea></div><div class="bonds"><label for="bonds">Bonds</label><textarea name="bonds"></textarea></div><div class="flaws"><label for="flaws">Flaws</label><textarea name="flaws"></textarea></div></section><section class="features"><div><label for="features">Features & Traits</label><textarea style="height: 32.3em;" name="features" placeholder="' + char_features_array + '"></textarea></div></section></section></main><footer></footer></form></body ></html>'
+
+            newWin.document.write(filled_char_sheet);
+
+    }
+
+    console.log(char_proficiencies);
+    console.log(checker("acrobatics", char_proficiencies));
 }
+
+
+
+
+function checker(key, array) {
+
+    let checked = "";
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].indexOf(key) >= 0) {
+        checked = "checked";
+        }
+    }
+    return checked;
+}
+
+
+
+
+
+
+
+
 
 
