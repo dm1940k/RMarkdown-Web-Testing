@@ -3097,6 +3097,748 @@ function spell_slots(char_class, level) {
 //}
 
 
+
+
+
+
+
+/* A work in progress. This will hopefully be the cleanest and most contained way to assign everything that class has to offer within a contained and relativly easy to manipulate format. Goal is to have the name, hp, proficiencies, equipment, spell slots, and features all assigned as various data types 
+ * to the charClass object, which will then be drawn from to inform everything else. I've grouped in relavant functions and did a bit of cleanup to remove unnecassary lines of code. Will likely apply the same mindset to the race array function as well as part of the final clean up. */
+
+/*
+function classObject(charLevel) {
+
+    var classInput = document.getElementById("class").value;
+
+    const charClass = {
+        className:"",
+        hitpoints:"",
+        armorProficiency:[],
+        weaponProficiency:[],
+        toolProficiency:[],
+        savingThrows:[],
+        skillProficiency: [],
+        equipment: [],
+        features: [],
+        proficiencyBonus:
+    };
+
+
+    charClass.className = classer();
+    charClass.hitpoints = hitpoints(con_modifier, charLevel, charClass.className);
+    charClass.features = featurer(charClass.className, charLevel)
+    charClass.proficiencyBonus = profBonus(charLevel);
+
+    function profBonus(charLevel) {
+
+        switch (charLevel) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                prof_bonus = 2;
+                break;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                prof_bonus = 3;
+                break;
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+                prof_bonus = 4;
+                break;
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+                prof_bonus = 5;
+                break;
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+                prof_bonus = 6;
+                break;
+
+        }
+        return prof_bonus;
+    }
+
+    function classer() {
+
+        var classes = ["barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "warlock", "wizard"]; 
+        let charClass;
+
+        if (class_input == "random") {
+            charClass = classes[randomize(classes)];
+        } else {
+            charClass = classInput;
+        }
+        return charClass;
+    }
+
+    function hitpoints(conMod, charLevel, charClass) {
+
+        function hitDie() {
+
+
+            let hit_die;
+
+            switch (charClass.className) {
+                case "barbarian":
+                    hit_die = 12;
+                    break;
+                case "fighter":
+                case "paladin":
+                case "ranger":
+                    hit_die = 10;
+                    break;
+                case "bard":
+                case "cleric":
+                case "druid":
+                case "monk":
+                case "rogue":
+                case "warlock":
+                    hit_die = 8;
+                    break;
+                case "sorcerer":
+                case "wizard":
+                    hit_die = 6;
+                    break;
+            }
+            return hit_die;
+        }
+
+
+        let firstLevel = hitDie(charClass);
+        let subsequentRolls = (roll_dice(hitdie(charClass), charLevel));
+
+        let subRollTotal = 0;
+        if (char_level > 1) {
+            for (let i in subsequentRolls) {
+                subRollTotal += subsequentRolls[i];
+            }
+        }
+        let conModBonus = conMod * charLevel;
+
+        if (conMod < 1) {
+            conModBonus = 1 * charLevel;
+        }
+
+        let hp = firstLevel + subRollTotal + conModBonus;
+        return hp;
+
+        //lowest a con mod bonus can go is 1, as asserted by D&D co-creator for 5E Mike Mearls here: https://twitter.com/mikemearls/status/582601826031132673
+    }
+
+    function featurer(charClass, charLevel) {
+        let features = [];
+
+        switch (charClass) {
+            case "barbarian":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Rage", "Unarmored Defense"];
+                        break;
+                    case 2:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense"];
+                        break;
+                    case 3:
+                    case 4:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path"];
+                        break;
+                    case 5:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement"];
+                        break;
+                    case 6:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature"];
+                        break;
+                    case 7:
+                    case 8:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature", "Feral Instinct"];
+                        break;
+                    case 9:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature", "Feral Instinct", "Brutal Critical (1 die)"];
+                        break;
+                    case 10:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 2", "Feral Instinct", "Brutal Critical (1 die)"];
+                        break;
+                    case 11:
+                    case 12:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 2", "Feral Instinct", "Brutal Critical (1 die)", "Relentless Rage"];
+                        break;
+                    case 13:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 2", "Feral Instinct", "Brutal Critical (2 dice)", "Relentless Rage"];
+                        break;
+                    case 14:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (2 dice)", "Relentless Rage"];
+                        break;
+                    case 15:
+                    case 16:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (2 dice)", "Relentless Rage", "Persistent Rage"];
+                        break;
+                    case 17:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (3 dice)", "Relentless Rage", "Persistent Rage"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (3 dice)", "Relentless Rage", "Persistent Rage", "Indomitable Might"];
+                        break;
+                    case 20:
+                        features = ["Rage", "Unarmored Defense", "Reckless Attack", "Danger Sense", "Primal Path", "Extra Attack", "Fast Movement", "Path feature x 3", "Feral Instinct", "Brutal Critical (3 dice)", "Relentless Rage", "Persistent Rage", "Indomitable Might", "Primal Champion"];
+                        break;
+                }
+                break;
+            case "bard":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Bardic Inspiration(d6)"];
+                        break;
+                    case 2:
+                        features = ["Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)"];
+                        break;
+                    case 3:
+                    case 4:
+                        features = ["Bardic Inspiration(d6)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise"];
+                        break;
+                    case 5:
+                        features = ["Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration"];
+                        break;
+                    case 6:
+                    case 7:
+                    case 8:
+                        features = ["Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d6)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
+                        break;
+                    case 9:
+                        features = ["Bardic Inspiration(d8)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise", "Font of Inspiration", "Countercharm", "Bard College feature"];
+                        break;
+                    case 10:
+                    case 11:
+                    case 12:
+                        features = ["Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d8)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
+                        break;
+                    case 13:
+                        features = ["Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature", "Magical Secrets"];
+                        break;
+                    case 14:
+                        features = ["Bardic Inspiration(d10)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                        break;
+                    case 15:
+                    case 16:
+                        features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d10)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                        break;
+                    case 17:
+                        features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 2"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3"];
+                        break;
+                    case 20:
+                        features = ["Bardic Inspiration(d12)", "Jack of All Trades", "Song of Rest(d12)", "Bard College", "Expertise x 2", "Font of Inspiration", "Countercharm", "Bard College feature x 2", "Magical Secrets x 3", "Superior Inspiration"];
+                        break;
+                }
+                break;
+            case "cleric":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Spellcasting", "Divine Domain"];
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x1)", "Divine Domain feature"];
+                        break;
+                    case 5:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x1)", "Divine Domain feature", "Destroy Undead(CR 1/2)"];
+                        break;
+                    case 6:
+                    case 7:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 1/2)"];
+                        break;
+                    case 8:
+                    case 9:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 1)"];
+                        break;
+                    case 10:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 1)", "Divine Intervention"];
+                        break;
+                    case 11:
+                    case 12:
+                    case 13:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 2)", "Divine Intervention"];
+                        break;
+                    case 14:
+                    case 15:
+                    case 16:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 2", "Destroy Undead(CR 3)", "Divine Intervention"];
+                        break;
+                    case 17:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x2)", "Divine Domain feature x 3", "Destroy Undead(CR 4)", "Divine Intervention"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x3)", "Divine Domain feature x 3", "Destroy Undead(CR 4)", "Divine Intervention"];
+                        break;
+                    case 20:
+                        features = ["Spellcasting", "Divine Domain", "Channel Divinity(x3)", "Divine Domain feature x 3", "Destroy Undead(CR 4)", "Divine Intervention", "Divine Intervention improvement"];
+                        break;
+                }
+                break;
+            case "druid":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Druidic",];
+                        break;
+                    case 2:
+                    case 3:
+                        features = ["Druidic", "Wild Shape", "Druid Circle"];
+                        break;
+                    case 4:
+                    case 5:
+                        features = ["Druidic", "Wild Shape", "Druid Circle", "Wild Shape improvement"];
+                        break;
+                        break;
+                    case 6:
+                    case 7:
+                        features = ["Druidic", "Wild Shape", "Druid Circle", "Wild Shape improvement", "Druid Circle feature"];
+                        break;
+                    case 8:
+                    case 9:
+                        features = ["Druidic", "Wild Shape", "Druid Circle", "Wild Shape improvement", "Druid Circle feature"];
+                        break;
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                        features = ["Druidic", "Wild Shape", "Druid Circle x 2", "Wild Shape improvement", "Druid Circle feature"];
+                        break;
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                        features = ["Druidic", "Wild Shape", "Druid Circle x 3", "Wild Shape improvement", "Druid Circle feature"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Druidic", "Wild Shape", "Druid Circle x 3", "Wild Shape improvement", "Druid Circle feature", "Timeless Body", "Beast Spells"];
+                        break;
+                    case 20:
+                        features = ["Druidic", "Wild Shape", "Druid Circle x 3", "Wild Shape improvement", "Druid Circle feature", "Timeless Body", "Beast Spells", "Archdruid"];
+                        break;
+                }
+                break;
+            case "fighter":
+                switch (charLevel) {
+                    case 1:
+                        features = [];
+                        break;
+                    case 2:
+                        features = ["Action Surge(x1)"];
+                        break;
+                    case 3:
+                    case 4:
+                        features = ["Action Surge(x1)", "Martial Archetype"];
+                        break;
+                        break;
+                    case 5:
+                    case 6:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)"];
+                        break;
+                        break;
+                    case 7:
+                    case 8:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)", "Martial Archetype feature"];
+                        break;
+                    case 9:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)", "Martial Archetype feature", "Indomitable (x1)"];
+                        break;
+                    case 10:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x1)", "Martial Archetype feature x 2", "Indomitable (x1)"];
+                        break;
+                    case 11:
+                    case 12:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 2", "Indomitable (x1)"];
+                        break;
+                    case 13:
+                    case 14:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 2", "Indomitable (x2)"];
+                        break;
+                        break;
+                    case 15:
+                    case 16:
+                        features = ["Action Surge(x1)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 3", "Indomitable (x2)"];
+                        break;
+                        break;
+                    case 17:
+                        features = ["Action Surge(x2)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 2", "Indomitable (x3)"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Action Surge(x2)", "Martial Archetype", "Extra Attack (x2)", "Martial Archetype feature x 3", "Indomitable (x3)"];
+                        break;
+                        break;
+                    case 20:
+                        features = ["Action Surge(x2)", "Martial Archetype", "Extra Attack (x3)", "Martial Archetype feature x 3", "Indomitable (x3)"];
+                        break;
+                }
+                break;
+            case "monk":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Unarmored Defense", "Martial Arts"];
+                        break;
+                    case 2:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement"];
+                        break;
+                    case 3:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles"];
+                        break;
+                    case 4:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall"];
+                        break;
+                    case 5:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike"];
+                        break;
+                    case 6:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature"];
+                        break;
+                    case 7:
+                    case 8:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature", "Evasion", "Stillness of Mind"];
+                        break;
+                    case 9:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature", "Evasion", "Stillness of Mind", "Unarmored Movement improvement"];
+                        break;
+                    case 10:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body"];
+                        break;
+                    case 11:
+                    case 12:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body"];
+                        break;
+                    case 13:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon"];
+                        break;
+                    case 14:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul"];
+                        break;
+                    case 15:
+                    case 16:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 2", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body"];
+                        break;
+                    case 17:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 3", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 3", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body", "Empty Body"];
+                        break;
+                    case 20:
+                        features = ["Unarmored Defense", "Martial Arts", "Ki", "Unarmored Movement", "Monastic Tradition", "Deflect Missiles", "Slow Fall", "Extra Attack", "Stunning Strike", "Ki-Empowered Strikes", "Monastic Tradition feature x 3", "Evasion", "Stillness of Mind", "Unarmored Movement improvement", "Purity of Body", "Tongue of the Sun and Moon", "Diamond Soul", "Timeless Body", "Empty Body", "Perfect Self"];
+                        break;
+                }
+                break;
+            case "paladin":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Divine Sense", "Lay on Hands"];
+                        break;
+                    case 2:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite"];
+                        break;
+                    case 3:
+                    case 4:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath"];
+                        break;
+                    case 5:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack"];
+                        break;
+                    case 6:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection"];
+                        break;
+                    case 7:
+                    case 8:
+                    case 9:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature"];
+                        break;
+                    case 10:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage"];
+                        break;
+                    case 11:
+                    case 12:
+                    case 13:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite"];
+                        break;
+                    case 14:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch"];
+                        break;
+                    case 15:
+                    case 16:
+                    case 17:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Sacred Oath feature"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Sacred Oath feature", "Aura improvements"];
+                        break;
+                    case 20:
+                        features = ["Divine Sense", "Lay on Hands", "Fighting Style", "Divine Smite", "Divine Health", "Sacred Oath", "Extra Attack", "Aura of Protection", "Sacred Oath feature", "Aura of Courage", "Improved Divine Smite", "Cleansing Touch", "Sacred Oath feature", "Aura improvements", "Sacred Oath feature"];
+                        break;
+                }
+                break;
+            case "ranger":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Favored Enemy", "Natural Explorer"];
+                        break;
+                    case 2:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style"];
+                        break;
+                    case 3:
+                    case 4:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave"];
+                        break;
+                    case 5:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack"];
+                        break;
+                    case 6:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement"];
+                        break;
+                    case 7:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement", "Ranger Conclave feature"];
+                        break;
+                    case 8:
+                    case 9:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement", "Ranger Conclave feature", "Land's Stride"];
+                        break;
+                    case 10:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement x 2", "Ranger Conclave feature", "Land's Stride", "Hide in Plain Sight"];
+                        break;
+                    case 11:
+                    case 12:
+                    case 13:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement", "Natural Explorer Improvement x 2", "Ranger Conclave feature", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature"];
+                        break;
+                    case 14:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish"];
+                        break;
+                    case 15:
+                    case 16:
+                    case 17:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature x 2", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature x 2", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish", "Feral Senses"];
+                        break;
+                    case 20:
+                        features = ["Favored Enemy", "Natural Explorer", "Fighting Style", "Primeval Awareness", "Ranger Conclave", "Extra Attack", "Favored Enemy Improvement x 2", "Natural Explorer Improvement x 2", "Ranger Conclave feature x 2", "Land's Stride", "Hide in Plain Sight", "Ranger Conclave feature", "Vanish", "Feral Senses", "Foe Slayer"];
+                        break;
+                }
+                break;
+            case "rogue":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant"];
+                        break;
+                    case 2:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action"];
+                        break;
+                    case 3:
+                    case 4:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype"];
+                        break;
+                    case 5:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge"];
+                        break;
+                    case 6:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise"];
+                        break;
+                    case 7:
+                    case 8:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion"];
+                        break;
+                    case 9:
+                    case 10:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature"];
+                        break;
+                    case 11:
+                    case 12:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature", "Reliable Talent"];
+                        break;
+                    case 13:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 2", "Reliable Talent"];
+                        break;
+                    case 14:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 2", "Reliable Talent", "Blindsense"];
+                        break;
+                    case 15:
+                    case 16:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 2", "Reliable Talent", "Blindsense", "Slippery Mind"];
+                        break;
+                    case 17:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 3", "Reliable Talent", "Blindsense", "Slippery Mind"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 3", "Reliable Talent", "Blindsense", "Slippery Mind", "Elusive"];
+                        break;
+                    case 20:
+                        features = ["Expertise", "Sneak Attack", "Thieves' Cant", "Cunning Action", "Roguish Archetype", "Uncanny Dodge", "Expertise", "Evasion", "Roguish Archetype feature x 3", "Reliable Talent", "Blindsense", "Slippery Mind", "Elusive", "Stroke of Luck"];
+                        break;
+                }
+                break;
+            case "sorcerer":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Sorcerous Origin"];
+                        break;
+                    case 2:
+                        features = ["Sorcerous Origin", "Font of Magic"];
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic"];
+                        break;
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic", "Sorcerous Origin feature"];
+                        break;
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature"];
+                        break;
+                    case 14:
+                    case 15:
+                    case 16:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 2"];
+                        break;
+                    case 17:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 2"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 3"];
+                        break;
+                    case 20:
+                        features = ["Sorcerous Origin", "Font of Magic", "Metamagic x 2", "Sorcerous Origin feature x 3", "Sorcerous Restoration"];
+                        break;
+                }
+                break;
+            case "warlock":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Otherworldly Patron", "Pact Magic"];
+                        break;
+                    case 2:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations"];
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon"];
+                        break;
+                        break;
+                        break;
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature"];
+                        break;
+                        break;
+                        break;
+                        break;
+                    case 10:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 2"];
+                        break;
+                    case 11:
+                    case 12:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 2", "Mystic Arcanum (6th level)"];
+                        break;
+                        break;
+                    case 13:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 2", "Mystic Arcanum (7th level)"];
+                        break;
+                    case 14:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (7th level)"];
+                        break;
+                    case 15:
+                    case 16:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (8th level)"];
+                        break;
+                        break;
+                    case 17:
+                    case 18:
+                    case 19:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (9th level)"];
+                        break;
+                        break;
+                        break;
+                    case 20:
+                        features = ["Otherworldly Patron", "Pact Magic", "Eldritch Invocations", "Pact Boon", "Otherworldly Patron feature x 3", "Mystic Arcanum (9th level)", "Eldritch Master"];
+                        break;
+                }
+                break;
+            case "wizard":
+                switch (charLevel) {
+                    case 1:
+                        features = ["Arcane Recovery"];
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        features = ["Arcane Recovery", "Arcane Tradition"];
+                        break;
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature"];
+                        break;
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                        features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 2"];
+                        break;
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                        features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 3"];
+                        break;
+                    case 18:
+                    case 19:
+                        features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 3", "Spell Mastery"];
+                        break;
+                    case 20:
+                        features = ["Arcane Recovery", "Arcane Tradition", "Arcane Tradition feature x 3", "Spell Mastery", "Signature Spells"];
+                        break;
+                }
+                break;
+        }
+
+        return features;
+    }
+
+
+
+}
+
+
+*/
+
 /*contains all of the key features of each core race. Left out race variants and a coupld race specific things I couldn't figure out how to implement in a reasonable timeframe. Will flesh out later.*/
 function race_array() {
     var races = ["dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human"];
@@ -4306,18 +5048,462 @@ function character() {
     let prof_check = "";
 
 
-        function sheet_changer() {
+    function sheet_changer() {
 
-            var newWin = open('', '_blank');
+        var newWin = open('', '_blank');
 
-            const filled_char_sheet = '<!DOCTYPE html><html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta charset="utf-8" /><title>Character Sheet</title><link rel="stylesheet" href="charactersheetstyle.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" /></head><body><form class="charsheet"><header><section class="charname"><label for="charname">Character Name</label><input name="charname" placeholder="' + char_name + '"/></section><section class="misc"><ul><li><label for="classlevel">Class & Level</label><input id="classlevel" name="classlevel" placeholder="' + capitalizeFirstLetter(char_class) + ' ' + char_level + '"/></li><li><label for="background">Background</label><input id="background" name="background" placeholder="' + char_background + '"/></li><li><label for="playername">Player Name</label><input id="playername" name="playername" ></li><li><label for="race">Race</label><input id="race" name="race" placeholder="' + capitalizeFirstLetter(char_race) + '"/></li><li><label for="alignment">Alignment</label><input id="alignment" name="alignment" placeholder="' + char_align + '"/></li><li><label for="xp">Experience Points</label><input id="xp" name="xp" /></li></ul></section></header><main><section><section class="attributes"><div class="scores"><ul><li><div class="score"><label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="' + plus_minus(str_modifier) + str_modifier + '"/></div><div class="modifier"><input name="Strengthmod" placeholder="' + char_atts[0] + '" /></div></li><li><div class="score"><label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="' + plus_minus(dex_modifier) + dex_modifier + '"/></div><div class="modifier"><input name="Dexteritymod" placeholder="' + char_atts[1] + '"/></div></li><li><div class="score"><label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="' + plus_minus(con_modifier) + con_modifier + '"/></div><div class="modifier"><input name="Constitutionmod" placeholder="' + char_atts[2] + '"/></div></li><li><div class="score"><label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="' + plus_minus(wis_modifier) + wis_modifier + '"/></div><div class="modifier"><input name="Wisdommod" placeholder="' + char_atts[3] + '"/></div></li><li><div class="score"><label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="' + plus_minus(int_modifier) + int_modifier + '"/></div><div class="modifier"><input name="Intelligencemod" placeholder="' + char_atts[4] + '"/></div></li><li><div class="score"><label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="' + plus_minus(cha_modifier) + cha_modifier + '"/></div><div class="modifier"><input name="Charismamod" placeholder="' + char_atts[5] + '"/></div></li></ul></div><div class="attr-applications"><div class="inspiration box"><div class="label-container" style="margin-top: 11px;background-color: #eee;  border-radius: 5px; border:0;"><label for="inspiration">Inspiration</label></div><input style="border-radius:17px;" name="inspiration" type="checkbox" /></div><div class="proficiencybonus box"><div style="border-radius:2px;" class="label-container"><label for="proficiencybonus">Proficiency Bonus</label></div><input name="proficiencybonus" placeholder="' + plus_minus(char_proficiency_bonus) + char_proficiency_bonus + '"/></div><div class="saves list-section box"><ul><li><label for="Strength-save">Strength</label><input name="Strength-save" type="text" placeholder="' + plus_minus(str_save) + str_save + '"/><input name="Strength-save-prof" type="checkbox" /></li><li><label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" type="text" placeholder="' + plus_minus(dex_save) + dex_save + '"/><input name="Dexterity-save-prof" type="checkbox" /></li><li><label for="Constitution-save">Constitution</label><input name="Constitution-save" type="text" placeholder="' + plus_minus(con_save) + con_save + '"/><input name="Constitution-save-prof" type="checkbox" /></li><li><label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" type="text" placeholder="' + plus_minus(wis_save) + wis_save + '"/><input name="Wisdom-save-prof" type="checkbox" /></li><li><label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" type="text" placeholder="' + plus_minus(int_save) + int_save + '"/><input name="Intelligence-save-prof" type="checkbox" /></li><li><label for="Charisma-save">Charisma</label><input name="Charisma-save" type="text" placeholder="' + plus_minus(cha_save) + cha_save + '"/><input name="Charisma-save-prof" type="checkbox" /></li></ul><div class="label">Saving Throws</div></div><div class="skills list-section box"><ul><li><label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" type="text" placeholder="' + acrobatics + '" /><input name="Acrobatics-prof" type="checkbox" ' + checker("acrobatics", char_proficiencies) + ' /></li><li><label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" type="text" placeholder="' + animal_handling + '"/><input name="Animal Handling-prof" type="checkbox" ' + checker("animal handling", char_proficiencies) + '/></li><li><label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" type="text" placeholder="' + arcana + '"/><input name="Arcana-prof" type="checkbox" ' + checker("arcana", char_proficiencies) + '/></li><li><label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" type="text" placeholder="' + athletics + '"/><input name="Athletics-prof" type="checkbox" ' + checker("athletics", char_proficiencies) + '/></li><li><label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" type="text" placeholder="' + deception + '"/><input name="Deception-prof" type="checkbox" ' + checker("deception", char_proficiencies) + '/></li><li><label for="History">History <span class="skill">(Int)</span></label><input name="History" type="text" placeholder="' + history + '"/><input name="History-prof" type="checkbox" ' + checker("history", char_proficiencies) + '/></li><li><label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" type="text" placeholder="' + insight + '"/><input name="Insight-prof" type="checkbox" ' + checker("insight", char_proficiencies) + '/></li><li><label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" type="text" placeholder="' + intimidation + '"/><input name="Intimidation-prof" type="checkbox" ' + checker("intimidation", char_proficiencies) + '/></li><li><label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" type="text" placeholder="' + investigation + '"/><input name="Investigation-prof" type="checkbox" ' + checker("investigation", char_proficiencies) + '/></li><li><label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" type="text" placeholder="' + medicine + '"/><input name="Medicine-prof" type="checkbox" ' + checker("medicine", char_proficiencies) + '/></li><li><label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" type="text" placeholder="' + nature + '"/><input name="Nature-prof" type="checkbox" ' + checker("nature", char_proficiencies) + ' /></li><li><label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" type="text" placeholder="' + perception + '"/><input name="Perception-prof" type="checkbox" ' + checker("perception", char_proficiencies) + '/></li><li><label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" type="text" placeholder="' + performance + '"/><input name="Performance-prof" type="checkbox" ' + checker("performance", char_proficiencies) + '/></li><li><label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" type="text" placeholder="' + persuasion + '"/><input name="Persuasion-prof" type="checkbox" ' + checker("persuasion", char_proficiencies) + '/></li><li><label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" type="text" placeholder="' + religion + '"/><input name="Religion-prof" type="checkbox" ' + checker("religion", char_proficiencies) + ' /></li><li><label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" type="text" placeholder="' + sleight_of_hand + '"/><input name="Sleight of Hand-prof" type="checkbox" ' + checker("sleight of hand", char_proficiencies) + ' /></li><li><label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" type="text" placeholder="' + stealth + '"/><input name="Stealth-prof" type="checkbox" ' + checker("stealth", char_proficiencies) + ' /></li><li><label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" type="text" placeholder="' + survival + '"/><input name="Survival-prof" type="checkbox" ' + checker("survival", char_proficiencies) + '/></li></ul><div class="label">Skills</div></div></div></section><div class="passive-perception box"><div style="margin-top: 6px; border-radius: 2px; " class="label-container"><label for="passiveperception">Passive Wisdom (Perception)</label></div><input name="passiveperception" placeholder="' + plus_minus(passive_perception) + passive_perception + '"/></div><div style="margin-top: 5px; padding: 5px; border: 1px solid black; border-radius: 2px; display: flex; flex-direction: column-reverse;" class="otherprofs"><label for="otherprofs" style="text-align:center; padding: 5px;">Other Proficiencies and Languages</label><textarea style="border:0; height: 14.8em;" name="otherprofs">' + char_languages + '</textarea></div></section><section><section class="combat"><div class="armorclass"><div><label for="ac">Armor Class</label><input name="ac" type="text" /></div></div><div class="initiative"><div><label for="initiative">Initiative</label><input name="initiative" type="text" placeholder="' + plus_minus(initiative) + initiative + '"/></div></div><div class="speed"><div><label for="speed">Speed</label><input name="speed" type="text" placeholder="' + move_speed + '"/></div></div><div class="hp"><div class="regular"><div class="max"><label for="maxhp">Hit Point Maximum</label><input name="maxhp" type="text" placeholder="' + char_hitpoints + '"/></div><div class="current"><label for="currenthp">Current Hit Points</label><input name="currenthp" type="text" placeholder="' + char_hitpoints + '"/></div></div><div class="temporary"><label for="temphp">Temporary Hit Points</label><input name="temphp" type="text" /></div></div><div class="hitdice"><div><div class="total"><label for="totalhd">Total</label><input name="totalhd" type="text" placeholder="' + char_level + 'd' + hitdie(char_class) + '"/></div><div class="remaining"><label for="remaininghd">Hit Dice</label><input name="remaininghd" type="text" /></div></div></div><div class="deathsaves"><div><div class="label"><label>Death Saves</label></div><div class="marks"><div class="deathsuccesses"><label>Successes</label><div class="bubbles"><input name="deathsuccess1" type="checkbox" /><input name="deathsuccess2" type="checkbox" /><input name="deathsuccess3" type="checkbox" /></div></div><div class="deathfails"><label>Failures</label><div class="bubbles"><input name="deathfail1" type="checkbox" /><input name="deathfail2" type="checkbox" /><input name="deathfail3" type="checkbox" /></div></div></div></div></div></section><section class="attacksandspellcasting"><div><label>Attacks & Spellcasting</label><table><thead><tr><th>Name</th><th>Atk Bonus</th><th>Damage/Type</th></tr></thead><tbody><tr><td><input name="atkname1" type="text" /></td><td><input name="atkbonus1" type="text" /></td><td><input name="atkdamage1" type="text" /></td></tr><tr><td><input name="atkname2" type="text" /></td><td><input name="atkbonus2" type="text" /></td><td><input name="atkdamage2" type="text" /></td></tr><tr><td><input name="atkname3" type="text" /></td><td><input name="atkbonus3" type="text" /></td><td><input name="atkdamage3" type="text" /></td></tr></tbody></table><textarea style="height:4.7em;" id="attacks_and_spellcasting"></textarea></div></section><section class="equipment"><div><label>Equipment</label><div class="money"><ul><li><label for="cp">cp</label><input name="cp" /></li><li><label for="sp">sp</label><input name="sp" /></li><li><label for="ep">ep</label><input name="ep" /></li><li><label for="gp">gp</label><input name="gp" /></li><li><label for="pp">pp</label><input name="pp" /></li></ul></div><textarea id="equipment"></textarea></div></section></section><section><section class="flavor"><div class="personality"><label for="personality">Personality</label><textarea name="personality"></textarea></div><div class="ideals"><label for="ideals">Ideals</label><textarea name="ideals"></textarea></div><div class="bonds"><label for="bonds">Bonds</label><textarea name="bonds"></textarea></div><div class="flaws"><label for="flaws">Flaws</label><textarea name="flaws"></textarea></div></section><section class="features"><div><label for="features">Features & Traits</label><textarea style="height: 32.3em;" name="features" placeholder="' + char_features_array + '"></textarea></div></section></section></main><footer></footer></form></body ></html>'
-
+        const filled_char_sheet = `
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Character Sheet</title>
+<link rel="stylesheet" href="charactersheetstyle.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" />
+</head>
+<body>
+<form class="charsheet">
+<header>
+<section class="charname">
+<label for="charname">Character Name</label>
+<input name="charname" placeholder="${char_name}"/>
+</section>
+<section class="misc">
+<ul>
+<li>
+<label for="classlevel">Class & Level</label>
+<input id="classlevel" name="classlevel" placeholder="${capitalizeFirstLetter(char_class)} ${char_level}"/>
+</li>
+<li>
+<label for="background">Background</label>
+<input id="background" name="background" placeholder="${char_background}"/>
+</li>
+<li>
+<label for="playername">Player Name</label>
+<input id="playername" name="playername" >
+</li>
+<li>
+<label for="race">Race</label>
+<input id="race" name="race" placeholder="${capitalizeFirstLetter(char_race)}"/>
+</li>
+<li>
+<label for="alignment">Alignment</label>
+<input id="alignment" name="alignment" placeholder="${char_align}"/>
+</li>
+<li>
+<label for="xp">Experience Points</label>
+<input id="xp" name="xp" />
+</li>
+</ul>
+</section>
+</header>
+<main>
+<section>
+<section class="attributes">
+<div class="scores">
+<ul>
+<li>
+<div class="score">
+<label for="Strengthscore">Strength</label>
+<input name="Strengthscore" placeholder="${plus_minus(str_modifier)} ${str_modifier}"/>
+</div>
+<div class="modifier">
+<input name="Strengthmod" placeholder="${char_atts[0]}" />
+</div>
+</li>
+<li>
+<div class="score">
+<label for="Dexterityscore">Dexterity</label>
+<input name="Dexterityscore" placeholder="${plus_minus(dex_modifier)} ${dex_modifier}"/>
+</div>
+<div class="modifier">
+<input name="Dexteritymod" placeholder="${char_atts[1]}"/>
+</div>
+</li>
+<li>
+<div class="score">
+<label for="Constitutionscore">Constitution</label>
+<input name="Constitutionscore" placeholder="${plus_minus(con_modifier)} ${con_modifier}"/>
+</div>
+<div class="modifier">
+<input name="Constitutionmod" placeholder="${char_atts[2]}"/>
+</div>
+</li>
+<li>
+<div class="score">
+<label for="Wisdomscore">Wisdom</label>
+<input name="Wisdomscore" placeholder="${plus_minus(wis_modifier)} ${wis_modifier}"/>
+</div>
+<div class="modifier">
+    <input name="Wisdommod" placeholder="${char_atts[3]}"/>
+</div>
+</li>
+<li>
+<div class="score">
+<label for="Intelligencescore">Intelligence</label>
+<input name="Intelligencescore" placeholder="${plus_minus(int_modifier)} ${int_modifier}"/>
+</div>
+<div class="modifier">
+    <input name="Intelligencemod" placeholder="${char_atts[4]}"/>
+</div>
+</li>
+<li>
+<div class="score">
+<label for="Charismascore">Charisma</label>
+        <input name="Charismascore" placeholder="${plus_minus(cha_modifier)} ${cha_modifier}"/>
+</div>
+<div class="modifier">
+<input name="Charismamod" placeholder="${char_atts[5]}"/>
+</div>
+</li>
+</ul>
+</div>
+<div class="attr-applications">
+<div class="inspiration box">
+<div class="label-container" style="margin-top: 11px;background-color: #eee;  border-radius: 5px; border:0;">
+<label for="inspiration">Inspiration</label>
+</div>
+<input style="border-radius:17px;" name="inspiration" type="checkbox" />
+</div>
+<div class="proficiencybonus box">
+<div style="border-radius:2px;" class="label-container">
+<label for="proficiencybonus">Proficiency Bonus</label>
+</div>
+<input name="proficiencybonus" placeholder="${plus_minus(char_proficiency_bonus)} ${char_proficiency_bonus}"/>
+</div>
+<div class="saves list-section box">
+<ul>
+<li>
+<label for="Strength-save">Strength</label>
+<input name="Strength-save" type="text" placeholder="${plus_minus(str_save)} ${str_save}"/>
+<input name="Strength-save-prof" type="checkbox" />
+</li>
+<li>
+<label for="Dexterity-save">Dexterity</label>
+<input name="Dexterity-save" type="text" placeholder="${plus_minus(dex_save)} ${dex_save}"/>
+<input name="Dexterity-save-prof" type="checkbox" />
+</li>
+<li>
+<label for="Constitution-save">Constitution</label>
+<input name="Constitution-save" type="text" placeholder="${plus_minus(con_save)} ${con_save}"/>
+<input name="Constitution-save-prof" type="checkbox" />
+</li>
+<li>
+<label for="Wisdom-save">Wisdom</label>
+<input name="Wisdom-save" type="text" placeholder="${plus_minus(wis_save)} ${wis_save}"/>
+<input name="Wisdom-save-prof" type="checkbox" />
+</li>
+<li>
+<label for="Intelligence-save">Intelligence</label>
+<input name="Intelligence-save" type="text" placeholder="${plus_minus(int_save)} ${int_save}"/>
+<input name="Intelligence-save-prof" type="checkbox" />
+</li>
+<li>
+<label for="Charisma-save">Charisma</label>
+<input name="Charisma-save" type="text" placeholder="${plus_minus(cha_save)} ${cha_save}"/>
+<input name="Charisma-save-prof" type="checkbox" />
+</li>
+</ul>
+<div class="label">Saving Throws</div>
+</div>
+<div class="skills list-section box">
+<ul>
+<li>
+<label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label>
+<input name="Acrobatics" type="text" placeholder="${acrobatics}" />
+<input name="Acrobatics-prof" type="checkbox" ${checker("acrobatics", char_proficiencies)} />
+</li>
+<li>
+<label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label>
+<input name="Animal Handling" type="text" placeholder="${animal_handling}"/>
+<input name="Animal Handling-prof" type="checkbox" ${checker("animal handling", char_proficiencies)}/>
+</li>
+<li>
+<label for="Arcana">Arcana <span class="skill">(Int)</span></label>
+<input name="Arcana" type="text" placeholder="${arcana}"/>
+<input name="Arcana-prof" type="checkbox" ${checker("arcana", char_proficiencies)}/>
+</li>
+<li>
+<label for="Athletics">Athletics <span class="skill">(Str)</span></label>
+<input name="Athletics" type="text" placeholder="${athletics}"/>
+<input name="Athletics-prof" type="checkbox" ${checker("athletics", char_proficiencies)}/>
+</li>
+<li>
+<label for="Deception">Deception <span class="skill">(Cha)</span></label>
+<input name="Deception" type="text" placeholder="${deception}"/>
+<input name = "Deception-prof" type = "checkbox" ${checker("deception", char_proficiencies)}/>
+</li>
+<li>
+<label for="History">History <span class="skill">(Int)</span></label>
+<input name="History" type="text" placeholder="${history}"/>
+<input name="History-prof" type="checkbox" ${checker("history", char_proficiencies)}/>
+</li>
+<li>
+<label for="Insight">Insight <span class="skill">(Wis)</span></label>
+<input name="Insight" type="text" placeholder="${insight}"/>
+<input name="Insight-prof" type="checkbox" ${checker("insight", char_proficiencies)}/>
+</li>
+<li>
+<label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label>
+<input name="Intimidation" type="text" placeholder="${intimidation}"/>
+<input name = "Intimidation-prof" type = "checkbox" ${checker("intimidation", char_proficiencies)}/>
+</li>
+<li>
+<label for="Investigation">Investigation <span class="skill">(Int)</span></label>
+<input name="Investigation" type="text" placeholder="${investigation}"/>
+<input name="Investigation-prof" type="checkbox" ${checker("investigation", char_proficiencies)}/>
+</li>
+<li>
+<label for="Medicine">Medicine <span class="skill">(Wis)</span></label>
+<input name="Medicine" type="text" placeholder="${medicine}"/>
+<input name="Medicine-prof" type="checkbox" ${checker("medicine", char_proficiencies)}/>
+</li>
+<li>
+<label for="Nature">Nature <span class="skill">(Int)</span></label>
+<input name="Nature" type="text" placeholder="${nature}"/>
+<input name="Nature-prof" type="checkbox" ${checker("nature", char_proficiencies)}/>
+</li>
+<li>
+<label for="Perception">Perception <span class="skill">(Wis)</span></label>
+<input name="Perception" type="text" placeholder="${perception}"/>
+<input name="Perception-prof" type="checkbox" ${checker("perception", char_proficiencies)}/>
+</li>
+<li>
+<label for="Performance">Performance <span class="skill">(Cha)</span></label>
+<input name="Performance" type="text" placeholder="${performance}"/>
+<input name="Performance-prof" type="checkbox" ${checker("performance", char_proficiencies)}/>
+</li>
+<li>
+<label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label>
+<input name="Persuasion" type="text" placeholder="${persuasion}"/>
+<input name="Persuasion-prof" type="checkbox" ${checker("persuasion", char_proficiencies)}/>
+</li>
+<li>
+<label for="Religion">Religion <span class="skill">(Int)</span></label>
+<input name="Religion" type="text" placeholder="${religion}"/>
+<input name="Religion-prof" type="checkbox" ${checker("religion", char_proficiencies)}/>
+</li>
+<li>
+<label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label>
+<input name="Sleight of Hand" type="text" placeholder="${sleight_of_hand}"/>
+<input name="Sleight of Hand-prof" type="checkbox" ${checker("sleight of hand", char_proficiencies)}/>
+</li>
+<li>
+<label for="Stealth">Stealth <span class="skill">(Dex)</span></label>
+<input name="Stealth" type="text" placeholder="${stealth}"/>
+<input name="Stealth-prof" type="checkbox" ${checker("stealth", char_proficiencies)}/>
+</li>
+<li>
+<label for="Survival">Survival <span class="skill">(Wis)</span></label>
+<input name="Survival" type="text" placeholder="${survival}"/>
+<input name="Survival-prof" type="checkbox" ${checker("survival", char_proficiencies)}/>
+</li>
+</ul>
+<div class="label">Skills</div>
+</div>
+</div>
+</section>
+<div class="passive-perception box">
+<div style="margin-top: 6px; border-radius: 2px; " class="label-container">
+<label for="passiveperception">Passive Wisdom (Perception)</label>
+</div>
+<input name="passiveperception" placeholder="${plus_minus(passive_perception)} ${passive_perception}"/>
+</div>
+<div style="margin-top: 5px; padding: 5px; border: 1px solid black; border-radius: 2px; display: flex; flex-direction: column-reverse;" class="otherprofs">
+<label for="otherprofs" style="text-align:center; padding: 5px;">Other Proficiencies and Languages</label>
+<textarea style="border:0; height: 14.8em;" name="otherprofs">${char_languages}</textarea>
+</div>
+</section>
+<section>
+<section class="combat">
+<div class="armorclass">
+<div>
+<label for="ac">Armor Class</label>
+<input name="ac" type="text" />
+</div>
+</div>
+<div class="initiative">
+<div>
+<label for="initiative">Initiative</label>
+<input name="initiative" type="text" placeholder="${plus_minus(initiative)} ${initiative}"/>
+</div>
+</div>
+<div class="speed">
+<div>
+<label for="speed">Speed</label>
+<input name="speed" type="text" placeholder="${move_speed}"/>
+</div>
+</div>
+<div class="hp">
+<div class="regular">
+<div class="max">
+<label for="maxhp">Hit Point Maximum</label>
+<input name="maxhp" type="text" placeholder="${char_hitpoints}"/>
+</div>
+<div class="current">
+<label for="currenthp">Current Hit Points</label>
+    <input name="currenthp" type="text" placeholder="${char_hitpoints}"/>
+</div>
+</div>
+<div class="temporary">
+<label for="temphp">Temporary Hit Points</label>
+<input name="temphp" type="text" />
+</div>
+</div>
+<div class="hitdice">
+<div><div class="total">
+<label for="totalhd">Total</label>
+<input name="totalhd" type="text" placeholder="${char_level}d ${hitdie(char_class)}"/>
+</div>
+<div class="remaining">
+<label for="remaininghd">Hit Dice</label>
+<input name="remaininghd" type="text" />
+</div>
+</div>
+</div>
+<div class="deathsaves">
+<div>
+<div class="label">
+<label>Death Saves</label>
+</div>
+<div class="marks">
+<div class="deathsuccesses">
+<label>Successes</label>
+<div class="bubbles">
+<input name="deathsuccess1" type="checkbox" class="deathsaves"/>
+<input name="deathsuccess2" type="checkbox" class="deathsaves"/>
+<input name="deathsuccess3" type="checkbox" class="deathsaves"/>
+</div>
+</div>
+<div class="deathfails">
+<label>Failures</label>
+<div class="bubbles">
+<input name="deathfail1" type="checkbox" class="deathsaves"/>
+<input name="deathfail2" type="checkbox" class="deathsaves"/>
+<input name="deathfail3" type="checkbox" class="deathsaves"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="attacksandspellcasting">
+<div>
+<label>Attacks & Spellcasting</label>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Atk Bonus</th>
+<th>Damage/Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<input name="atkname1" type="text" />
+</td>
+<td>
+<input name="atkbonus1" type="text" />
+</td>
+<td>
+<input name="atkdamage1" type="text" />
+</td>
+</tr>
+<tr>
+<td>
+<input name="atkname2" type="text" />
+</td>
+<td>
+<input name="atkbonus2" type="text" />
+</td>
+<td>
+<input name="atkdamage2" type="text" />
+</td>
+</tr>
+<tr>
+<td>
+<input name="atkname3" type="text" />
+</td>
+<td>
+<input name="atkbonus3" type="text" />
+</td>
+<td>
+<input name="atkdamage3" type="text" />
+</td>
+</tr>
+</tbody>
+</table>
+<textarea style="height:4.7em;" id="attacks_and_spellcasting">
+</textarea>
+</div>
+</section>
+<section class="equipment">
+<div>
+<label>Equipment</label>
+<div class="money">
+<ul>
+<li>
+<label for="cp">cp</label>
+<input name="cp" />
+</li>
+<li>
+<label for="sp">sp</label>
+<input name="sp" />
+</li>
+<li>
+<label for="ep">ep</label>
+<input name="ep" />
+</li>
+<li>
+<label for="gp">gp</label>
+<input name="gp" />
+</li>
+<li>
+<label for="pp">pp</label>
+<input name="pp" />
+</li>
+</ul>
+</div>
+<textarea id="equipment"></textarea>
+</div>
+</section>
+</section>
+<section>
+<section class="flavor">
+<div class="personality">
+<label for="personality">Personality</label>
+<textarea name="personality"></textarea>
+</div>
+<div class="ideals">
+<label for="ideals">Ideals</label>
+<textarea name="ideals"></textarea>
+</div>
+<div class="bonds">
+<label for="bonds">Bonds</label>
+<textarea name="bonds"></textarea>
+</div>
+<div class="flaws">
+<label for="flaws">Flaws</label>
+<textarea name="flaws"></textarea>
+</div>
+</section>
+<section class="features">
+<div>
+<label for="features">Features & Traits</label>
+<textarea style="height: 32.3em;" name="features" placeholder="${char_features_array}"></textarea>
+</div>
+</section>
+</section>
+</main>
+<footer>
+</footer>
+</form>
+</body>
+</html>
+`
             newWin.document.write(filled_char_sheet);
-
     }
-
-    console.log(char_proficiencies);
-    console.log(checker("acrobatics", char_proficiencies));
 }
 
 
